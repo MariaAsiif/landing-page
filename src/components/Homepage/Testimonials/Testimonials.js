@@ -36,12 +36,13 @@ function Testimonials() {
     setIsShows(false)
   }
 
-  console.log("Data" , IsData)
+  console.log("Data", IsData)
 
   var settings = {
     arrows: true,
     dots: false,
-    infinite: false,
+    infinite: true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -120,7 +121,7 @@ function Testimonials() {
           }
         </Slider>
       </div>
-      {IsShow && <TestimatePopup permition={IsShow} Info={IsData}  Toggle={() => handleClose()} />}
+      {IsShow && <TestimatePopup permition={IsShow} Info={IsData} Toggle={() => handleClose()} />}
     </Testimonial>
   );
 }
