@@ -11,11 +11,12 @@ const FollowUs = ({ imgs, head, imgs1, head1 }) => {
   var settings = {
     arrows: false,
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 6,
     slidesToScroll: 1,
     initialSlide: 0,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1024,

@@ -1,0 +1,64 @@
+.modal.show .modal-dialog {
+    transform: none;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.modal-header button{
+    font-size: 16px;
+    padding: 10px;
+    color: red;
+}
+
+.modal-title svg{
+   float: right;
+   
+}
+
+.modal-header button:hover{
+    color: red !important;
+}
+
+.nameHeading{
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    color: #242424;
+}
+
+.main-image{
+    height: 10rem;
+    width: 10rem;
+    margin-bottom: 2.1rem;
+    margin-top: -30px;
+}
+
+.card{
+    border: none;
+}
+
+.flag{
+    width: 2.25rem; 
+    height :1.4rem;
+    margin-top: 1.85rem;
+}
+
+.profession{
+    font-weight: normal;
+    font-size: 1.3rem;
+    line-height: 2.4rem;
+    color: #828282;
+}
+
+.popup_btn{
+    height: 40px;
+    width: 20%;
+    font-size: 20px;
+
+}
+
+.btn-read{
+    cursor: pointer;
+    padding-top: 5rem;
+}

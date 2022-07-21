@@ -35,6 +35,7 @@ function ViewedToday({ heading , section }) {
   var settings = {
     arrows: true,
     dots: false,
+    autoplay: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,

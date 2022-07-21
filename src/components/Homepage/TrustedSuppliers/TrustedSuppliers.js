@@ -11,24 +11,24 @@ import {
 } from "./StyeldTrustedSuppliers";
 import { Container } from "react-bootstrap";
 
-const TrustedSuppliers = ({ imgs, head,id }) => {
+const TrustedSuppliers = ({ imgs, head, id }) => {
   var settings = {
     arrows: false,
     dots: false,
-   
     autoplay: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
-    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 6,
           slidesToScroll: 1,
-         
           dots: false,
+          autoplay: true,
+
         },
       },
       {

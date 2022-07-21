@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import "swiper/swiper-bundle.min.css";
 import { CookiesProvider } from "react-cookie";
 import {QueryClientProvider , QueryClient} from 'react-query'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const queryClient = new QueryClient()
 
