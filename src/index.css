@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  padding-right: 0px !important;
+ 
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-text-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-align: -moz-center;
+  text-align: -webkit-center;
+  color: white;
+}
+.mt-3-2{
+  margin-top: 3.2rem;
+}
+.mt-2-9{
+  margin-top: 3rem;
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  max-width: 1290px !important;
+}
+/* .box{
+  height: 11rem;
+  background: #F0F0F0;
+} */
+@media screen and (max-width: 786px) {
+  html {
+    font-size: 52%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 45%;
+  }
+}
+.marq-logo{
+  height: 2rem;
+}
