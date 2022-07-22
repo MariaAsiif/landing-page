@@ -14,7 +14,7 @@ function TestimatePopup({ permition, Info, Toggle }) {
 
   return (
     <>
-      <Modal show={show} size="lg" onHide={handleClose} >
+      <Modal show={show} size="md" onHide={handleClose} >
         <Modal.Header closeButton onClick={() => handleClose()}>
           
         </Modal.Header>
@@ -32,12 +32,7 @@ function TestimatePopup({ permition, Info, Toggle }) {
                 </RecordingContainer>
               }
               {Info.subtitle &&
-                <div style={{
-                  marginTop: '0 !important', whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  height: '72px',
-                }} className='lead'>{`"${Info.subtitle}"`}</div>
+                <div className='lead'>{`"${Info.subtitle}"`}</div>
 
               }
             </div>

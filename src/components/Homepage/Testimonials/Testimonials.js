@@ -93,15 +93,15 @@ function Testimonials() {
                   <h6 className="profession">Marketing Agency</h6>
 
                   <img src={flag} alt="flag" className='flag mx-auto' />
-                  {/* <RecordingContainer className='pb-4'>
+                  <RecordingContainer className='pb-4'>
                     {
-                      index === 2 && (
+                      audio && (
                         <WaveSurf audio={audio} />
                       )
                     }
-                  </RecordingContainer> */}
-                  {/* {
-                    index !== 2 && (
+                  </RecordingContainer>
+                  {
+                    subtitle && (
                       <div style={{
                         marginTop: '0 !important', whiteSpace: 'nowrap',
                         overflow: 'hidden',
@@ -109,7 +109,7 @@ function Testimonials() {
                         height:'72px',
                       }} className='lead'>{`"${subtitle}"`}</div>
                     )
-                  } */}
+                  }
                   <p className='btn-read' onClick={() => { handleData(data) }}>Read More</p>
 
                 </div>
