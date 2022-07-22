@@ -4,6 +4,7 @@ import './StylePopup.css'
 import WaveSurf from "../Testimonials/WaveSurf/WaveSurf";
 import { RecordingContainer } from "../Testimonials/StyleTestimonial";
 import flag from '../../../assets/flag.svg';
+import { GrClose } from 'react-icons/gr'
 function TestimatePopup({ permition, Info, Toggle }) {
   const [show, setShow] = useState(permition);
   const [value, setValue] = useState('');
@@ -16,7 +17,9 @@ function TestimatePopup({ permition, Info, Toggle }) {
     <>
       <Modal show={show} size="md" onHide={handleClose} >
         <Modal.Header closeButton onClick={() => handleClose()}>
-          
+          <div className="close_btns">
+            <GrClose className="close" />
+          </div>
         </Modal.Header>
         <Modal.Body>
           <Card style={{ border: 'none' }} >

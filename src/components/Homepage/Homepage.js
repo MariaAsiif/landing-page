@@ -1,4 +1,4 @@
-import React, { createContext , Suspense} from "react";
+import React, { createContext, Suspense } from "react";
 import Agriculture from "./Agriculture/Agriculture";
 import BelowGrowProfit from "./BelowGrowProfit/BelowGrowProfit";
 import Chillum from "./Chillums/Chillums";
@@ -66,6 +66,7 @@ import Quote from "./Quote/Quote";
 import { ViewTodayContainer } from "../Homepage2/StyledHomepage2";
 import ViewedToday from "../Homepage2/ViewedToday/ViewedToday";
 import SectionPlaceHolder from '../Globals/SectionPlaceHolder'
+import DesignShowcase from "./Inspiration/DesignShowcase";
 
 export const VolumeContext = createContext();
 const styles = {
@@ -149,9 +150,12 @@ const Homepage = () => {
         <Header id="HOME" value={volumeValue} />
       </VolumeContext.Provider>
 
-      <Suspense fallback={<SectionPlaceHolder/>}>
+      < DesignShowcase/>
+
+      <Suspense fallback={<SectionPlaceHolder />}>
         <Inhalate id="INHALATE" />
       </Suspense>
+
       <Vaporize id="VAPORIZE" />
       <Portable id="PORTABLES" />
       <Chillum id="CHILLUMS" />

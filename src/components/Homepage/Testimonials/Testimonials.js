@@ -106,7 +106,6 @@ function Testimonials() {
                         marginTop: '0 !important', whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        height:'72px',
                       }} className='lead'>{`"${subtitle}"`}</div>
                     )
                   }

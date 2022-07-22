@@ -38,7 +38,7 @@ h1{
 }
 .Card{
     margin-right: 1rem;
-    height: 55rem;    
+    height: 60rem;    
     max-width: 45rem;
     @media screen and (min-width:320px) {
         
