@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import styles from 'styled-components';
 
 const StyleDesignShowcase = styled.div`
-margin-top: 9rem;
+margin-top: 4rem;
 h3{
 font-size: 3.6rem;
 font-style: normal;
