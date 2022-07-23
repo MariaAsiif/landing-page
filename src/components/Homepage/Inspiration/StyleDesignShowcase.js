@@ -73,6 +73,7 @@ export const StyleData = styled.div`
     padding-top: 20px;
     font-size: 21px;
     font-family: Poppins;
+    font-style: italic;
   }
   
    p{
