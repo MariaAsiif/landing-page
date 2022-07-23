@@ -55,6 +55,28 @@ text-align: center;
 `
 
 export default StyleDesignShowcase;
-export const StyleDesignInner=styled.div`
+export const StyleDesignInner = styled.div`
 margin-top: 10px;
+`
+export const StyleData = styled.div`
+
+    text-align: center;
+    border: 1pt solid lightgray;
+    width: 50%;
+    margin: auto;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    
+  h4{
+    color: red;
+    padding-top: 20px;
+    font-size: 21px;
+    font-family: Poppins;
+  }
+  
+   p{
+    color: lightgray;
+    font-size: 16px;
+  }
 `

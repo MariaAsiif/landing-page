@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
-import StyleDesignShowcase, { StyleDesignInner } from './StyleDesignShowcase';
-import './StyleDesignShowcase.css'
+import StyleDesignShowcase, { StyleDesignInner, StyleData } from './StyleDesignShowcase';
+// import './StyleDesignShowcase.css'
 import SwiperCore, { EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel } from 'swiper/core';
 
 
@@ -28,15 +28,15 @@ SwiperCore.use([EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel]);
 
 let inspiration = [
     { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    // { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" }
+    { text: 'Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.', writer: "Francis of Assisi" },
+    { text: 'If you have men who will exclude any of Gods creatures from the shelter of compassion and pity, you will have men who will deal likewise with their fellow men.', writer: "Francis of Assisi" },
+    { text: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.", writer: "Jimmy Dean" },
+    { text: 'Keep your face always toward the sunshine - and shadows will fall behind you.', writer: "Walt Whitman" },
+    { text: "You don't do things right once in a while. You do things right all the time.", writer: "Vince Lombardi" },
+    { text: 'Early to bed and early to rise makes a man healthy, wealthy and wise.', writer: "Benjamin Franklin" },
+    { text: 'Healing is a matter of time, but it is sometimes also a matter of opportunity.', writer: "Hippocrates" },
+    { text: 'He who has health, has hope; and he who has hope, has everything.', writer: "Thomas Carlyle" },
+    { text: 'We must accept finite disappointment, but never lose infinite hope.', writer: "Martin Luther King, Jr." }
 ]
 
 function DesignShowcase() {
@@ -51,6 +51,11 @@ function DesignShowcase() {
                         centeredSlides={true}
                         slidesPerView={3}
                         loop={true}
+                        speed={1000}
+                        autoplay={{
+                            delay: 3000,
+                            reverseDirection :true
+                        }}
                         coverflowEffect={{
                             rotate: 0,
                             stretch: 0,
@@ -63,14 +68,14 @@ function DesignShowcase() {
                         pagination={false}
                         slideToClickedSlide={true}
                         className="mySwiper"
-                        >
+                    >
                         {inspiration.map((item, index) => (
                             <SwiperSlide>
-                                <div className="inspiration_data">
+                                <StyleData>
                                     <h4>"{item.text}"</h4>
                                     <p>{item.writer}</p>
-                                     </div>
-                                   
+                                </StyleData>
+
 
                             </SwiperSlide>
 
@@ -79,7 +84,7 @@ function DesignShowcase() {
                 </div>
             </StyleDesignInner>
 
-        </StyleDesignShowcase>);
+        </StyleDesignShowcase >);
 }
 
 export default DesignShowcase;
