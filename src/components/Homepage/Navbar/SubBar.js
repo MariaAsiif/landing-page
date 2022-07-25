@@ -51,7 +51,7 @@ const SubBar = ({ setShow }) => {
   // })
   return (
     <div className="home-page-main-nav-container">
-      <Marquee />
+      {/* <Marquee /> */}
       <TopBar setShow={setShow} />
 
       <div className={navbar ? "hporx-header" : "hporx-header-skew"}>
@@ -60,8 +60,8 @@ const SubBar = ({ setShow }) => {
             navbar
               ? "hporx-header-topbar-skew"
               : navbarbackground
-              ? "changetopBArbackgournd"
-              : "hporx-header-topbar-normal"
+                ? "changetopBArbackgournd"
+                : "hporx-header-topbar-normal"
           }
         ></div>
         <nav
@@ -177,13 +177,13 @@ const SubBar = ({ setShow }) => {
                 >
                   PRODUCTS<img src={downIcon} alt='downIcon' />
                 </Link>
-             
-                <ul  className="dropdown-product-link" >
+
+                <ul className="dropdown-product-link" >
                   <li>
-                  <span style={{ color: "red", fontSize: "1.5rem" }}>Rx</span>PRODUCTS
+                    <span style={{ color: "red", fontSize: "1.5rem" }}>Rx</span>PRODUCTS
                   </li>
                   <li className="sub-li" onClick={() => history.push('/locator')} >Locate Us</li>
-                  <li className="sub-li" onClick={() => history.push('/agency') } >DAS</li>
+                  <li className="sub-li" onClick={() => history.push('/agency')} >DAS</li>
                 </ul>
               </li>
               <li className="main-li">

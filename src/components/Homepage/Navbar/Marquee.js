@@ -8,10 +8,10 @@ const MarqueeView = () => {
   return (
     <div
       style={{
-        background: "#0000003b",
-        height: "30px",
+        background: "#0000003b", height: "30px",
         fontSize: "12px",
         color: "white",
+        width: "100%"
       }}
     >
       <Marquee

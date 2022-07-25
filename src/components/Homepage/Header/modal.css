@@ -2,15 +2,19 @@
   background-color: transparent !important;
   border: none;
 }
-.homeModalageGater .modal-content{
+
+.homeModalageGater .modal-content {
   height: auto;
 }
-.home-page-main-nav-container{
+
+.home-page-main-nav-container {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
+  width: 100%;
 }
+
 /* .sc-gSQFLo {
   height: 100%;
 } */

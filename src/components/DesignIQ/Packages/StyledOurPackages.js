@@ -50,7 +50,7 @@ color: #FFFFFF;
 padding: 2.9rem  2.4rem;
 h3{
     
-font-size: 2rem;
+font-size: 2.5rem;
 font-weight: 600;
 line-height: 1.8rem;
 letter-spacing: 0em;
