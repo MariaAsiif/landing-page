@@ -61,7 +61,7 @@ margin-top: 10px;
 export const StyleData = styled.div`
 
     text-align: center;
-    border: 1pt solid lightgray;
+    border: 2px solid #8b8b8b;
     width: 50%;
     margin: auto;
     padding: 15px;

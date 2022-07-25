@@ -1,11 +1,11 @@
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import StyleDesignShowcase, { StyleDesignInner, StyleData } from './StyleDesignShowcase';
 // import './StyleDesignShowcase.css'
-import SwiperCore, { EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel } from 'swiper/core';
+import SwiperCore, { EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel, Autoplay } from 'swiper/core';
 
 
 import banner1 from '../../../assets/banner1.jpg';
@@ -24,7 +24,7 @@ import banner5 from '../../../assets/banner5.jpg';
 // import banner10 from '../../../img/banner10.jpg';
 // import banner11 from '../../../img/banner11.jpg';
 
-SwiperCore.use([EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel]);
+SwiperCore.use([EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel, Autoplay]);
 
 let inspiration = [
     { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
@@ -52,9 +52,9 @@ function DesignShowcase() {
                         slidesPerView={3}
                         loop={true}
                         speed={1000}
+
                         autoplay={{
-                            delay: 3000,
-                            reverseDirection :true
+                            delay: 1000
                         }}
                         coverflowEffect={{
                             rotate: 0,
@@ -70,7 +70,7 @@ function DesignShowcase() {
                         className="mySwiper"
                     >
                         {inspiration.map((item, index) => (
-                            <SwiperSlide>
+                            <SwiperSlide  >
                                 <StyleData>
                                     <h4>"{item.text}"</h4>
                                     <p>{item.writer}</p>

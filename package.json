@@ -11,7 +11,7 @@
     "bootstrap-icons": "^1.8.1",
     "formik": "^2.2.9",
     "google-map-react": "^2.1.10",
-    "node-sass": "6.0",
+    "node-sass": "^7.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-compare-image": "^3.1.0",
