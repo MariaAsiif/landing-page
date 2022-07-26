@@ -37,7 +37,7 @@ import followUs1 from "../../assets/twitter.svg";
 import followUs2 from "../../assets/facebook.svg";
 import followUs3 from "../../assets/youtube.svg";
 import followUs4 from "../../assets/snapchat.svg";
-import followUs5 from "../../assets/www.svg";
+import followUs5 from "../../assets/tictok.svg";
 import followUs6 from "../../assets/messenger.svg";
 import followUs7 from "../../assets/instagram.svg";
 import followUs8 from "../../assets/linkdin.svg";
@@ -118,7 +118,7 @@ const Homepage = () => {
     { img: followUs2, title: "Facbook" },
     { img: followUs3, title: "Youtube" },
     { img: followUs4, title: "Snapchat" },
-    { img: followUs5, title: "Vkontakte" },
+    { img: followUs5, title: "Ticktok" },
     { img: followUs6, title: "Messenger" },
     { img: followUs7, title: "Instagram" },
     { img: followUs8, title: "LinkedIn" },
