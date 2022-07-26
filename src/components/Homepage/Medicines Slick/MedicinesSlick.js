@@ -57,7 +57,7 @@ const MedicinesSlick = ({ id }) => {
     <MedicineContainerMain id={id}>
       <Container>
         <MedicineSlickContainer>
-          <h1 className="mb-5 fw-bolder">PRESCRIBABLE </h1>
+          <h1  >PRESCRIBABLE </h1>
           <Slider {...settings} className='responsive-slick'>
 
             {imgContainer.map((img, index) => (
