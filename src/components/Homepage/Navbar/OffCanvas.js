@@ -6,6 +6,7 @@ import person from "../../../assets/person.jpeg";
 import "./offCanvas.css";
 import { ViewMoreBtn } from '../../Globals/Globals'
 import { VolumeContext } from "../Homepage";
+import { AiFillSound } from "react-icons/ai";
 
 const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
     const data = new Date();
@@ -91,7 +92,7 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                                                 <img src="https://hporx.com/wp-content/themes/astra-child/assets/images/sound.svg" alt="" />
                                                 <div class="switcher">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" aria-checked={value}  type="checkbox" role="switch"
+                                                        <input class="form-check-input" aria-checked={value} type="checkbox" role="switch"
                                                             onChange={(event) => handleVolume(!value)}
                                                             id="sound-witch" />
                                                         <label class="form-check-label" for="sound-witch">
@@ -152,7 +153,7 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                             <li>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h3 class="off_text">Location</h3>
+                                        <h3 class="off_text">Country</h3>
                                     </div>
                                     <div class="ms-2">
                                         <span>{country}</span>
@@ -162,7 +163,17 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                             <li>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h3 class="off_text">Time</h3>
+                                        <h3 class="off_text">City</h3>
+                                    </div>
+                                    <div class="ms-2">
+                                        <span>{country}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h3 class="off_text">Local Time</h3>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <div>
@@ -177,7 +188,7 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                             <li>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <h3 class="off_text">Local Weather</h3>
+                                        <h3 class="off_text">Weather</h3>
                                     </div>
                                     <div>
                                         <img src="./assets/images/wether.svg" alt="" />
@@ -229,6 +240,13 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                                     <ViewMoreBtn>
                                         Appointment
                                     </ViewMoreBtn>
+                                </div>
+                            </li>
+                            <li>
+
+                                <div class="d-flex justify-content-center mt-2">
+                                    {/* <button class="btn quotation-btn rounded-pill">Quotation</button> */}
+                                    <AiFillSound size={30} />
                                 </div>
                             </li>
                         </ul>
