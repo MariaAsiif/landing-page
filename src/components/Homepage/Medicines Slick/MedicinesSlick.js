@@ -14,13 +14,13 @@ import {
 import { Container } from "react-bootstrap";
 import { AddToCartBtn } from "../../Globals/Globals";
 
-const MedicinesSlick = ({id}) => {
-  const imgContainer = [medic1, medic2, medic1,medic4,medic1, medic2, medic1,medic4];
+const MedicinesSlick = ({ id }) => {
+  const imgContainer = [medic1, medic2, medic1, medic4, medic1, medic2, medic1, medic4];
   var settings = {
     arrows: true,
     dots: false,
     infinite: false,
-    autoplay: false,
+    autoplay: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -31,7 +31,7 @@ const MedicinesSlick = ({id}) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-         
+
           autoplay: true,
           dots: false,
         },
@@ -57,24 +57,25 @@ const MedicinesSlick = ({id}) => {
     <MedicineContainerMain id={id}>
       <Container>
         <MedicineSlickContainer>
-        <Slider {...settings} className='responsive-slick'>
+          <h1 className="mb-5 fw-bolder">PRESCRIBABLE </h1>
+          <Slider {...settings} className='responsive-slick'>
 
-          {imgContainer.map((img, index) => (
-            <div key={index}>
-              <div className="text-center medicine-text">
-                
-                <span className="text-red" >Treats</span>:<span style={{display:'inline-block',marginLeft:'5px'}} className="disease-text">Seizures</span>
-              </div>
-              <MedicineImgContainer>
-                <div className="overlay"></div>
-                <div className="inner-overlay">
-                  <AddToCartBtn>Add to Cart</AddToCartBtn>
+            {imgContainer.map((img, index) => (
+              <div key={index}>
+                <div className="text-center medicine-text">
+
+                  <span className="text-red" >Treats</span>:<span style={{ display: 'inline-block', marginLeft: '5px' }} className="disease-text">Seizures</span>
                 </div>
-                <MedicineImg src={img} alt={img} />
-              </MedicineImgContainer>
-            </div>
-          ))}
-        </Slider>
+                <MedicineImgContainer>
+                  <div className="overlay"></div>
+                  <div className="inner-overlay">
+                    <AddToCartBtn>Add to Cart</AddToCartBtn>
+                  </div>
+                  <MedicineImg src={img} alt={img} />
+                </MedicineImgContainer>
+              </div>
+            ))}
+          </Slider>
         </MedicineSlickContainer>
       </Container>
     </MedicineContainerMain>
