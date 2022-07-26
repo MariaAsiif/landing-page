@@ -55,158 +55,68 @@ const SubBar = ({ setShow }) => {
       <TopBar setShow={setShow} />
 
       <div className={navbar ? "hporx-header" : "hporx-header-skew"}>
-        <div
-          className={
-            navbar
-              ? "hporx-header-topbar-skew"
-              : navbarbackground
-                ? "changetopBArbackgournd"
-                : "hporx-header-topbar-normal"
-          }
-        ></div>
-        <nav
-          className={navbarbackground ? "nav" : "changebackground"}
-          id="navbar"
-        >
+        <div className={navbar ? "hporx-header-topbar-skew" : navbarbackground ? "changetopBArbackgournd" : "hporx-header-topbar-normal"} ></div>
+        <nav className={navbarbackground ? "nav" : "changebackground"} id="navbar"  >
           <div className="nav-content">
             <ul className="nav-items">
               <li className="main-li" >
-                <Link
-                  activeClass="active"
-                  to="HOME"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  onClick={() => history.push("/home")}
-                >
-                  {" "}
-                  HOME{" "}
-                </Link>
+                <Link activeClass="active" to="HOME" spy={true} smooth={true} duration={500} onClick={() => history.push("/home")}    > HOME{" "} </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="INHALATE"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  INHALATE
-                </Link>
+                <Link activeClass="active" to="INHALATE" spy={true} smooth={true} duration={500} >  INHALATE  </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="VAPORIZE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="VAPORIZE" spy={true} smooth={true} offset={-70} duration={500} >
                   VAPORIZE
                 </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="PORTABLES"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="PORTABLES" spy={true} smooth={true} offset={-70} duration={500}   >
                   PORTABLES
                 </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="CHILLUMS"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="CHILLUMS" spy={true} smooth={true} offset={-70} duration={500}  >
                   CHILLUMS
                 </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="CULTIVATE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="CULTIVATE" spy={true} smooth={true} offset={-70} duration={500}  >
                   CULTIVATE
                 </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="DIAGNOSE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="DIAGNOSE" spy={true} smooth={true} offset={-70} duration={500} >
                   DIAGNOSE{" "}
                 </Link>
               </li>
               <li className="main-li" >
-                <Link
-                  activeClass="active"
-                  to="PRESCRIBE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="PRESCRIBE" spy={true} smooth={true} offset={-70} duration={500} >
                   PRESCRIBE{" "}
                 </Link>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  // to="PRODUCTS"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" spy={true} smooth={true} offset={-70} duration={500}  >
                   PRODUCTS<img src={downIcon} alt='downIcon' />
                 </Link>
 
                 <ul className="dropdown-product-link" >
-                  <li>
+                  {/* <li>
                     <span style={{ color: "red", fontSize: "1.5rem" }}>Rx</span>PRODUCTS
                   </li>
                   <li className="sub-li" onClick={() => history.push('/locator')} >Locate Us</li>
-                  <li className="sub-li" onClick={() => history.push('/agency')} >DAS</li>
+                  <li className="sub-li" onClick={() => history.push('/agency')} >DAS</li> */}
+                  <li style={{ color: "red", fontWeight: 700, fontSize: "2rem" }}> Rx</li>
+                  <li>Merchandise</li>
                 </ul>
               </li>
               <li className="main-li">
-                <Link
-                  activeClass="active"
-                  to="MARKETPLACE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="MARKETPLACE" spy={true} smooth={true} offset={-70} duration={500}  >
                   MARKETPLACE{" "}
                 </Link>
               </li>
               <li className="main-li" >
-                <Link
-                  activeClass="active"
-                  to="LOCATE"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                >
+                <Link activeClass="active" to="LOCATE" spy={true} smooth={true} offset={-70} duration={500} >
                   LOCATE{" "}
                 </Link>
               </li>

@@ -39,7 +39,7 @@ margin-right: 2rem;
     bottom: 2.8rem;
     left: 0;
     width: 97%;
-    height: 95%;
+    height: 100%;
     right: 2rem;
     opacity: 0;
     transition: 0.5s ease;
