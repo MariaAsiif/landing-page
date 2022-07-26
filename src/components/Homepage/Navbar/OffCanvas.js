@@ -6,7 +6,7 @@ import person from "../../../assets/person.jpeg";
 import "./offCanvas.css";
 import { ViewMoreBtn } from '../../Globals/Globals'
 import { VolumeContext } from "../Homepage";
-import { AiFillSound } from "react-icons/ai";
+import { BsFillVolumeUpFill, BsFillVolumeDownFill, BsFillVolumeMuteFill } from "react-icons/bs";
 
 const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
     const data = new Date();
@@ -246,7 +246,9 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
 
                                 <div class="d-flex justify-content-center mt-2">
                                     {/* <button class="btn quotation-btn rounded-pill">Quotation</button> */}
-                                    <AiFillSound size={30} />
+                                    <BsFillVolumeUpFill size={30} />
+                                    <BsFillVolumeDownFill size={30} />
+                                    <BsFillVolumeMuteFill size={30} />
                                 </div>
                             </li>
                         </ul>
