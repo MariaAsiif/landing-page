@@ -9,8 +9,25 @@ import us_flag from '../../../assets/us_flag.png'
 import { Container } from 'react-bootstrap';
 import { DiagnoseAppointmentBtn, DiagnoseImg, DiagnoseImgContainer, StyledSlickContainer } from './StyledDiagnose';
 import { AddToCartBtn, ShopBtnTransparent } from '../../Globals/Globals';
+import ReactCountryFlag from "react-country-flag"
 const DiagnoseSlick = () => {
-    const diagnoseImgs = [{ coverImage: diagnose2, flagImage: us_flag }, { coverImage: diagnose1, flagImage: spain_flag }, { coverImage: diagnose2, flagImage: us_flag }, { coverImage: diagnose1, flagImage: spain_flag },]
+    const diagnoseImgs = [
+        {
+            coverImage: diagnose2,
+            flagImage: <ReactCountryFlag countryCode="ES" svg style={{ width: '3.5em', height: '3.5em', display: "block" }} />
+        },
+        {
+            coverImage: diagnose1,
+            flagImage: <ReactCountryFlag countryCode="US" svg style={{ width: '3.5em', height: '3.5em', display: "block" }} />
+        },
+        {
+            coverImage: diagnose2,
+            flagImage: <ReactCountryFlag countryCode="ES" svg style={{ width: '3.5em', height: '3.5em', display: "block" }} />
+        },
+        {
+            coverImage: diagnose1,
+            flagImage: <ReactCountryFlag countryCode="US" svg style={{ width: '3.5em', height: '3.5em', display: "block" }} />
+        },]
     var settings = {
         arrows: true,
         dots: false,
@@ -66,7 +83,7 @@ const DiagnoseSlick = () => {
                                     </div>
 
                                 </DiagnoseImgContainer>
-                                <img style={{ height: "auto", width: 40, marginTop: 10 }} src={img.flagImage} />
+                                {img.flagImage}
                             </>
 
                         ))

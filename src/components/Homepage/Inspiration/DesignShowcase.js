@@ -56,7 +56,8 @@ function DesignShowcase() {
                         autoplay={{
                             delay: 1000,
                             disableOnInteraction: false,
-                            pauseOnMouseEnter: false
+                            pauseOnMouseEnter: true,
+                            reverseDirection: true
                         }}
 
                         coverflowEffect={{
