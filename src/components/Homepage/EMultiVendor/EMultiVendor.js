@@ -16,7 +16,8 @@ import { Container } from "react-bootstrap";
 var settings = {
   dots: false,
   infinite: false,
-  arrows: false,
+  arrows: true,
+  autoplay:true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
