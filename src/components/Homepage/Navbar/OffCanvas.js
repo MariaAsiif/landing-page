@@ -252,7 +252,7 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                             <li>
 
                                 <div class="d-flex justify-content-center mt-2">
-                                    <VolumeContext.Provider value={handleVolume}>
+                                    <VolumeContext.Provider value={handleVolumes}>
                                         <Quote value={volumeValue} />
                                     </VolumeContext.Provider>
                                     
