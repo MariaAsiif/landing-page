@@ -30,6 +30,8 @@ function TrendingNow1({ heading, description , section }) {
     }
   );
 
+  // console.log("section" , section )
+
   var settings = {
     arrows: true,
     dots: false,
@@ -66,6 +68,8 @@ function TrendingNow1({ heading, description , section }) {
       },
     ],
   };
+
+
 
   return (
     <StyleTrending>

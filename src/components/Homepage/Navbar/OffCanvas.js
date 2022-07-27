@@ -7,12 +7,19 @@ import "./offCanvas.css";
 import { ViewMoreBtn } from '../../Globals/Globals'
 import { VolumeContext } from "../Homepage";
 import { BsFillVolumeUpFill, BsFillVolumeDownFill, BsFillVolumeMuteFill } from "react-icons/bs";
+import Quote from "../sidebarQuotes/Quote";
 
 const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
     const data = new Date();
     //    const [data,changeData]=useState();
     const handleVolume = useContext(VolumeContext);
+  const [volumeValue, setVolumeValue] = React.useState(false);
 
+
+
+    const handleVolumes = (value) => {
+        setVolumeValue(value);
+      };
     return (
         <Offcanvas show={show} onHide={handleClose} placement="end">
             <Offcanvas.Header>
@@ -245,10 +252,10 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                             <li>
 
                                 <div class="d-flex justify-content-center mt-2">
-                                    {/* <button class="btn quotation-btn rounded-pill">Quotation</button> */}
-                                    <BsFillVolumeUpFill size={30} />
-                                    <BsFillVolumeDownFill size={30} />
-                                    <BsFillVolumeMuteFill size={30} />
+                                    <VolumeContext.Provider value={handleVolume}>
+                                        <Quote value={volumeValue} />
+                                    </VolumeContext.Provider>
+                                    
                                 </div>
                             </li>
                         </ul>

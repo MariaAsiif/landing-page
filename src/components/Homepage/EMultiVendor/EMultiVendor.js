@@ -66,12 +66,12 @@ const EMultiVendor = () => {
       refetchOnWindowFocus: "false",
       keepPreviousData: "false",
       select: (data) =>
-        data.data.data.filter((item) => item.productType === "therapeautic"),
+        data.data.data.filter((item) => item.productType === "marketPlace"),
       enabled: true,
     }
   );
 
-
+console.log("Data EM" , productData)
   return (
     <EVendorMain>
       <Container>
