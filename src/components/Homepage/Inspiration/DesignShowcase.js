@@ -27,17 +27,19 @@ import banner5 from '../../../assets/banner5.jpg';
 SwiperCore.use([EffectCoverflow, Pagination, Navigation, Keyboard, Mousewheel, Autoplay]);
 
 let inspiration = [
-    { text: 'Love is composed of a single soul inhabiting two bodies', writer: "Aristotle" },
-    { text: 'Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.', writer: "Francis of Assisi" },
-    { text: 'If you have men who will exclude any of Gods creatures from the shelter of compassion and pity, you will have men who will deal likewise with their fellow men.', writer: "Francis of Assisi" },
-    { text: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.", writer: "Jimmy Dean" },
-    { text: 'Keep your face always toward the sunshine - and shadows will fall behind you.', writer: "Walt Whitman" },
-    { text: "You don't do things right once in a while. You do things right all the time.", writer: "Vince Lombardi" },
-    { text: 'Early to bed and early to rise makes a man healthy, wealthy and wise.', writer: "Benjamin Franklin" },
-    { text: 'Healing is a matter of time, but it is sometimes also a matter of opportunity.', writer: "Hippocrates" },
-    { text: 'He who has health, has hope; and he who has hope, has everything.', writer: "Thomas Carlyle" },
-    { text: 'We must accept finite disappointment, but never lose infinite hope.', writer: "Martin Luther King, Jr." }
+    { text: 'Love is composed of a single soul inhabiting two bodies', date: "05/2020" , writer: "Aristotle" },
+    { text: 'Start by doing whats necessary; then do whats possible; and suddenly you are doing the impossible.', date: "05/2020" , writer: "Francis of Assisi" },
+    { text: 'If you have men who will exclude any of Gods creatures from the shelter of compassion and pity, you will have men who will deal likewise with their fellow men.', date: "05/2020" , writer: "Francis of Assisi" },
+    { text: "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.", date: "05/2020" , writer: "Jimmy Dean" },
+    { text: 'Keep your face always toward the sunshine - and shadows will fall behind you.', date: "05/2020" , writer: "Walt Whitman" },
+    { text: "You don't do things right once in a while. You do things right all the time.", date: "05/2020" , writer: "Vince Lombardi" },
+    { text: 'Early to bed and early to rise makes a man healthy, wealthy and wise.', date: "05/2020" , writer: "Benjamin Franklin" },
+    { text: 'Healing is a matter of time, but it is sometimes also a matter of opportunity.', date: "05/2020" , writer: "Hippocrates" },
+    { text: 'He who has health, has hope; and he who has hope, has everything.', date: "05/2020" , writer: "Thomas Carlyle" },
+    { text: 'We must accept finite disappointment, but never lose infinite hope.', date: "05/2020" , writer: "Martin Luther King, Jr." }
 ]
+
+
 
 function DesignShowcase() {
     return (
@@ -78,7 +80,7 @@ function DesignShowcase() {
                                 <StyleData>
                                     <h4>"{item.text}"</h4>
                                     <p>{item.writer}</p>
-                                    <span>05/2020</span>
+                                    <span>{item.date}</span>
                                 </StyleData>
 
 
