@@ -62,6 +62,17 @@ export const MedicineImgContainer = styled.div`
 `;
 
 export const MedicineSlickContainer = styled.div`
+h1{
+   font-size: 4.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 7.2rem; 
+  text-transform: uppercase;
+  text-align:center; 
+  color: #535353;
+margin-bottom:40px;
+   
+}
   .medicine-text{
 font-size: 1.6rem;
 font-style: normal;

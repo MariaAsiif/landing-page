@@ -48,48 +48,28 @@ const TopBar = ({ setShow }) => {
       <div className="topBar-Header">
         <Navbar bg="transparent" variant="dark">
           <div className="reponsive-topbar-toggler" >
-            <img className="img-fluid" src={featherMenu} alt="featherMenu"  onClick={handleShow} />
+            <img className="img-fluid" src={featherMenu} alt="featherMenu" onClick={handleShow} />
           </div>
 
           <Container>
             <Navbar.Brand href="#">
-              <img
-                className="img-fluid header-topBar-logo"
-                src={logo}
-                alt="logo"
-              />
+              <img className="img-fluid header-topBar-logo" src={logo} alt="logo" />
             </Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link href="#" className="topbar-nav-icon">
-                <img
-                  className="img-fluid"
-                  src={warningIcon}
-                  alt="featherMenu"
-                />
-              </Nav.Link>
               <Nav.Link href="#" className="topbar-nav-icon">
                 <img className="img-fluid" src={searchIcon} alt="featherMenu" />
               </Nav.Link>
               <Nav.Link href="#" className="topbar-nav-icon">
-                <img
-                  className="img-fluid"
-                  src={profile}
-                  alt="featherMenu"
-                />
+                <img className="img-fluid" src={profile} alt="featherMenu" />
               </Nav.Link>
-              <Nav.Link
-                href="#"
-                className="topbar-nav-icon"
-              >
+              <Nav.Link href="#" className="topbar-nav-icon">
+                <img className="img-fluid" src={warningIcon} alt="accessibility " />
+              </Nav.Link>
+              <Nav.Link href="#" className="topbar-nav-icon"  >
                 <img className="img-fluid" src={cart} alt="featherMenu" />
               </Nav.Link>
               <Nav.Link href="#" className="topbar-nav-icon">
-                <img
-                  onClick={() => setShow(true)}
-                  className="img-fluid"
-                  src={featherMenu}
-                  alt="featherMenu"
-                />
+                <img onClick={() => setShow(true)} className="img-fluid" src={featherMenu} alt="featherMenu" />
               </Nav.Link>
             </Nav>
           </Container>
