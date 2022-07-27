@@ -3,14 +3,15 @@ import styles from 'styled-components';
 
 const StyleDesignShowcase = styled.div`
 margin-top: 4rem;
+margin-bottom: 4rem;
 h3{
-font-size: 3.6rem;
-font-style: normal;
-font-weight: 500;
-line-height: 5.4rem;
-letter-spacing: 0em;
-color: #333333;
-text-align: center;
+  font-size: 4.8rem;
+  font-weight: 500;
+  line-height: 7.2rem;
+  letter-spacing: 0em;
+  color: #242424;
+  text-transform: uppercase;
+  text-align:center
 }
 .swiper-slide{
     background-position: center;
@@ -62,6 +63,7 @@ export const StyleData = styled.div`
 
     text-align: center;
     border: 2px solid #8b8b8b;
+    font-fmaily:Poppins;
     width: 50%;
     margin: auto;
     padding: 15px;
@@ -74,10 +76,18 @@ export const StyleData = styled.div`
     font-size: 21px;
     font-family: Poppins;
     font-style: italic;
+
   }
   
    p{
     color: lightgray;
-    font-size: 16px;
+    font-size: 20px;
+    font-fmaily:Poppins;
+  }
+  span{
+    color: blue;
+    font-size: 14px;
+    font-weight:500;
+    font-fmaily:Poppins;
   }
 `

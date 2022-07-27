@@ -42,7 +42,7 @@ let inspiration = [
 function DesignShowcase() {
     return (
         <StyleDesignShowcase>
-            <h3>Inspirational Quotes</h3>
+            <h3>Inspire Quotes</h3>
             <StyleDesignInner>
                 <div className="container">
                     <Swiper navigation={false}
@@ -74,6 +74,7 @@ function DesignShowcase() {
                                 <StyleData>
                                     <h4>"{item.text}"</h4>
                                     <p>{item.writer}</p>
+                                    <span>05/2020</span>
                                 </StyleData>
 
 
