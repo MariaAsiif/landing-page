@@ -9,34 +9,25 @@ import {
 } from "./StyledInhalate";
 import VideoModal from '../VideoModal/VideoModal';
 import Collapse from 'react-bootstrap/Collapse';
-import Accordion from 'react-bootstrap/Accordion';
-import { useAccordionButton } from 'react-bootstrap/AccordionButton';
-import Card from 'react-bootstrap/Card';
-
 const Inhalate = ({ id }) => {
-  function CustomToggle({ children, eventKey }) {
-    const decoratedOnClick = useAccordionButton(eventKey, () => { });
-    return (
-      <h3 type="button" onClick={decoratedOnClick}>
-        {children}
-      </h3>
-    );
-  }
+  const [open, setOpen] = useState(false);
+
   return (
     <Container id={id}>
+
       <InhalateMainContainer>
         <InhalateTextContainer>
-          <Accordion defaultActiveKey="0">
-            <CustomToggle eventKey="0">Inhalate</CustomToggle>
-            <Accordion.Collapse eventKey="0">
-              <p>
-                Curabitur cursus sagittis varius. Quisque aliquet luctus elit, in
-                hendrerit orci malesuada eu. Morbi feugiat et ligula maximus
-                aliquet. Quisque aliquet luctus elit, in hendrerit orci malesuada
-                eu. Morbi feugiat et ligula maximus aliquet
-              </p>
-            </Accordion.Collapse>
-          </Accordion>
+          <h3 type="button" onClick={() => setOpen(!open)} aria-controls="inhalate-collapse" >Inhalate</h3>
+          <Collapse in={open}>
+            <p id="inhalate-collapse"  >
+              Curabitur cursus sagittis varius. Quisque aliquet luctus elit, in
+              hendrerit orci malesuada eu. Morbi feugiat et ligula maximus
+              aliquet. Quisque aliquet luctus elit, in hendrerit orci malesuada
+              eu. Morbi feugiat et ligula maximus aliquet
+            </p>
+          </Collapse>
+
+
 
         </InhalateTextContainer>
         <InhalateSlick />
