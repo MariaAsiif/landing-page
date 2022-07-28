@@ -111,7 +111,7 @@
 
 .nav-items>.main-li a {
   padding: 1.5rem 0;
-  color: white;
+  color: inherit;
   text-decoration: none;
 }
 

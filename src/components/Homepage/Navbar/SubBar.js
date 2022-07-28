@@ -63,7 +63,7 @@ const SubBar = ({ setShow }) => {
                 <Link activeClass="active" to="HOME" spy={true} smooth={true} duration={500} onClick={() => history.push("/home")}    > HOME{" "} </Link>
               </li>
               <li className="main-li" >
-                <a href="https://landing-page-ivory-eta.vercel.app/agency"> DSA</a>
+                <a href="https://landing-page-ivory-eta.vercel.app/agency">DAS</a>
               </li>
               <li className="main-li">
                 <Link activeClass="active" to="INHALATE" spy={true} smooth={true} duration={500} >  INHALATE  </Link>
