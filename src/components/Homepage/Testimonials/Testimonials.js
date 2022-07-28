@@ -91,9 +91,8 @@ function Testimonials() {
                   <img class src={img} alt="Testimonial " className='main-image mx-auto' />
                   <h3 className="nameHeading">{name}</h3>
                   <h6 className="profession">Marketing Agency</h6>
-
                   <img src={flag} alt="flag" className='flag mx-auto' />
-                  <RecordingContainer className='pb-4'>
+                  <RecordingContainer className='pb-4 ' style={{ height: 136 }}>
                     {
                       audio && (
                         <WaveSurf audio={audio} />
@@ -110,7 +109,6 @@ function Testimonials() {
                     )
                   }
                   <p className='btn-read' onClick={() => { handleData(data) }}>Read More</p>
-
                 </div>
               </Card>
             </div>)
