@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { ViewMoreBtn } from "../../Globals/Globals";
 import InhalateSlick from "./InhalateSlick";
@@ -8,21 +8,27 @@ import {
   InhalateTextContainer,
 } from "./StyledInhalate";
 import VideoModal from '../VideoModal/VideoModal';
-
-const Inhalate = ({id}) => {
+import Collapse from 'react-bootstrap/Collapse';
+const Inhalate = ({ id }) => {
+  const [open, setOpen] = useState(false);
 
   return (
     <Container id={id}>
-    
+
       <InhalateMainContainer>
         <InhalateTextContainer>
-          <h3 >Inhalate</h3>
-          <p>
-            Curabitur cursus sagittis varius. Quisque aliquet luctus elit, in
-            hendrerit orci malesuada eu. Morbi feugiat et ligula maximus
-            aliquet. Quisque aliquet luctus elit, in hendrerit orci malesuada
-            eu. Morbi feugiat et ligula maximus aliquet
-          </p>
+          <h3 type="button" onClick={() => setOpen(!open)} aria-controls="inhalate-collapse" >Inhalate</h3>
+          <Collapse in={open}>
+            <p id="inhalate-collapse"  >
+              Curabitur cursus sagittis varius. Quisque aliquet luctus elit, in
+              hendrerit orci malesuada eu. Morbi feugiat et ligula maximus
+              aliquet. Quisque aliquet luctus elit, in hendrerit orci malesuada
+              eu. Morbi feugiat et ligula maximus aliquet
+            </p>
+          </Collapse>
+
+
+
         </InhalateTextContainer>
         <InhalateSlick />
         <InhalateButtonContainer>

@@ -6,17 +6,11 @@ import { RecordingContainer } from "../Testimonials/StyleTestimonial";
 import flag from '../../../assets/flag.svg';
 import { GrClose } from 'react-icons/gr'
 function TestimatePopup({ permition, Info, Toggle }) {
-  const [show, setShow] = useState(permition);
-  const [value, setValue] = useState('');
-  const handleClose = () => {
-    setShow(false)
-    Toggle()
-  }
 
   return (
     <>
-      <Modal show={show} size="md" onHide={handleClose} >
-        <Modal.Header closeButton onClick={() => handleClose()}>
+      <Modal show={permition} size="md" onHide={Toggle} >
+        <Modal.Header closeButton onClick={Toggle}>
           <div className="close_btns">
             <GrClose className="close" />
           </div>

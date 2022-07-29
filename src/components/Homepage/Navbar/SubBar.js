@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { SubBarContainer } from "./StyledNavbar";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link as routerLink } from "react-router-dom";
 import "./SubBar.css";
 import TopBar from "../Navbar/TopBar";
 import Marquee from "./Marquee";
@@ -61,6 +61,9 @@ const SubBar = ({ setShow }) => {
             <ul className="nav-items">
               <li className="main-li" >
                 <Link activeClass="active" to="HOME" spy={true} smooth={true} duration={500} onClick={() => history.push("/home")}    > HOME{" "} </Link>
+              </li>
+              <li className="main-li" >
+                <a href="https://landing-page-ivory-eta.vercel.app/agency">DAS</a>
               </li>
               <li className="main-li">
                 <Link activeClass="active" to="INHALATE" spy={true} smooth={true} duration={500} >  INHALATE  </Link>
