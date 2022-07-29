@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import emptyLocation from "../../../assets/emptyLocation.png";
 import Search from "../../../assets/Search.svg";
 import Map from "./Map/Map";
-function Inputs() {
+function Inputs(locator) {
   const genericService = new GenerecService();
   const [countryList, setcountryList] = useState([]);
   const [cityList, setcityList] = useState([]);
@@ -17,6 +17,8 @@ function Inputs() {
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
   const [searchLoading, setsearchLoading] = useState(false);
+
+
 
   const validate = Yup.object({
     country: Yup.string().required("Please select a country"),
@@ -127,7 +129,7 @@ function Inputs() {
           </Formik>
         </div>
       </StyleHeader>
-      <Map allAddresses={allAddresses} doctorsData={doctorsData} />
+      <Map locatorData={locator} allAddresses={allAddresses} doctorsData={doctorsData} />
     </>
   );
 }

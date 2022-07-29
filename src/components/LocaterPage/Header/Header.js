@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Card, Placeholder } from "react-bootstrap";
+import { Row, Col, Button, Card, Placeholder, Container } from "react-bootstrap";
 import { StyleHeader } from "./StyleHeader";
 import { Form, Formik, ErrorMessage } from "formik";
 import Select from "./Select";
@@ -18,6 +18,9 @@ import { API_URL } from "../../../services/config";
 import * as Yup from "yup";
 import ReactPaginate from "react-paginate";
 import Footer from "../../Homepage/Footer/Footer";
+import Inputs from "../../Homepage/Locate/Inputs";
+import { LocateMainContainer } from './StylesLocate'
+import { PrimaryHeading } from '../../Globals/Globals'
 
 const validate = Yup.object({
   country: Yup.string().required("Please select a country"),
@@ -81,7 +84,7 @@ function Header() {
     const endOffset = itemOffset + 12;
     setCurrentItems(doctorsData.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(doctorsData.length / 12));
-  }, [itemOffset , doctorsData]);
+  }, [itemOffset, doctorsData]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * 12) % doctorsData.length;
@@ -90,165 +93,104 @@ function Header() {
 
 
   return (
-    <StyleHeader>
-      <div className="header">
+    <>
+
+      <LocateMainContainer id={"LOCATE"}>
+        <Container>
+          <h2>LOCATE</h2>
+          <h3>DOCTORS, ASSOCIATIONS, CANNABIS CLUBS, CAFES, DISPENSARIES AND LAWYERS</h3>
+          <p>
+            Welcome, the above-listed professionals and services can be found using our mapping locator function. The service is provided to all clients and visitors at no charge. However, we request your feedback and use of the service to assess the quality of the assistance you encountered from any of those using the locator. That information will be shared with your peers seeking a similar experience if satisfactory or avoid any establishment that doesn't afford them excellent treatment or a high-quality product, goods, or service. The search function is powered by Google Maps technologies, it will direct you to any of the stated services available nearest your hotel, if traveling, or your current in-country location.
+          </p>
+        </Container>
+        <Inputs locate={true} />
+      </LocateMainContainer>
+
+      <StyleHeader>
+
         <div className="container">
-          <h1>LOCATE</h1>
-          <h2>
-            DOCTORS, ASSOCIATIONS, CANNABIS CLUBS, CAFES, DISPENSARIES AND
-            LAWYERS{" "}
-          </h2>
-          <Formik
-            initialValues={{
-              country: "",
-              city: "",
-              service: "",
-            }}
-            validationSchema={validate}
-            onSubmit={(values) => {
-              setcardsLoading(true);
-              const data = { ...values, limit: 50 };
-              genericService
-                .post(`${API_URL}usersData`, data)
-                .then((msg) => {
-                  setdoctorsData(msg.data);
-                  setcardsLoading(false);
-                })
-                .catch((error) => {
-                  setcardsLoading(false);
-                  console.warn("warn", error);
-                });
-            }}
-          >
-            {(formik) => (
-              <Form>
-                <Row className="select-option align-items-center">
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="Country"
-                      name="country"
-                      title={"Choose country"}
-                      list={countryList}
-                      className="select"
-                    />
-                    <ErrorMessage name="country" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="City"
-                      name="city"
-                      title={"Choose City"}
-                      list={cityList}
-                    />
-                    <ErrorMessage name="city" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="Service"
-                      name="service"
-                      title={"Choose Service"}
-                      list={serviceList}
-                    />
-                    <ErrorMessage name="service" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Button className="btn" type="submit">
-                      <img
-                        src={Search}
-                        alt="Search icon"
-                        className="search-img"
-                      />{" "}
-                      Search
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            )}
-          </Formik>
+          {doctorsData.length == 0 && cardsLoading ? (
+            <>
+              <Placeholder as="p" animation="glow" size="lg">
+                <Placeholder xs={12} />
+              </Placeholder>
+              <Placeholder as="p" animation="wave" size="lg">
+                <Placeholder xs={12} />
+              </Placeholder>
+              <Placeholder as="p" animation="glow" size="lg">
+                <Placeholder xs={12} />
+              </Placeholder>
+              <Placeholder as="p" animation="wave" size="lg">
+                <Placeholder xs={12} />
+              </Placeholder>
+            </>
+          ) : (
+            <div className="loacateUsCard-container">
+              {!cardsLoading && doctorsData.length == 0 ? (
+                <h1>No Data Found</h1>
+              ) : (
+                <>
+                  <Row>
+                    {currentItems.map((v, i) => (
+                      <Col key={i} lg={3} md={6} sm={6}>
+                        <Card className="cards">
+                          <div className="locator-person-image-container" >
+                            <img
+                              src={v.ImageURL ? v.ImageURL : emptyLocation}
+                              className="img-section"
+                              alt="img"
+                            />{" "}
+                          </div>
+                          <div className="card-data">
+                            <h6>{v.Title}</h6>
+                            <p className="para">{v._address}</p>
+                            <div className="d-flex pt-1 text1">
+                              <div>
+                                <img src={Flag1} className="icon " alt="icon" />
+                                <span className="country-name-text">
+                                  {v.LocatorCountries}
+                                </span>
+                              </div>
+                              <div>
+                                <img src={Star1} className="icon " alt="icon" />
+                                <span className="icon-text">0.0</span>
+                              </div>
+                              <div>
+                                <img src={Like} className="icon " alt="icon" />
+                                <span className="icon-text">Likes 0</span>
+                              </div>
+                            </div>
+                            <div>
+                              <input
+                                type="submit"
+                                className="locator-card-bt"
+                                name="See Details"
+                                value="See Details"
+                              />
+                            </div>
+                          </div>
+                        </Card>
+                      </Col>
+                    ))}
+                  </Row>
+                  <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="Next"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={2}
+                    pageCount={pageCount}
+                    previousLabel="Previous"
+                    renderOnZeroPageCount={null}
+                    className='locator-pagination'
+                  />
+                </>
+              )}
+            </div>
+          )}
         </div>
-      </div>
-      <div className="container">
-        {doctorsData.length == 0 && cardsLoading ? (
-          <>
-            <Placeholder as="p" animation="glow" size="lg">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave" size="lg">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="glow" size="lg">
-              <Placeholder xs={12} />
-            </Placeholder>
-            <Placeholder as="p" animation="wave" size="lg">
-              <Placeholder xs={12} />
-            </Placeholder>
-          </>
-        ) : (
-          <div className="loacateUsCard-container">
-            {!cardsLoading && doctorsData.length == 0 ? (
-              <h1>No Data Found</h1>
-            ) : (
-              <>
-                <Row>
-                  {currentItems.map((v, i) => (
-                    <Col key={i} lg={3} md={6} sm={6}>
-                      <Card className="cards">
-                        <div className="locator-person-image-container" >
-                          <img
-                            src={v.ImageURL ? v.ImageURL : emptyLocation}
-                            className="img-section"
-                            alt="img"
-                          />{" "}
-                        </div>
-                        <div className="card-data">
-                          <h6>{v.Title}</h6>
-                          <p className="para">{v._address}</p>
-                          <div className="d-flex pt-1 text1">
-                            <div>
-                              <img src={Flag1} className="icon " alt="icon" />
-                              <span className="country-name-text">
-                                {v.LocatorCountries}
-                              </span>
-                            </div>
-                            <div>
-                              <img src={Star1} className="icon " alt="icon" />
-                              <span className="icon-text">0.0</span>
-                            </div>
-                            <div>
-                              <img src={Like} className="icon " alt="icon" />
-                              <span className="icon-text">Likes 0</span>
-                            </div>
-                          </div>
-                          <div>
-                            <input
-                              type="submit"
-                              className="locator-card-bt"
-                              name="See Details"
-                              value="See Details"
-                            />
-                          </div>
-                        </div>
-                      </Card>
-                    </Col>
-                  ))}
-                </Row>
-                <ReactPaginate
-                  breakLabel="..."
-                  nextLabel="Next"
-                  onPageChange={handlePageClick}
-                  pageRangeDisplayed={2}
-                  pageCount={pageCount}
-                  previousLabel="Previous"
-                  renderOnZeroPageCount={null}
-                  className='locator-pagination'
-                />
-              </>
-            )}
-          </div>
-        )}
-      </div>
-      <Footer />
-    </StyleHeader>
+        <Footer />
+      </StyleHeader>
+    </>
   );
 }
 
