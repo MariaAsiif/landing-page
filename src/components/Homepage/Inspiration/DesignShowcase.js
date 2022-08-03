@@ -53,12 +53,13 @@ function DesignShowcase() {
                         centeredSlides={true}
                         slidesPerView={3}
                         loop={true}
-                        speed={1000}
+                        speed={2500}
 
                         autoplay={{
-                            delay: 1000,
+                            delay: 2500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
+                            startOnLoad: true,
                             reverseDirection: true
                         }}
 
