@@ -18,7 +18,7 @@ const Footer = () => {
         ' Career Opportunities',
         'Investment Opportunities',
         'Teams']
-   
+
     const marketplace = ['Fabric',
         'Finished Goods',
         '  Manufactured Goods',
@@ -64,7 +64,7 @@ const Footer = () => {
 
         'Tax N° NL 862241133B01'
     ]
-    const callCenter = ['World Trade Center Barcelona','Muelle de Barcelona', 'Moll de Barcelona s/n', '08039 Barcelona Spain']
+    const callCenter = ['World Trade Center Barcelona', 'Muelle de Barcelona', 'Moll de Barcelona s/n', '08039 Barcelona Spain']
     const aToZ = ['Apparel',
         'Beauty',
         'Care',
@@ -159,7 +159,7 @@ const Footer = () => {
                                                 </p>
                                             ))
                                         }
-                                     
+
 
                                     </ul>
                                 </TradingAddressList>
@@ -193,7 +193,9 @@ const Footer = () => {
                             </li>
                         </ul>
                         <div>
-                            <FooterImg1 src={footerLogo} alt="footer-logo" />
+                            <a href="https://unsdg.un.org/2030-agenda/universal-values/leave-no-one-behind" target="_blank" rel="noopener noreferrer">
+                                <FooterImg1 src={footerLogo} alt="footer-logo" />
+                            </a>
                         </div>
                     </Col>
                     <Col md={10}>
