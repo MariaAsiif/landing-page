@@ -87,13 +87,9 @@ const Header = ({ id, value }) => {
           value={value}
         />
         <SubBar setShow={setShow} />
-        {/* <video
-          autoPlay
-          muted
-          loop
-          className="hero-video"
-          src="/Videos/hporx.mp4"
-        /> */}
+       
+      
+       
         <HeroSlider/>
         <div className="hero-text-container">
           <HomePlayButtonContainer onClick={() => setModalShow(true)}>
@@ -102,6 +98,7 @@ const Header = ({ id, value }) => {
           <HeroHeading>THERAPEUTICS</HeroHeading>
           <p className="home-main-header-sub-heading">CULTIVATED WELLNESS</p>
           <HeroButton>Appointment</HeroButton>
+          
         </div>
       </StyledHero>
     </div>

@@ -51,7 +51,7 @@ const SubBar = ({ setShow }) => {
   // })
   return (
     <div className="home-page-main-nav-container">
-      {/* <Marquee /> */}
+      <Marquee />
       <TopBar setShow={setShow} />
 
       <div className={navbar ? "hporx-header" : "hporx-header-skew"}>
