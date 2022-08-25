@@ -6,7 +6,7 @@ import {
   SubscribeButton,
   SubscribeHeading,
 } from "./StyledNewsLetter";
-import newletterImg from "../../../assets/subscribe.jpg";
+import newletterImg from "../../../assets/subscribe2.jpg";
 import Select from "../Select/Select";
 import InputField from "./InputField";
 import { Formik, Form } from "formik";
