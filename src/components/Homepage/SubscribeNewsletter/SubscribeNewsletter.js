@@ -6,7 +6,7 @@ import {
   SubscribeButton,
   SubscribeHeading,
 } from "./StyledNewsLetter";
-import newletterImg from "../../../assets/newsLetter.png";
+import newletterImg from "../../../assets/subscribe.jpg";
 import Select from "../Select/Select";
 import InputField from "./InputField";
 import { Formik, Form } from "formik";
@@ -22,13 +22,13 @@ const SubscribeNewsletter = () => {
   const validate = Yup.object({
     firstName: Yup.string()
       .max(15, "Must be 15 character or less")
-      .required("Required"),
+      .required("First Name is Required"),
     lastName: Yup.string()
       .max(20, "Must be 20 character or less")
-      .required("Required"),
+      .required("Last Name is Required"),
     email: Yup.string()
       .email("You have entered invalid email")
-      .required("Required"),
+      .required("Email is Required"),
     phone: Yup.string()
       .matches(
         /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
@@ -36,15 +36,15 @@ const SubscribeNewsletter = () => {
       )
       .min(10, "to short")
       .max(10, "to long")
-      .required("Required"),
+      .required("Phone Numer is Required"),
     inviteFriend: Yup.string()
       .max(15, "Must be 15 character or less")
-      .required("Required"),
+      .required("Invite Friend is Required"),
     city: Yup.string()
       .min(5, "Must be 5 character or more")
-      .required("Required"),
-    service: Yup.string().required("Required"),
-    position: Yup.string().required("Required"),
+      .required("City is Required"),
+    service: Yup.string().required("Service is Required"),
+    position: Yup.string().required("Position is Required"),
   });
   return (
     <NewsLetterMainContianer>
@@ -140,7 +140,7 @@ const SubscribeNewsletter = () => {
                       />
                     </Col>
 
-                    <Col md={12}>
+                    <Col md={12} className="mb-4 mt-2">
                       <Select
                         required
                         name="service"
@@ -148,9 +148,9 @@ const SubscribeNewsletter = () => {
                         title="How can we be of service to you?"
                       />
                     </Col>
-                    <Col md={12}>
+                    <Col md={12} >
                       <Select
-                      defaultOption='Select Option'
+                       defaultOption='Select Option'
                         required
                         name="position"
                         title="Are you a company or individual?"

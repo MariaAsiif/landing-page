@@ -13,7 +13,7 @@ export default function Select({ title, name, defaultOption }) {
           <option key={index} value={value}>{value}</option>
         ))}
       </select> */}
-      <label className="select-label">{title}</label>
+      <label className="select-label mb-4">{title}</label>
       <Field as="select" name={name}>
         <option value="">{`${defaultOption}`}</option>
         <option value="no">no</option>

@@ -10,7 +10,7 @@ const InputField = ({ placeholder, type,label,...props }) => {
     <Form.Group className="mb-3 subscribe-form" controlId="exampleForm.ControlInput1">
       <Form.Label className='input-label'>{label}</Form.Label>
       <Form.Control className={`input-field ${meta.touched && meta.error &&'is-invalid'}`} {...field} {...props} type={type} placeholder={placeholder} />
-      <ErrorMessage name={field.name}/>
+      <ErrorMessage className="error_show" name={field.name}/>
     </Form.Group>
      
   )
