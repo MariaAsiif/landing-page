@@ -1,37 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Card, Placeholder, Container } from "react-bootstrap";
+import { Row, Col, Card, Placeholder, Container } from "react-bootstrap";
 import { StyleHeader } from "./StyleHeader";
-import { Form, Formik, ErrorMessage } from "formik";
-import Select from "./Select";
-import Search from "../../../assets/Search.svg";
+// import { Form, Formik, ErrorMessage } from "formik";
+// import Select from "./Select";
+// import Search from "../../../assets/Search.svg";
 import Flag1 from "../../../assets/Flag1.svg";
 import Star1 from "../../../assets/Star1.svg";
 import Like from "../../../assets/Like.svg";
-import Card1img from "../../../assets/Card1img.svg";
-import Card2img from "../../../assets/Card2img.svg";
-import Card3img from "../../../assets/Card3img.svg";
-import Card4img from "../../../assets/Card4img.svg";
-import emptyUser from "../../../assets/emptyUser.png";
+// import Card1img from "../../../assets/Card1img.svg";
+// import Card2img from "../../../assets/Card2img.svg";
+// import Card3img from "../../../assets/Card3img.svg";
+// import Card4img from "../../../assets/Card4img.svg";
+// import emptyUser from "../../../assets/emptyUser.png";
 import emptyLocation from "../../../assets/emptyLocation.png";
 import GenerecService from "../../../services/GenericService";
 import { API_URL } from "../../../services/config";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import ReactPaginate from "react-paginate";
 import Footer from "../../Homepage/Footer/Footer";
 import Inputs from "../../Homepage/Locate/Inputs";
 import { LocateMainContainer } from './StylesLocate'
-import { PrimaryHeading } from '../../Globals/Globals'
-
-const validate = Yup.object({
-  country: Yup.string().required("Please select a country"),
-  // city: Yup.string().required("Please select a city"),
-  // service: Yup.string().required("Please Select a Service"),
-});
+import { Link } from "react-router-dom";
+// import { PrimaryHeading } from '../../Globals/Globals'
+// import ReactCountryFlag from 'react-country-flag';
+// const validate = Yup.object({
+//   country: Yup.string().required("Please select a country"),
+// city: Yup.string().required("Please select a city"),
+// service: Yup.string().required("Please Select a Service"),
+// });
 function Header() {
   const genericService = new GenerecService();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(12);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postPerPage, setPostPerPage] = useState(12);
   const [countryList, setcountryList] = useState([]);
   const [cityList, setcityList] = useState([]);
   const [serviceList, setserviceList] = useState([]);
@@ -132,6 +133,7 @@ function Header() {
                 <>
                   <Row>
                     {currentItems.map((v, i) => (
+                      console.log("value", v),
                       <Col key={i} lg={3} md={6} sm={6}>
                         <Card className="cards">
                           <div className="locator-person-image-container" >
@@ -161,12 +163,14 @@ function Header() {
                               </div>
                             </div>
                             <div>
-                              <input
-                                type="submit"
-                                className="locator-card-bt"
-                                name="See Details"
-                                value="See Details"
-                              />
+                              <Link to="/detail" >
+                                <input
+                                  type="submit"
+                                  className="locator-card-bt"
+                                  name="See Details"
+                                  value="See Details"
+                                />
+                              </Link>
                             </div>
                           </div>
                         </Card>

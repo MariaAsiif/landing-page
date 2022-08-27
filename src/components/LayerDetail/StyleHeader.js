@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LocaterHeader from "../../../assets/LocaterHeader.svg";
+import LocaterHeader from "../../assets/LocaterHeader.svg";
 
 export const StyleHeader = styled.div`
   .locator-pagination {

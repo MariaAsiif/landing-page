@@ -44,5 +44,9 @@ export const NewsLetterImg = styled.img`
   object-fit:cover;
 `;
 export const SubscribeButton = styled(ViewMoreBtn)`
-  margin-top: 3rem;
+  // margin-top: 3rem;
+  color:red,
+  &:hover{
+    color:green
+  }
 `;

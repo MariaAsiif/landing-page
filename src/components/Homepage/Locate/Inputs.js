@@ -13,7 +13,15 @@ function Inputs(locator) {
   const genericService = new GenerecService();
   const [countryList, setcountryList] = useState([]);
   const [cityList, setcityList] = useState([]);
-  const [serviceList, setserviceList] = useState([]);
+  const [serviceList, setserviceList] = useState([
+    "doctors",
+    "laywers",
+    "Cannabis associations",
+    "cannabis clubs,",
+    "Medical marijuana",
+    "Marijuana Clubs",
+    "Marijuana Associaions",
+  ]);
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
   const [searchLoading, setsearchLoading] = useState(false);
@@ -38,7 +46,7 @@ function Inputs(locator) {
       .then((res) => {
         setcountryList(res.finalData.country);
         setcityList(res.finalData.city);
-        setserviceList(res.finalData.service);
+        // setserviceList(res.finalData.service);
       })
       .catch((error) => {
         console.log("error", error);
