@@ -6,7 +6,7 @@ import agencyLogo from "../../../assets/agencyLogo.png";
 import agencysearch from "../../../assets/agency-search-icon.svg";
 import agencyuser from "../../../assets/agency-user.svg";
 import { useHistory } from "react-router-dom";
-
+import { BiMicrophone } from 'react-icons/bi'
 const AgenciesHeader = () => {
   const history = useHistory()
   return (
@@ -15,11 +15,12 @@ const AgenciesHeader = () => {
         <div class="container">
           <div class="inner-content">
             <div class="logo">
-              <img style={{cursor : 'pointer'}} onClick={() => history.push('/') } src={agencyLogo} alt="agencyLogo" />
+              <img style={{ cursor: 'pointer' }} onClick={() => history.push('/')} src={agencyLogo} alt="agencyLogo" />
             </div>
             <div class="search-box">
               <input type="search" name="" placeholder="Search" />
-              <button type="submit">
+              <button type="submit" >
+                <BiMicrophone className="micro" />
                 <img src={agencysearch} alt="second" />
               </button>
             </div>

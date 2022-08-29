@@ -5,7 +5,6 @@ export const AgenciesHeaderContainer = styled.div`
 .top-bar .inner-content{
 	min-height: 8rem;
 	background: #FFFFFF;
-
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -18,12 +17,12 @@ export const AgenciesHeaderContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 61rem;
+	width: 70rem;
 
     img{
         width: 20px;
     }
-
+	
 }
 
 .search-box input[type="search"]{
@@ -52,11 +51,17 @@ export const AgenciesHeaderContainer = styled.div`
 
 .search-box button{
 	height: 4.8rem;
-	width: 7rem;
+	width: 10rem;
 	background: #F0F0F0;
 	border-radius: 0px 100px 100px 0px;
 	border: 1px solid #C4C4C4;
 
+}
+
+.micro{
+	font-size:25px;
+	margin-right:20px;
+	color:gray;
 }
 
 .top-bar .inner-content .right-part{

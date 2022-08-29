@@ -16,8 +16,8 @@ const CustomCard = ({desc, img, title, price }) => {
         children={<ProductModalDetail desc={desc}  img={img} title={title} price={price}  />}
       />
       <CustomCardContainer>
-        <Card className="customCard" >
-          <div className="customCard-body">
+        <Card className="customCard " >
+          <div className="customCard-body ">
             <div className="image-section">
               <img
                onClick={() => setModalShow(true)}
@@ -41,7 +41,7 @@ const CustomCard = ({desc, img, title, price }) => {
                 </div>
                 <div className="review">(43 Reviews)</div>
               </div>
-              <button className="add-to-cart">
+              <button className="add-to-cart ">
                 <span className="cart"></span>Add to Cart
               </button>
             </div>

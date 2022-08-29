@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MainPage from "./components/AgenciesPage/MainPage";
 import LocatehomePage from "./components/LocaterPage/LocatehomePage";
 import LayerDetail from "./components/LayerDetail/LayerDetail";
+import Stock from "./components/Stock/Stock";
 function App() {
   const locationFound = localStorage.getItem('saveCurentLocation')
 
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/agency">
             <MainPage />
+          </Route>
+          <Route path="/stock">
+            <Stock />
           </Route>
           <Route path="/locator" component={LocatehomePage} />
           <Route path="/detail" component={LayerDetail} />

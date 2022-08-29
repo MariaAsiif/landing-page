@@ -258,7 +258,7 @@ export const CustomCardContainer = styled.div`
 
   .customCard .customCard-body .content .add-to-cart {
     height: 45px;
-    width: 272px;
+    // width: 272px;
     border-radius: 6px;
     padding: 24px, 42px, 24px, 42px;
     background: #ffffff;
@@ -289,6 +289,7 @@ export const CustomCardContainer = styled.div`
     border: 1px solid #e84025;
     color: white;
   }
+
 
   .customCard .customCard-body .content .add-to-cart:hover > .cart {
     background-image: url(${cartwhite});
