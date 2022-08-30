@@ -61,9 +61,8 @@ function DesignShowcase() {
                         lastModifiedBy: "_id email first_name"
                     }
                 }
-
-                
                     const response = await axios.post("http://localhost:5873/quotes/getQuotesWithFullDetails", payload
+                  
                     )
                     console.log("res", response)
                     setallInspires(response.data.data.quotes)

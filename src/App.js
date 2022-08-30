@@ -50,7 +50,7 @@ function App() {
           <Route path="/agency">
             <MainPage />
           </Route>
-          <Route path="/stock">
+          <Route path="/madeIn">
             <Stock />
           </Route>
           <Route path="/locator" component={LocatehomePage} />

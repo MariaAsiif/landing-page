@@ -8,7 +8,7 @@ import { useQuery } from "react-query";
 import CustomCard from '../../Globals/CustomCard'
 import ViewMore from "../ViewMore/ViewMore";
 // import MultiRangeSlider from "multi-range-slider-react";
-import { SliderComponent } from '@syncfusion/ej2-react-inputs'
+// import { SliderComponent } from '@syncfusion/ej2-react-inputs'
 function TrendingNow1({ heading, description, section }) {
 
   const [minValue, set_minValue] = useState(25);
@@ -165,7 +165,7 @@ function TrendingNow1({ heading, description, section }) {
                   }}
                 /> */}
 
-                <SliderComponent id='slider' value={30} />
+                {/* <SliderComponent id='slider' value={30} /> */}
               </div>
             </div>
           </div>
