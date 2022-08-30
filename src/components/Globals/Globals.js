@@ -191,7 +191,7 @@ export const CustomCardContainer = styled.div`
   }
 
   .customCard .customCard-body .content {
-    height: 169px;
+    // height: 169px;
     width: 100%;
     padding: 14px;
     display: flex;
