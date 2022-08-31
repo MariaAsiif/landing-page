@@ -54,6 +54,7 @@ import AgenciesHeader from "../AgenciesPage/AgenciesHeader/AgenciesHeader";
 import FeatureMarketContainer from "../Homepage/FeatureMarketplace/FeatureMarketContainer";
 import TrendingNow1 from "./TrendingNow/TrendingNow1";
 import HomePageNav from "./HomePageNav";
+import TrendingNow from "./TrendingNow/TrendingNow";
 
 const Stock = () => {
   const styles = {
@@ -124,10 +125,10 @@ const Stock = () => {
         description="These are all our trending products that users buy most frequently across the platform."
         section='trending'
       />
-      <ViewTodayContainer>
+      {/* <ViewTodayContainer>
         <ViewedToday section='trending-add' />
-      </ViewTodayContainer>
-      <TrendingNow1
+      </ViewTodayContainer> */}
+      <TrendingNow
         heading="Products"
         description="These are all our Rx products across the platform which our customer recommeds to our everyone."
         section="onlyProduct"

@@ -67,3 +67,53 @@ img {
 .marq-logo{
   height: 2rem;
 }
+
+.multi-range-slider {
+  display: flex;
+  position: relative;
+  border: none !important;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  box-shadow: none !important;
+  flex-direction: column;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.multi-range-slider .bar-right {
+  width: 25%;
+  background-color: #f0f0f0;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: none !important;
+}
+
+.multi-range-slider .bar-left {
+  width: 25%;
+  background-color: #f0f0f0;
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: none !important;
+}
+
+.multi-range-slider .ruler .ruler-rule {
+  display: none !important;
+}
+
+.multi-range-slider .label {
+  display: none !important;
+}
+
+.multi-range-slider .bar-inner {
+  background-color: white !important;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: space-between;
+  position: relative;
+  border: solid 1px black;
+  justify-content: space-between;
+  box-shadow: inset 0px 0px 5px black;
+}

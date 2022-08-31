@@ -7,7 +7,7 @@ export const StyleHeader = styled.div`
     align-content: center;
     gap: 30px;
     list-style: none;
-    font-size: 16px;
+    font-size: 14px;
     justify-content: center;
 
     .previous a {

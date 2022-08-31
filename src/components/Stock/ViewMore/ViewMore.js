@@ -47,7 +47,7 @@ function ViewMore({ data }) {
                                     </Col>
                                 ))}
                             </Row>
-                            <div >
+                            <div style={{marginTop:'50px' , marginLeft:'-20rem'}} >
                                 <ReactPaginate
                                     breakLabel="..."
                                     nextLabel="Next"

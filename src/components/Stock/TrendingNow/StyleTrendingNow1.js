@@ -170,7 +170,7 @@ gap:15.23px
   }
 
   .left_catagory{
-    border-right:1pt solid gray;
+    border-right:1pt solid lightgray;
   }
 
   .catagoey_list{
