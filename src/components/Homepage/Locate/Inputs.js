@@ -1,144 +1,116 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Card, Spinner } from "react-bootstrap";
-import { StyleHeader } from "./StyleHeader";
-import { Form, Formik, ErrorMessage } from "formik";
-import Select from "./Select";
-import { API_URL } from "../../../services/config";
-import GenerecService from "../../../services/GenericService";
-import * as Yup from "yup";
-import emptyLocation from "../../../assets/emptyLocation.png";
+import React, { useState, useEffect } from 'react'
+import { Row, Col, Button, Card, Spinner, Container } from "react-bootstrap";
 import Search from "../../../assets/Search.svg";
-import Map from "./Map/Map";
-function Inputs(locator) {
+import { StyleHeader } from "./StyleHeader";
+import GenerecService from "../../../services/GenericService";
+import { API_URL } from "../../../services/config";
+
+const Inputs = () => {
   const genericService = new GenerecService();
-  const [countryList, setcountryList] = useState([]);
-  const [cityList, setcityList] = useState([]);
-  const [serviceList, setserviceList] = useState([
-    "doctors",
-    "laywers",
-    "Cannabis associations",
-    "cannabis clubs,",
-    "Medical marijuana",
-    "Marijuana Clubs",
-    "Marijuana Associaions",
-  ]);
-  const [doctorsData, setdoctorsData] = useState([]);
-  const [allAddresses, setallAddresses] = useState([]);
-  const [searchLoading, setsearchLoading] = useState(false);
+  const [loading, setloading] = useState(false)
+  const [countries, setcountries] = useState([])
+  const [cities, setcities] = useState([])
+  const [services, setservices] = useState([
+    { value: "Doctors", label: "Doctors" },
+    { value: "Lawyer And Medical Marijuana - Cannabis Specialist", label: "Lawyer And Medical Marijuana - Cannabis Specialist" },
+    { value: "Associations & Clubs", label: "Associations & Clubs" },
+    { value: "Seeds Bank", label: "Seeds Bank" },
+    { value: "Medical Cannabis", label: "Medical Cannabis" },
+    { value: "Manufacturer", label: "Manufacturer" },
+    { value: "Law Firms", label: "Law Firms" },
+    { value: "Industrial hemp", label: "Industrial hemp" },
+  ])
+  const [formData, setformData] = useState({
+    categories: "",
+    serviceCountry: "",
+    serviceCity: ""
+  })
 
 
+  const handleChange = (e) => {
+    setformData((prevdata) => ({
+      ...prevdata,
+      [e.target.name]: e.target.value
+    }))
+  }
 
-  const validate = Yup.object({
-    country: Yup.string().required("Please select a country"),
-    city: Yup.string().required("Please select a city"),
-    service: Yup.string().required("Please Select a Service"),
-  });
+  const handleSubmit = async () => {
+    setloading(true)
+    try {
+      const payload = {
+        "query": {
+          "critarion": {},
+          "categories": [formData.categories],
+          "serviceCountry": [formData.serviceCountry],
+          "serviceCity": [formData.serviceCity],
+          "individualServiceProvider": "_id email title",
+          "businessServiceProvider": "_id email businessName"
+        },
+        "sortproperty": "serviceName",
+        "sortorder": 1,
+        "minDistance": 0,
+        "maxDistance": 100,
+        "offset": 0,
+        "limit": 100,
+        "location": {
+          "lng": -4.6806000,
+          "lat": 38.3628000
+        }
+      }
+      const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, payload)
+      setloading(false)
+      console.log(response);
+    } catch (error) {
+      setloading(false)
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    const getAddress = doctorsData.map((res) => res._address);
-
-    setallAddresses(getAddress);
-  }, [doctorsData]);
-
-  useEffect(() => {
-    genericService
-      .get(`${API_URL}getAddresses`)
-      .then((res) => {
-        setcountryList(res.finalData.country);
-        setcityList(res.finalData.city);
-        // setserviceList(res.finalData.service);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-  }, []);
-
+    (async () => {
+      try {
+        const response = await genericService.get(`${API_URL}getAddresses`)
+        console.log(response);
+        setcountries(response.finalData.country)
+        setcities(response.finalData.city)
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [])
   return (
-    <>
-      <StyleHeader>
-        <div className="container">
-          <Formik
-            initialValues={{
-              country: "",
-              city: "",
-              service: "",
-            }}
-            //   validationSchema={validate}
-            onSubmit={(values) => {
-              setsearchLoading(true);
-              const data = { ...values, limit: 500 };
-              genericService
-                .post(`${API_URL}usersData`, data)
-                .then((msg) => {
-                  setsearchLoading(false);
-                  setdoctorsData(msg.data);
-                })
-                .catch((error) => {
-                  setsearchLoading(false);
-                  console.warn("warn", error);
-                });
-            }}
-          >
-            {(formik) => (
-              <Form>
-                <Row className="select-option align-items-center">
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="Country"
-                      name="country"
-                      title={"Choose country"}
-                      list={countryList}
-                      className="select"
-                    />
-                    <ErrorMessage name="country" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="City"
-                      name="city"
-                      title={"Choose City"}
-                      list={cityList}
-                    />
-                    <ErrorMessage name="city" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Select
-                      label="Service"
-                      name="service"
-                      title={"Choose Service"}
-                      list={serviceList}
-                    />
-                    <ErrorMessage name="service" />
-                  </Col>
-                  <Col md={3} sm={6}>
-                    <Button className="btn" type="submit">
-                      {searchLoading ? (
-                        <Spinner
-                          as="span"
-                          animation="grow"
-                          role="status"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <>
-                          <img
-                            src={Search}
-                            alt="Search icon"
-                            className="search-img"
-                          />
-                          Search
-                        </>
-                      )}
-                    </Button>
-                  </Col>
-                </Row>
-              </Form>
-            )}
-          </Formik>
-        </div>
-      </StyleHeader>
-      <Map locatorData={locator} allAddresses={allAddresses} doctorsData={doctorsData} />
-    </>
-  );
+    <StyleHeader>
+      <Container>
+        <Row>
+          <Col>
+            <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
+              <option>Choose Country</option>
+              {countries.map((country, i) => <option key={i}>{country}</option>)}
+            </select>
+          </Col>
+          <Col>
+            <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
+              <option>Choose City</option>
+              {cities.map((city, i) => <option key={i}>{city}</option>)}
+            </select>
+          </Col>
+          <Col>
+            <select name="categories" value={formData.categories} onChange={handleChange}>
+              <option>Choose Service</option>
+              {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
+            </select>
+          </Col>
+          <Col>
+            <Button className="btn" onClick={handleSubmit} >
+              {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
+              Search
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+    </StyleHeader>
+
+  )
 }
-export default Inputs;
+
+export default Inputs
