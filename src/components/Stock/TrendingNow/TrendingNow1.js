@@ -41,6 +41,7 @@ function TrendingNow1({ heading, description, section }) {
     arrows: true,
     dots: false,
     infinite: true,
+    autoplay:true ,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
