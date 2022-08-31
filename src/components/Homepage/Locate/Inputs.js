@@ -25,6 +25,10 @@ const Inputs = () => {
     serviceCountry: "",
     serviceCity: ""
   })
+  const [location, setlocation] = useState({
+    lng: -4.6806000,
+    lat: 38.3628000
+  })
 
 
   const handleChange = (e) => {
@@ -53,8 +57,7 @@ const Inputs = () => {
         "offset": 0,
         "limit": 100,
         "location": {
-          "lng": -4.6806000,
-          "lat": 38.3628000
+          ...location
         }
       }
       const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, payload)
@@ -67,9 +70,26 @@ const Inputs = () => {
   }
 
   useEffect(() => {
+
+
     (async () => {
       try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              console.log(position.coords);
+              setlocation({
+                lng: position.coords.longitude,
+                lat: position.coords.latitude,
+              })
+            },
+            function (error) {
+              console.error("Error Code = " + error.code + " - " + error.message);
+            }
+          );
+        }
         const response = await genericService.get(`${API_URL}getAddresses`)
+
         console.log(response);
         setcountries(response.finalData.country)
         setcities(response.finalData.city)
