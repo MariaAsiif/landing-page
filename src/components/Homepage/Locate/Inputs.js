@@ -249,7 +249,7 @@ const Inputs = () => {
             </select>
           </Col>
           <Col>
-            <Button className="btn" onClick={handleSubmit} >
+            <Button className="btn mt-1" onClick={handleSubmit} >
               {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
               Search
             </Button>
