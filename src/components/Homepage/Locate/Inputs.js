@@ -3,6 +3,7 @@ import { Row, Col, Button, Card, Spinner, Container } from "react-bootstrap";
 import Search from "../../../assets/Search.svg";
 import { StyleHeader } from "./StyleHeader";
 import GenerecService from "../../../services/GenericService";
+import MapLocation from '../Locate/Map/Map'
 import { API_URL } from "../../../services/config";
 
 const Inputs = () => {
@@ -30,6 +31,8 @@ const Inputs = () => {
     lat: 38.3628000
   })
 
+  const [locationData, setLocationData] = useState([])
+
 
   const handleChange = (e) => {
     setformData((prevdata) => ({
@@ -38,6 +41,129 @@ const Inputs = () => {
     }))
   }
 
+  // const defultValue = async (data) => { }
+
+
+
+  const defultValue = async (data) => {
+    console.log("data", data)
+    debugger
+    const defultValues = {
+      "critarion": {},
+      "categories": ["Doctors", "Lawyer And Medical Marijuana - Cannabis Specialist", "Associations & Clubs",
+        "Seeds Bank",
+        "Medical Cannabis",
+        "Manufacturer",
+        "Law Firms",
+        "Industrial hemp",
+        "Cannabis related media",
+        "Distributor",
+        "Gardening",
+        "Growshop"],
+      "serviceCountry": [
+        "Spain",
+        "Holanda",
+        "Republica Checa",
+        "Alemania",
+        "Norfolk",
+        "France",
+        "Polonia",
+        "\n\nSpain"
+      ],
+      "serviceCity": [
+        "Alava",
+        "Alicante",
+        "Amsterdam",
+        "Asturias",
+        "Badajoz",
+        "Baleares",
+        "Barcelona",
+        "Burgos",
+        "Cadiz",
+        "Codiz",
+        "canaria",
+        "Cantabria",
+        "Castaoeda",
+        "Castellon",
+        "Cordoba",
+        "Gerona",
+        "Granada",
+        "Guipozcoa",
+        "Hlavni Mesto Praha",
+        "Huelva",
+        "Huesca",
+        "Jaon",
+        "La Coruoa",
+        "Las Palmas",
+        "Leon",
+        "Lorida",
+        "Llubo Mallorca",
+        "Madrid",
+        "Molaga",
+        "Monchen",
+        "Murcia",
+        "Navarra",
+        "Norwich",
+        "Palencia",
+        "Palma de Mallorca,Baleares",
+        "Paris",
+        "Pontevedra",
+        "Poznan",
+        "Republica Checa",
+        "Santa Cruz de Tenerife",
+        "Sevilla",
+        "Soria",
+        "Tarragona",
+        "Teruel",
+        "Valencia",
+        "Vizcaya",
+        "Zaragoza",
+        "Las palmas",
+        "La coruoa",
+        "Ourense",
+        "Almeroa",
+        "olava",
+        "La rioja",
+        "Lugo",
+        "Salamanca",
+        "Valladolid",
+        "Montilla",
+        "Guadalajara",
+        "Caceres",
+        "Albacete",
+        "ovila",
+        "Coceres",
+        "Ceuta",
+        "Ciudad real",
+        "Cuenca",
+        "Segovia",
+        "Toledo",
+        "Zamora"
+      ],
+      "individualServiceProvider": "_id email title",
+
+      "businessServiceProvider": "_id email businessName",
+      "sortproperty": "serviceName",
+      "sortorder": 1,
+      "minDistance": 0,
+      "maxDistance": 100,
+      "offset": 0,
+      "limit": 100,
+      "location": {
+        "lng": -4.6806000,
+        "lat": 38.3628000
+      }
+    }
+    try {
+      const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, defultValues)
+      setLocationData(response.finalData)
+
+      console.log(response);
+    }
+    catch (err) {
+
+    }
+  }
   const handleSubmit = async () => {
     setloading(true)
     try {
@@ -57,12 +183,14 @@ const Inputs = () => {
         "offset": 0,
         "limit": 100,
         "location": {
-          ...location
+          "lng": -4.6806000,
+          "lat": 38.3628000
         }
       }
       const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, payload)
       setloading(false)
       console.log(response);
+      setLocationData(response.data.services)
     } catch (error) {
       setloading(false)
       console.log(error);
@@ -128,6 +256,8 @@ const Inputs = () => {
           </Col>
         </Row>
       </Container>
+
+      <MapLocation default={defultValue} locationData={locationData} />
     </StyleHeader>
 
   )

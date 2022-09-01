@@ -133,7 +133,6 @@ function Header() {
                 <>
                   <Row>
                     {currentItems.map((v, i) => (
-                      console.log("value", v),
                       <Col key={i} lg={3} md={6} sm={6}>
                         <Card className="cards">
                           <div className="locator-person-image-container" >
