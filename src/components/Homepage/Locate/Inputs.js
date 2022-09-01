@@ -155,7 +155,7 @@ const Inputs = () => {
       }
     }
     try {
-      const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, defultValues)
+      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, defultValues)
       setLocationData(response.finalData)
 
       console.log(response);
@@ -187,7 +187,7 @@ const Inputs = () => {
           "lat": 38.3628000
         }
       }
-      const response = await genericService.post(`http://localhost:5873/locateservices/locateAllServices`, payload)
+      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
       setloading(false)
       console.log(response);
       setLocationData(response.data.services)

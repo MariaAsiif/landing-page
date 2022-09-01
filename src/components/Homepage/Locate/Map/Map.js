@@ -164,11 +164,7 @@ const MapLocation = (props) => {
 
 
   const moveMarker = (coord, map, t) => {
-    console.log("MoveMaker Called");
-    //this.fetchPlaces()
-    console.log(coord);
-    console.log(map);
-    console.log(t);
+  
 
     const { latLng } = coord;
     const lat = latLng.lat();
@@ -244,20 +240,10 @@ const MapLocation = (props) => {
         }
         console.log("location", location)
         props.default(location)
-        // props.setInstituteLocation(location) //sending location to create new branch form
-        // var latlng = new window.google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        // var geocoder = new window.google.maps.Geocoder();
-        // geocoder.geocode({ 'latLng': latlng }, (results, status) => {
-        //   if (status !== window.google.maps.GeocoderStatus.OK) {
-        //     alert(status);
-        //   }
-
-        //   if (status == window.google.maps.GeocoderStatus.OK) {
-        //     var address = (results[0].formatted_address);
-        //     props.setBranchaddress(address)
-        //     props.setInstituteAddress(address)
-        //   }
-        // })
+        setDefualtLocation({
+          defaultlat: position.coords.latitude,
+          defaultlon: position.coords.longitude
+        })
       })
       .catch((err) => {
         console.log(err)
