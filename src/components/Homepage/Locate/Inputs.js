@@ -150,8 +150,8 @@ const Inputs = () => {
       "offset": 0,
       "limit": 100,
       "location": {
-        "lng": -4.6806000,
-        "lat": 38.3628000
+        "lng": data.coordinates[0],
+        "lat": data.coordinates[1]
       }
     }
     try {

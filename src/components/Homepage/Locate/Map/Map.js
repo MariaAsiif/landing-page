@@ -113,7 +113,7 @@
 import React, { useState, useEffect } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react"
 const MapLocation = (props) => {
-  const [defualtLocation, setDefualtLocation] = useState({ defaultlat: '', defaultlon: '' })
+  const [defualtLocation, setDefualtLocation] = useState({ defaultlat: 38.3628000, defaultlon:  -4.6806000 })
   const [showInfoWindow, setShowInfoWindow] = useState(false)
   const [showMap, setShowMap] = useState(false)
   const [drageAbleMarkerPosition, setdrageAbleMarkerPosition] = useState({ lat: '', lng: '' })
@@ -121,7 +121,7 @@ const MapLocation = (props) => {
   const [instituteInfo, setInstituteInfo] = useState({})
 
 
-  const { locationData} = props
+  const { locationData } = props
 
   console.log("locationData", locationData)
 
@@ -129,8 +129,9 @@ const MapLocation = (props) => {
   let colleges = []
   let n = 1
   locationData &&
-  locationData.map((branch) => {
-      if (branch.entityType == "Doctors") {
+    locationData.map((branch) => {
+      console.log("branc", branch)
+      if (branch.category == "Doctors") {
         let obj = {
           id: n,
           name: branch.serviceName,
@@ -143,7 +144,7 @@ const MapLocation = (props) => {
         };
         schools.push(obj)
         n++
-      } else if (branch.entityType == 'Lawyers') {
+      } else if (branch.category == 'Lawyers') {
         let obj = {
           id: n,
           name: branch.serviceName,
@@ -158,7 +159,7 @@ const MapLocation = (props) => {
         n++
       }
     })
-    console.log("school" , schools)
+  console.log("school", schools)
 
 
   const moveMarker = (coord, map, t) => {
@@ -176,7 +177,9 @@ const MapLocation = (props) => {
       type: "Point",
       coordinates: [lng, lat]
     }
-    props.setInstituteLocation(location) //sending location to create new branch form
+    props.default(location)
+
+    // props.setInstituteLocation(location) //sending location to create new branch form
 
     setActiveMarker(map)
     setdrageAbleMarkerPosition({
@@ -268,8 +271,8 @@ const MapLocation = (props) => {
   const handleMarkerClick = (props, marker, e) => {
     console.log("handleMarkerClick")
     let institute = {
-        name: props.name,
-        address: props.address
+      name: props.name,
+      address: props.address
     }
     setInstituteInfo(institute)
     setActiveMarker(marker)
@@ -281,7 +284,7 @@ const MapLocation = (props) => {
     setShowInfoWindow(false)
   }
 
-  
+
 
 
   console.log("props", props)
@@ -307,7 +310,13 @@ const MapLocation = (props) => {
           icon={"http://maps.google.com/mapfiles/ms/icons/green.png"}
           onClick={handleMarkerClick}
         ></Marker>
+        <Marker
+          icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
+          title={'The marker`s title will appear as a tooltip.'}
+          name={'SOMA'}
+          position={{ lat: 37.778519, lng: -122.405640 }} />
         {schools.map((props, i) => {
+
           return (
             <Marker
               icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
