@@ -112,6 +112,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react"
+import devfas from '../../../../assets/dev.png'
 const MapLocation = (props) => {
   const [defualtLocation, setDefualtLocation] = useState({ defaultlat: 38.3628000, defaultlon:  -4.6806000 })
   const [showInfoWindow, setShowInfoWindow] = useState(false)
@@ -289,7 +290,7 @@ const MapLocation = (props) => {
 
   console.log("props", props)
   return (
-    <div className='map'>
+    <div className='map' style={{position:'relative'}}>
 
       <Map
         google={props.google}
@@ -383,6 +384,10 @@ const MapLocation = (props) => {
 
 
       </Map>
+
+      <div style={{position:'absolute' , bottom:'0px'}}>
+        <img src={devfas} style={{width:'50px' , height:'50px'}} alt="devlop"/>
+      </div>
 
     </div>
   )
