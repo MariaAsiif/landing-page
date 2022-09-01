@@ -5,8 +5,9 @@ import { StyleHeader } from "./StyleHeader";
 import GenerecService from "../../../services/GenericService";
 import MapLocation from '../Locate/Map/Map'
 import { API_URL } from "../../../services/config";
+import { Link } from "react-router-dom";
 
-const Inputs = () => {
+const Inputs = (props) => {
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
   const [countries, setcountries] = useState([])
@@ -173,6 +174,7 @@ const Inputs = () => {
 
       console.log(response);
       setLocationData(response.data.services)
+      props.getlocations(response.data.services)
     } catch (error) {
 
       console.log(error);
@@ -215,38 +217,43 @@ const Inputs = () => {
     })();
   }, [])
   return (
-    <StyleHeader>
-      <Container>
-        <Row>
-          <Col>
-            <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
-              <option>Choose Country</option>
-              {countries.map((country, i) => <option key={i}>{country}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
-              <option>Choose City</option>
-              {cities.map((city, i) => <option key={i}>{city}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <select name="categories" value={formData.categories} onChange={handleChange}>
-              <option>Choose Service</option>
-              {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <Button className="btn mt-1" onClick={handleSubmit} >
-              {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
-              Search
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+    <>
+      <StyleHeader>
+        <Container>
+          <Row>
+            <Col>
+              <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
+                <option>Choose Country</option>
+                {countries.map((country, i) => <option key={i}>{country}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
+                <option>Choose City</option>
+                {cities.map((city, i) => <option key={i}>{city}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="categories" value={formData.categories} onChange={handleChange}>
+                <option>Choose Service</option>
+                {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <Button className="btn mt-1" onClick={handleSubmit} >
+                {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
+                Search
+              </Button>
+            </Col>
+          </Row>
+        </Container>
 
-      <MapLocation default={defultValue} locationData={locationData} />
-    </StyleHeader>
+        <MapLocation default={defultValue} locationData={locationData} />
+
+      </StyleHeader>
+
+    </>
+
 
   )
 }
