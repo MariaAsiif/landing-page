@@ -47,154 +47,142 @@ const Inputs = () => {
 
   const defultValue = async (data) => {
     console.log("data", data)
-    debugger
-    const defultValues = {
-      "critarion": {},
-      "categories": ["Doctors", "Lawyer And Medical Marijuana - Cannabis Specialist", "Associations & Clubs",
-        "Seeds Bank",
-        "Medical Cannabis",
-        "Manufacturer",
-        "Law Firms",
-        "Industrial hemp",
-        "Cannabis related media",
-        "Distributor",
-        "Gardening",
-        "Growshop"],
-      "serviceCountry": [
-        "Spain",
-        "Holanda",
-        "Republica Checa",
-        "Alemania",
-        "Norfolk",
-        "France",
-        "Polonia",
-        "\n\nSpain"
-      ],
-      "serviceCity": [
-        "Alava",
-        "Alicante",
-        "Amsterdam",
-        "Asturias",
-        "Badajoz",
-        "Baleares",
-        "Barcelona",
-        "Burgos",
-        "Cadiz",
-        "Codiz",
-        "canaria",
-        "Cantabria",
-        "Castaoeda",
-        "Castellon",
-        "Cordoba",
-        "Gerona",
-        "Granada",
-        "Guipozcoa",
-        "Hlavni Mesto Praha",
-        "Huelva",
-        "Huesca",
-        "Jaon",
-        "La Coruoa",
-        "Las Palmas",
-        "Leon",
-        "Lorida",
-        "Llubo Mallorca",
-        "Madrid",
-        "Molaga",
-        "Monchen",
-        "Murcia",
-        "Navarra",
-        "Norwich",
-        "Palencia",
-        "Palma de Mallorca,Baleares",
-        "Paris",
-        "Pontevedra",
-        "Poznan",
-        "Republica Checa",
-        "Santa Cruz de Tenerife",
-        "Sevilla",
-        "Soria",
-        "Tarragona",
-        "Teruel",
-        "Valencia",
-        "Vizcaya",
-        "Zaragoza",
-        "Las palmas",
-        "La coruoa",
-        "Ourense",
-        "Almeroa",
-        "olava",
-        "La rioja",
-        "Lugo",
-        "Salamanca",
-        "Valladolid",
-        "Montilla",
-        "Guadalajara",
-        "Caceres",
-        "Albacete",
-        "ovila",
-        "Coceres",
-        "Ceuta",
-        "Ciudad real",
-        "Cuenca",
-        "Segovia",
-        "Toledo",
-        "Zamora"
-      ],
-      "individualServiceProvider": "_id email title",
+    getServicesData(data.coordinates[0], data.coordinates[1])
 
-      "businessServiceProvider": "_id email businessName",
-      "sortproperty": "serviceName",
-      "sortorder": 1,
-      "minDistance": 0,
-      "maxDistance": 100,
-      "offset": 0,
-      "limit": 100,
-      "location": {
-        "lng": data.coordinates[0],
-        "lat": data.coordinates[1]
-      }
-    }
-    try {
-      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, defultValues)
-      setLocationData(response.finalData)
+    // try {
+    //   const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, defultValues)
+    //   setLocationData(response.finalData)
 
-      console.log(response);
-    }
-    catch (err) {
+    //   console.log(response);
+    // }
+    // catch (err) {
 
-    }
+    // }
   }
-  const handleSubmit = async () => {
-    setloading(true)
+
+  const getServicesData = async (lat, lng) => {
     try {
       const payload = {
-        "query": {
-          "critarion": {},
-          "categories": [formData.categories],
-          "serviceCountry": [formData.serviceCountry],
-          "serviceCity": [formData.serviceCity],
-          "individualServiceProvider": "_id email title",
-          "businessServiceProvider": "_id email businessName"
+        query: {
+          critarion: {},
+          categories: ["Doctors", "Lawyer And Medical Marijuana - Cannabis Specialist", "Associations & Clubs",
+            "Seeds Bank",
+            "Medical Cannabis",
+            "Manufacturer",
+            "Law Firms",
+            "Industrial hemp",
+            "Cannabis related media",
+            "Distributor",
+            "Gardening",
+            "Growshop"],
+          serviceCountry: [
+            "Spain",
+            "Holanda",
+            "Republica Checa",
+            "Alemania",
+            "Norfolk",
+            "France",
+            "Polonia",
+            "\n\nSpain"
+          ],
+          serviceCity: [
+            "Alava",
+            "Alicante",
+            "Amsterdam",
+            "Asturias",
+            "Badajoz",
+            "Baleares",
+            "Barcelona",
+            "Burgos",
+            "Cadiz",
+            "Codiz",
+            "canaria",
+            "Cantabria",
+            "Castaoeda",
+            "Castellon",
+            "Cordoba",
+            "Gerona",
+            "Granada",
+            "Guipozcoa",
+            "Hlavni Mesto Praha",
+            "Huelva",
+            "Huesca",
+            "Jaon",
+            "La Coruoa",
+            "Las Palmas",
+            "Leon",
+            "Lorida",
+            "Llubo Mallorca",
+            "Madrid",
+            "Molaga",
+            "Monchen",
+            "Murcia",
+            "Navarra",
+            "Norwich",
+            "Palencia",
+            "Palma de Mallorca,Baleares",
+            "Paris",
+            "Pontevedra",
+            "Poznan",
+            "Republica Checa",
+            "Santa Cruz de Tenerife",
+            "Sevilla",
+            "Soria",
+            "Tarragona",
+            "Teruel",
+            "Valencia",
+            "Vizcaya",
+            "Zaragoza",
+            "Las palmas",
+            "La coruoa",
+            "Ourense",
+            "Almeroa",
+            "olava",
+            "La rioja",
+            "Lugo",
+            "Salamanca",
+            "Valladolid",
+            "Montilla",
+            "Guadalajara",
+            "Caceres",
+            "Albacete",
+            "ovila",
+            "Coceres",
+            "Ceuta",
+            "Ciudad real",
+            "Cuenca",
+            "Segovia",
+            "Toledo",
+            "Zamora"
+          ],
+          individualServiceProvider: "_id email title",
+          businessServiceProvider: "_id email businessName"
         },
-        "sortproperty": "serviceName",
-        "sortorder": 1,
-        "minDistance": 0,
-        "maxDistance": 100,
-        "offset": 0,
-        "limit": 100,
-        "location": {
-          "lng": -4.6806000,
-          "lat": 38.3628000
+        sortproperty: "serviceName",
+        sortorder: 1,
+        minDistance: 0,
+        maxDistance: 100,
+        offset: 0,
+        limit: 100,
+        location: {
+          lng: lng,
+          lat: lat
         }
       }
       const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
-      setloading(false)
+
       console.log(response);
       setLocationData(response.data.services)
     } catch (error) {
-      setloading(false)
+
       console.log(error);
     }
+  }
+
+
+  const handleSubmit = async () => {
+    getServicesData(38.3628000, -4.6806000)
+
   }
 
   useEffect(() => {
@@ -217,7 +205,7 @@ const Inputs = () => {
           );
         }
         const response = await genericService.get(`${API_URL}getAddresses`)
-
+        getServicesData(38.3628000, -4.6806000)
         console.log(response);
         setcountries(response.finalData.country)
         setcities(response.finalData.city)
