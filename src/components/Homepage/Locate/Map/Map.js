@@ -124,7 +124,7 @@ const MapLocation = (props) => {
 
   const { locationData } = props
 
-  console.log("locationData", locationData)
+  console.log("locationData", defualtLocation)
 
   let schools = []
   let colleges = []
@@ -145,7 +145,7 @@ const MapLocation = (props) => {
         };
         schools.push(obj)
         n++
-      } else if (branch.category == 'Lawyers') {
+      } else if (branch.category == 'Growshop') {
         let obj = {
           id: n,
           name: branch.serviceName,
@@ -161,6 +161,7 @@ const MapLocation = (props) => {
       }
     })
   console.log("school", schools)
+  console.log("colleges", colleges)
 
 
   const moveMarker = (coord, map, t) => {
@@ -188,6 +189,9 @@ const MapLocation = (props) => {
       defaultlat: lat,
       defaultlon: lng
     })
+
+    console.log("Schoold" , schools)
+    console.log("colleges" , colleges)
 
 
     // var latlng = new window.google.maps.LatLng(lat, lng);
@@ -287,21 +291,18 @@ const MapLocation = (props) => {
         }}
         zoom={props.zoom}
       >
+        
         <Marker
           title="Location"
           name={"locationpicker"}
-          position={{ lat: defualtLocation.defaultlat, lng: defualtLocation.defaultlon }}
+          // position={{ lat: defualtLocation.defaultlat, lng: defualtLocation.defaultlon }}
           draggable={true}
           onDragend={(t, map, coord) => moveMarker(coord, map, t)}
           key={"locationpicker"}
           icon={"http://maps.google.com/mapfiles/ms/icons/green.png"}
           onClick={handleMarkerClick}
         ></Marker>
-        <Marker
-          icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
-          title={'The marker`s title will appear as a tooltip.'}
-          name={'SOMA'}
-          position={{ lat: 37.778519, lng: -122.405640 }} />
+       
         {schools.map((props, i) => {
 
           return (
@@ -324,7 +325,7 @@ const MapLocation = (props) => {
               onClick={handleMarkerClick}
               placeIndex={i}
               name={props.name}
-              address={props.address}
+              // address={props.address}
               position={props.position}
             />
           );
