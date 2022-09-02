@@ -5,7 +5,7 @@ import { StyleHeader } from "./StyleHeader";
 import GenerecService from "../../../services/GenericService";
 import MapLocation from '../Locate/Map/Map'
 import { API_URL } from "../../../services/config";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Inputs = (props) => {
   const genericService = new GenerecService();
@@ -234,8 +234,8 @@ const Inputs = (props) => {
         "offset": 0,
         "limit": 100,
         "location": {
-          "lng": -4.6806000 ,
-          "lat":  38.3628000
+          "lng": location.coordinates[0]  ,
+          "lat": location.coordinates[1] 
         }
       }
       const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)

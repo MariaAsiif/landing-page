@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Footer from "../Homepage/Footer/Footer";
 import { LocateMainContainer } from './StylesLocate'
@@ -6,13 +6,13 @@ import emptyLocation from "../../assets/emptyLocation.png";
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { RiMessage2Line } from 'react-icons/ri'
 import Map from "../Homepage/Locate/Map/Map";
+import Popup from "./Popup";
 function Detail() {
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
 
   return (
     <>
-
       <LocateMainContainer >
         <Container>
           <Row>
@@ -87,6 +87,8 @@ function Detail() {
             </Col>
           </Row>
         </Container>
+      <Popup />
+
       </LocateMainContainer>
       <Footer />
 
