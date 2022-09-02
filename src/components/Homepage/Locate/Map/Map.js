@@ -1,120 +1,8 @@
-// import React, { useState, useEffect } from "react";
-// import GoogleMapReact from "google-map-react";
-// import LocationMarker from "./LocationMarker";
-// import LocationInfoBox from "./LocationInfoBox";
-// import axios from "axios";
-// import { ViewMoreBtn } from '../../../Globals/Globals';
-// import { LocateUsButton } from '../StylesLocate';
-// import { useHistory } from 'react-router-dom';
-
-
-// const Map = ({ allAddresses, doctorsData, locatorData }) => {
-//   const history = useHistory()
-//   const locationFound = localStorage.getItem('saveCurentLocation');
-
-//   const [locationInfo, setLocationInfo] = useState(false);
-//   const [marker, setMarker] = useState([]);
-//   const [centerLocation, setCenterLoacation] = useState("");
-//   const [defaulcenterLocation, setDefaultCenterLoacation] = useState("");
-//   const [selectedAddress, setselectedAddress] = useState({})
-
-
-//   useEffect(() => {
-//     if (locationFound) {
-//       setDefaultCenterLoacation(JSON.parse(locationFound));
-//       setMarker([JSON.parse(locationFound)]);
-//     } else {
-//       setDefaultCenterLoacation({ lat: 40.4637, lng: 3.7492 })
-//       setMarker([{ lat: 40.4637, lng: 3.7492 }]);
-//     }
-//   }, [locationFound])
-
-
-//   useEffect(async () => {
-
-
-//     //  const location = await axios.get('https://cannabis.top200lawyers.com/wp-json/citadela-directory/map-data/points/citadela-item?dataType=markers&category=157&location=&only_featured=0')
-//     //  console.log("location" , location)
-
-
-//     const arr = [];
-//     console.log(allAddresses, 'resresresresresres');
-//     if (allAddresses.length) {
-//       for (let i = 0; i < allAddresses.length; i++) {
-//         if (allAddresses[i] !== "") {
-//           arr.push(
-//             axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
-//               params: {
-//                 address: allAddresses[i],
-//                 key: "AIzaSyDzGLDNYdjUJ5VuUU-8XvUaB2rj_RvldXw",
-//               },
-//             })
-//           );
-//         }
-//       }
-
-//       const res = await Promise.all(arr);
-
-
-
-
-//       const getData = res.filter((item) => item.data.status == "OK");
-
-//       const getlatlan = getData.map((item) => {
-//         return {
-//           address: item.config.params.address,
-//           lat: item.data.results[0].geometry.location.lat,
-//           lng: item.data.results[0].geometry.location.lng
-//         }
-//       })
-//       setMarker(getlatlan);
-//       setCenterLoacation(getlatlan[0]);
-//     }
-//     else return
-
-//   }, [allAddresses]);
-
-
-//   const findExactAddressHandler = (selectedAddress) => {
-//     const getMatchedAddress = doctorsData.find((item) => item._address == selectedAddress);
-//     setselectedAddress(getMatchedAddress);
-//     setLocationInfo(true);
-//   }
-
-
-//   return (
-//     <div className="map">
-//       <GoogleMapReact
-//         bootstrapURLKeys={{ key: "AIzaSyDzGLDNYdjUJ5VuUU-8XvUaB2rj_RvldXw" }}
-//         defaultCenter={defaulcenterLocation}
-//         defaultZoom={6}
-//         center={centerLocation}
-//       >
-//         {marker.map((v, i) => (
-//           <LocationMarker
-//             key={i}
-//             lat={v.lat}
-//             lng={v.lng}
-//             onClick={(e) => findExactAddressHandler(v.address)}
-//           />
-//         ))}
-//       </GoogleMapReact>
-
-//       {locationInfo && <LocationInfoBox selectedAddress={selectedAddress} />}
-//       {locatorData.locate ? "" : <LocateUsButton onClick={() => history.push('/locator')} >Locate Us</LocateUsButton>}
-//     </div>
-//   );
-// };
-
-
-// export default Map;
-
-
 import React, { useState, useEffect } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react"
 import devfas from '../../../../assets/dev.png'
 const MapLocation = (props) => {
-  const [defualtLocation, setDefualtLocation] = useState({ defaultlat: 38.3628000, defaultlon:  -4.6806000 })
+  const [defualtLocation, setDefualtLocation] = useState({ defaultlat: 38.3628000, defaultlon: -4.6806000 })
   const [showInfoWindow, setShowInfoWindow] = useState(false)
   const [showMap, setShowMap] = useState(false)
   const [drageAbleMarkerPosition, setdrageAbleMarkerPosition] = useState({ lat: '', lng: '' })
@@ -124,48 +12,172 @@ const MapLocation = (props) => {
 
   const { locationData } = props
 
-  console.log("locationData", defualtLocation)
+  console.log("locationData", locationData)
 
-  let schools = []
-  let colleges = []
+  let doctors = []
+  let lawyers = []
+  let associations = []
+  let seed_Bank = []
+  let Medical_Cannabis = []
+  let Manufacturer = []
+  let Law_Firms = []
+  let Industrial_hemp = []
+  let Cannabis_related_media = []
+  let Distributor = []
+  let Gardening = []
+  let Growshop = []
   let n = 1
   locationData &&
-    locationData.map((branch) => {
-      console.log("branc", branch)
-      if (branch.category == "Doctors") {
+    locationData.map((service) => {
+      console.log("service", service)
+      if (service.category == "Doctors") {
         let obj = {
           id: n,
-          name: branch.serviceName,
-          // address: branch.address,
-
+          name: service.serviceName,
           position: {
-            lat: branch.serviceLocation.coordinates[1],
-            lng: branch.serviceLocation.coordinates[0],
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
           },
         };
-        schools.push(obj)
+        doctors.push(obj)
         n++
-      } else if (branch.category == 'Growshop') {
+      } else if (service.category == 'Lawyer And Medical Marijuana - Cannabis Specialist') {
         let obj = {
           id: n,
-          name: branch.serviceName,
-          // address: branch.address,
-
+          name: service.serviceName,
           position: {
-            lat: branch.serviceLocation.coordinates[1],
-            lng: branch.serviceLocation.coordinates[0],
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
           },
         };
-        colleges.push(obj)
+        lawyers.push(obj)
+        n++
+      } else if (service.category == 'Associations & Clubs') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        associations.push(obj)
+        n++
+      }
+      else if (service.category == 'Seeds Bank') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        seed_Bank.push(obj)
+        n++
+      }
+      else if (service.category == 'Medical Cannabis') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Medical_Cannabis.push(obj)
+        n++
+      }
+      else if (service.category == 'Manufacturer') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Manufacturer.push(obj)
+        n++
+      }
+      else if (service.category == 'Law Firms') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Law_Firms.push(obj)
+        n++
+      }
+      else if (service.category == 'Industrial hemp') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Industrial_hemp.push(obj)
+        n++
+      }
+      else if (service.category == 'Cannabis related media') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Cannabis_related_media.push(obj)
+        n++
+      }
+      else if (service.category == 'Distributor') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Distributor.push(obj)
+        n++
+      }
+      else if (service.category == 'Gardening') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Gardening.push(obj)
+        n++
+      }
+      else if (service.category == 'Growshop') {
+        let obj = {
+          id: n,
+          name: service.serviceName,
+          position: {
+            lat: service.serviceLocation.coordinates[1],
+            lng: service.serviceLocation.coordinates[0],
+          },
+        };
+        Growshop.push(obj)
         n++
       }
     })
-  console.log("school", schools)
-  console.log("colleges", colleges)
+
 
 
   const moveMarker = (coord, map, t) => {
-  
+
 
     const { latLng } = coord;
     const lat = latLng.lat();
@@ -175,9 +187,10 @@ const MapLocation = (props) => {
       type: "Point",
       coordinates: [lng, lat]
     }
+    console.log("location", location)
     props.default(location)
 
-    // props.setInstituteLocation(location) //sending location to create new branch form
+    // props.setInstituteLocation(location) //sending location to create new service form
 
     setActiveMarker(map)
     setdrageAbleMarkerPosition({
@@ -189,9 +202,6 @@ const MapLocation = (props) => {
       defaultlat: lat,
       defaultlon: lng
     })
-
-    console.log("Schoold" , schools)
-    console.log("colleges" , colleges)
 
 
     // var latlng = new window.google.maps.LatLng(lat, lng);
@@ -208,7 +218,7 @@ const MapLocation = (props) => {
     //     var address = (results[0].formatted_address);
     //     console.log('address')
     //     console.log(address)
-    //     props.setBranchaddress(address)
+    //     props.setserviceaddress(address)
     //     props.setInstituteAddress(address)
     //   }
     // })
@@ -242,7 +252,6 @@ const MapLocation = (props) => {
           coordinates: [position.coords.longitude, position.coords.latitude]
 
         }
-        console.log("location", location)
         props.default(location)
         setDefualtLocation({
           defaultlat: position.coords.latitude,
@@ -280,7 +289,7 @@ const MapLocation = (props) => {
 
   console.log("props", props)
   return (
-    <div className='map' style={{position:'relative'}}>
+    <div className='map' style={{ position: 'relative' }}>
 
       <Map
         google={props.google}
@@ -291,45 +300,83 @@ const MapLocation = (props) => {
         }}
         zoom={props.zoom}
       >
-        
         <Marker
           title="Location"
           name={"locationpicker"}
-          // position={{ lat: defualtLocation.defaultlat, lng: defualtLocation.defaultlon }}
+          position={{ lat: defualtLocation.defaultlat, lng: defualtLocation.defaultlon }}
           draggable={true}
           onDragend={(t, map, coord) => moveMarker(coord, map, t)}
           key={"locationpicker"}
           icon={"http://maps.google.com/mapfiles/ms/icons/green.png"}
           onClick={handleMarkerClick}
         ></Marker>
-       
-        {schools.map((props, i) => {
+        <Marker icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"} title={'The marker`s title will appear as a tooltip.'} name={'SOMA'} position={{ lat: 37.778519, lng: -122.405640 }} />
 
+        {doctors.map((props, i) => {
           return (
-            <Marker
-              icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
-              key={i}
-              onClick={handleMarkerClick}
-              placeIndex={i}
-              name={props.name}
-              // address={props.address}
-              position={props.position}
-            />
+            <Marker icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} position={props.position} />
           );
         })}
-        {colleges.map((props, i) => {
+
+        {lawyers.map((props, i) => {
           return (
-            <Marker
-              icon={"http://maps.google.com/mapfiles/ms/icons/red.png"}
-              key={i}
-              onClick={handleMarkerClick}
-              placeIndex={i}
-              name={props.name}
-              // address={props.address}
-              position={props.position}
-            />
+            <Marker icon={"http://maps.google.com/mapfiles/ms/icons/red.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
           );
         })}
+
+        {associations.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/ms/icons/blue.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+
+        {seed_Bank.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/ms/icons/purple.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Medical_Cannabis.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/ms/icons/pink.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Manufacturer.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon4.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Law_Firms.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon13.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Industrial_hemp.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon16.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Cannabis_related_media.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon16.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Distributor.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon56.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Gardening.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon60.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+        {Growshop.map((props, i) => {
+          return (
+            <Marker icon={"http://maps.google.com/mapfiles/kml/pal2/icon62.png"} key={i} onClick={handleMarkerClick} placeIndex={i} name={props.name} address={props.address} position={props.position} />
+          );
+        })}
+
+
 
         <InfoWindow
           marker={activeMarker}
@@ -372,8 +419,8 @@ const MapLocation = (props) => {
 
       </Map>
 
-      <div style={{position:'absolute' , bottom:'0px'}}>
-        <img src={devfas} style={{width:'50px' , height:'50px'}} alt="devlop"/>
+      <div style={{ position: 'absolute', bottom: '0px' }}>
+        <img src={devfas} style={{ width: '50px', height: '50px' }} alt="devlop" />
       </div>
 
     </div>

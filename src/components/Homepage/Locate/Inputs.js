@@ -5,8 +5,9 @@ import { StyleHeader } from "./StyleHeader";
 import GenerecService from "../../../services/GenericService";
 import MapLocation from '../Locate/Map/Map'
 import { API_URL } from "../../../services/config";
+import { Link } from "react-router-dom";
 
-const Inputs = () => {
+const Inputs = (props) => {
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
   const [countries, setcountries] = useState([])
@@ -26,10 +27,7 @@ const Inputs = () => {
     serviceCountry: "",
     serviceCity: ""
   })
-  const [location, setlocation] = useState({
-    lng: -4.6806000,
-    lat: 38.3628000
-  })
+  const [location, setlocation] = useState({})
 
   const [locationData, setLocationData] = useState([])
 
@@ -41,137 +39,184 @@ const Inputs = () => {
     }))
   }
 
-  // const defultValue = async (data) => { }
-
+ console.log("data of loation" , location)
 
   const defultValue = async (data) => {
-    const defultValues = {
-      "query": {
-        "critarion": {},
-        "categories": ["Doctors", "Lawyer And Medical Marijuana - Cannabis Specialist", "Associations & Clubs",
-          "Seeds Bank",
-          "Medical Cannabis",
-          "Manufacturer",
-          "Law Firms",
-          "Industrial hemp",
-          "Cannabis related media",
-          "Distributor",
-          "Gardening",
-          "Growshop"],
-        "serviceCountry": [
-          "Spain",
-          "Holanda",
-          "Republica Checa",
-          "Alemania",
-          "Norfolk",
-          "France",
-          "Polonia",
-          "\n\nSpain"
-        ],
-        "serviceCity": [
-          "Alava",
-          "Alicante",
-          "Amsterdam",
-          "Asturias",
-          "Badajoz",
-          "Baleares",
-          "Barcelona",
-          "Burgos",
-          "Cadiz",
-          "Codiz",
-          "canaria",
-          "Cantabria",
-          "Castaoeda",
-          "Castellon",
-          "Cordoba",
-          "Gerona",
-          "Granada",
-          "Guipozcoa",
-          "Hlavni Mesto Praha",
-          "Huelva",
-          "Huesca",
-          "Jaon",
-          "La Coruoa",
-          "Las Palmas",
-          "Leon",
-          "Lorida",
-          "Llubo Mallorca",
-          "Madrid",
-          "Molaga",
-          "Monchen",
-          "Murcia",
-          "Navarra",
-          "Norwich",
-          "Palencia",
-          "Palma de Mallorca,Baleares",
-          "Paris",
-          "Pontevedra",
-          "Poznan",
-          "Republica Checa",
-          "Santa Cruz de Tenerife",
-          "Sevilla",
-          "Soria",
-          "Tarragona",
-          "Teruel",
-          "Valencia",
-          "Vizcaya",
-          "Zaragoza",
-          "Las palmas",
-          "La coruoa",
-          "Ourense",
-          "Almeroa",
-          "olava",
-          "La rioja",
-          "Lugo",
-          "Salamanca",
-          "Valladolid",
-          "Montilla",
-          "Guadalajara",
-          "Caceres",
-          "Albacete",
-          "ovila",
-          "Coceres",
-          "Ceuta",
-          "Ciudad real",
-          "Cuenca",
-          "Segovia",
-          "Toledo",
-          "Zamora"
-        ],
-        "individualServiceProvider": "_id email title",
+    setlocation(data)
 
-        "businessServiceProvider": "_id email businessName"
-      },
-      "sortproperty": "serviceName",
-      "sortorder": 1,
-      "minDistance": 0,
-      "maxDistance": 100,
-      "offset": 0,
-      "limit": 100,
-      "location": {
-        "lng": -4.6806000,
-        "lat": 38.3628000
+    if(formData.categories || formData.serviceCity || formData.serviceCountry.length > 0){
+
+      try {
+        const payload = {
+          "query": {
+            "critarion": {},
+            "categories": [formData.categories],
+            "serviceCountry": [formData.serviceCountry],
+            "serviceCity": [formData.serviceCity],
+            "individualServiceProvider": "_id email title",
+            "businessServiceProvider": "_id email businessName"
+          },
+          "sortproperty": "serviceName",
+          "sortorder": 1,
+          "minDistance": 0,
+          "maxDistance": 1,
+          "offset": 0,
+          "limit": 100,
+          "location": {
+            "lng": data.coordinates[0],
+            "lat": data.coordinates[1]
+          }
+        }
+        const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
+        setloading(false)
+        console.log(response);
+        setLocationData(response.data.services)
+        props.getlocations(response.data.services)
+  
+      } catch (error) {
+        setloading(false)
+        console.log(error);
       }
     }
-    try {
-      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, defultValues)
-      setLocationData(response.data.services)
+    else{
 
-      console.log("res", response);
+    getServicesData(data.coordinates[0], data.coordinates[1])
     }
-    catch (err) {
 
+  
+
+
+
+
+  }
+
+
+
+
+  const getServicesData = async (lat, lng) => {
+    try {
+      const payload = {
+        query: {
+          critarion: {},
+          categories: ["Doctors", "Lawyer And Medical Marijuana - Cannabis Specialist", "Associations & Clubs",
+            "Seeds Bank",
+            "Medical Cannabis",
+            "Manufacturer",
+            "Law Firms",
+            "Industrial hemp",
+            "Cannabis related media",
+            "Distributor",
+            "Gardening",
+            "Growshop"],
+          serviceCountry: [
+            "Spain",
+            "Holanda",
+            "Republica Checa",
+            "Alemania",
+            "Norfolk",
+            "France",
+            "Polonia",
+            "\n\nSpain"
+          ],
+          serviceCity: [
+            "Alava",
+            "Alicante",
+            "Amsterdam",
+            "Asturias",
+            "Badajoz",
+            "Baleares",
+            "Barcelona",
+            "Burgos",
+            "Cadiz",
+            "Codiz",
+            "canaria",
+            "Cantabria",
+            "Castaoeda",
+            "Castellon",
+            "Cordoba",
+            "Gerona",
+            "Granada",
+            "Guipozcoa",
+            "Hlavni Mesto Praha",
+            "Huelva",
+            "Huesca",
+            "Jaon",
+            "La Coruoa",
+            "Las Palmas",
+            "Leon",
+            "Lorida",
+            "Llubo Mallorca",
+            "Madrid",
+            "Molaga",
+            "Monchen",
+            "Murcia",
+            "Navarra",
+            "Norwich",
+            "Palencia",
+            "Palma de Mallorca,Baleares",
+            "Paris",
+            "Pontevedra",
+            "Poznan",
+            "Republica Checa",
+            "Santa Cruz de Tenerife",
+            "Sevilla",
+            "Soria",
+            "Tarragona",
+            "Teruel",
+            "Valencia",
+            "Vizcaya",
+            "Zaragoza",
+            "Las palmas",
+            "La coruoa",
+            "Ourense",
+            "Almeroa",
+            "olava",
+            "La rioja",
+            "Lugo",
+            "Salamanca",
+            "Valladolid",
+            "Montilla",
+            "Guadalajara",
+            "Caceres",
+            "Albacete",
+            "ovila",
+            "Coceres",
+            "Ceuta",
+            "Ciudad real",
+            "Cuenca",
+            "Segovia",
+            "Toledo",
+            "Zamora"
+          ],
+          individualServiceProvider: "_id email title",
+          businessServiceProvider: "_id email businessName"
+        },
+        sortproperty: "serviceName",
+        sortorder: 1,
+        minDistance: 0,
+        maxDistance: 100,
+        offset: 0,
+        limit: 100,
+        location: {
+          lng: lng,
+          lat: lat
+        }
+      }
+      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
+
+      console.log(response);
+      setLocationData(response.data.services)
+      props.getlocations(response.data.services)
+    } catch (error) {
+
+      console.log(error);
     }
   }
 
 
-  useEffect(() => {
-    defultValue()
-
-  }, [])
-
   const handleSubmit = async () => {
-    setloading(true)
+    // getServicesData(38.3628000, -4.6806000)
+    debugger
     try {
       const payload = {
         "query": {
@@ -189,18 +234,21 @@ const Inputs = () => {
         "offset": 0,
         "limit": 100,
         "location": {
-          "lng": -4.6806000,
-          "lat": 38.3628000
+          "lng": -4.6806000 ,
+          "lat":  38.3628000
         }
       }
       const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
       setloading(false)
       console.log(response);
       setLocationData(response.data.services)
+      props.getlocations(response.data.services)
+
     } catch (error) {
       setloading(false)
       console.log(error);
     }
+
   }
 
   useEffect(() => {
@@ -223,7 +271,7 @@ const Inputs = () => {
           );
         }
         const response = await genericService.get(`${API_URL}getAddresses`)
-
+        getServicesData(38.3628000, -4.6806000)
         console.log(response);
         setcountries(response.finalData.country)
         setcities(response.finalData.city)
@@ -232,39 +280,50 @@ const Inputs = () => {
       }
     })();
   }, [])
-  return (
-    <StyleHeader>
-      <Container>
-        <Row>
-          <Col>
-            <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
-              <option>Choose Country</option>
-              {countries.map((country, i) => <option key={i}>{country}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
-              <option>Choose City</option>
-              {cities.map((city, i) => <option key={i}>{city}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <select name="categories" value={formData.categories} onChange={handleChange}>
-              <option>Choose Service</option>
-              {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
-            </select>
-          </Col>
-          <Col>
-            <Button className="btn mt-1" onClick={handleSubmit} >
-              {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
-              Search
-            </Button>
-          </Col>
-        </Row>
-      </Container>
 
-      <MapLocation default={defultValue} locationData={locationData} />
-    </StyleHeader>
+
+  let changeState = formData.serviceCity && formData.categories && formData.serviceCountry.length > 0
+
+
+
+  return (
+    <>
+      <StyleHeader>
+        <Container>
+          <Row>
+            <Col>
+              <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
+                <option>Choose Country</option>
+                {countries.map((country, i) => <option key={i}>{country}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
+                <option>Choose City</option>
+                {cities.map((city, i) => <option key={i}>{city}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="categories" value={formData.categories} onChange={handleChange}>
+                <option>Choose Service</option>
+                {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <Button className="btn mt-1" onClick={handleSubmit} disabled={changeState ? false : true} >
+                {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
+                Search
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+
+        <MapLocation default={defultValue} locationData={locationData} />
+
+      </StyleHeader>
+
+    </>
+
 
   )
 }
