@@ -401,7 +401,7 @@ const Inputs = (props) => {
 
             <Col>
               <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
-                <option>{cities.length > 0 ? "Choose City" : "Loading...."}</option>
+                <option>{ "Choose City"}</option>
                 {cities.map((city, i) => <option key={i}>{city.name}</option>)}
               </select>
             </Col>
