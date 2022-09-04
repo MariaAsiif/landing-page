@@ -3,12 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReactStars from "react-rating-stars-component";
 import {StylePopup } from './StylePopup'
-function Popup() {
+function Popup(props) {
   const [show, setShow] = useState(true);
   const [desc, setDesc] = useState('')
   const [state, setState] = useState(0)
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+  props.hideReview()
+  };
   const handleShow = () => setShow(true);
 
 

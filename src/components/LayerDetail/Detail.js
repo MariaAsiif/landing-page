@@ -10,6 +10,16 @@ import Popup from "./Popup";
 function Detail() {
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
+  const [showReview, setShowReview] = useState(false)
+
+  const showReviews = () => {
+    setShowReview(true)
+  }
+
+  const hideReview = () => {
+    
+    setShowReview(false)
+  }
 
   return (
     <>
@@ -65,6 +75,7 @@ function Detail() {
                     <p className="active_tab">Description</p>
 
                   </div>
+                  
                 </div>
 
                 <div className="contact">
@@ -78,6 +89,10 @@ function Detail() {
                   </ul> */}
                 </div>
 
+                <div>
+                    <button className="btn btn-primary" type="button" onClick={() => showReviews()} >Review</button>
+                  </div>
+
               </div>
             </Col>
           </Row>
@@ -87,7 +102,7 @@ function Detail() {
             </Col>
           </Row>
         </Container>
-      <Popup />
+      {showReview ? <Popup hideReview={hideReview} /> : null}
 
       </LocateMainContainer>
       <Footer />
