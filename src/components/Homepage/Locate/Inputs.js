@@ -8,6 +8,8 @@ import { API_URL } from "../../../services/config";
 // import { Link } from "react-router-dom";
 
 const Inputs = (props) => {
+  console.log('inputs page calledd')
+  console.log(props)
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
   const [countries, setcountries] = useState([])
@@ -22,10 +24,43 @@ const Inputs = (props) => {
     { value: "Law Firms", label: "Law Firms" },
     { value: "Industrial hemp", label: "Industrial hemp" },
   ])
+
+  const [minDistances, setMinDistances] = useState([
+    {value: 1, label: 1},
+    {value: 2, label: 2},
+    {value: 3, label: 3},
+    {value: 4, label: 4},
+    {value: 5, label: 5},
+    {value: 6, label: 6},
+    {value: 7, label: 7},
+    {value: 8, label: 8},
+    {value: 9, label: 9},
+    {value: 10, label: 10},
+  ])
+  const [maxDistances, setMaxDistances] = useState([
+    {value: 1, label: 1},
+    {value: 2, label: 2},
+    {value: 3, label: 3},
+    {value: 4, label: 4},
+    {value: 5, label: 5},
+    {value: 6, label: 6},
+    {value: 7, label: 7},
+    {value: 8, label: 8},
+    {value: 9, label: 9},
+    {value: 10, label: 10},
+    {value: 15, label: 15},
+    {value: 20, label: 20},
+    {value: 25, label: 25},
+    {value: 30, label: 30},
+    {value: 50, label: 50},
+    {value: 100, label: 100},
+  ])
   const [formData, setformData] = useState({
     categories: "",
     serviceCountry: "",
-    serviceCity: ""
+    serviceCity: "",
+    minDistances,
+    maxDistances
   })
   const [location, setlocation] = useState({})
 
@@ -58,8 +93,8 @@ const Inputs = (props) => {
           },
           "sortproperty": "serviceName",
           "sortorder": 1,
-          "minDistance": 0,
-          "maxDistance": 1,
+          "minDistance": parseInt(formData.minDistances),
+          "maxDistance": parseInt(formData.maxDistances),
           "offset": 0,
           "limit": 100,
           "location": {
@@ -71,7 +106,7 @@ const Inputs = (props) => {
         setloading(false)
         console.log(response);
         setLocationData(response.data.services)
-        props.getlocations(response.data.services)
+        //props.getlocations(response.data.services)
   
       } catch (error) {
         setloading(false)
@@ -206,7 +241,7 @@ const Inputs = (props) => {
 
       console.log(response);
       setLocationData(response.data.services)
-      props.getlocations(response.data.services)
+      //props.getlocations(response.data.services)
     } catch (error) {
 
       console.log(error);
@@ -216,7 +251,7 @@ const Inputs = (props) => {
 
   const handleSubmit = async () => {
     // getServicesData(38.3628000, -4.6806000)
-    debugger
+    //debugger
     try {
       const payload = {
         "query": {
@@ -229,8 +264,8 @@ const Inputs = (props) => {
         },
         "sortproperty": "serviceName",
         "sortorder": 1,
-        "minDistance": 0,
-        "maxDistance": 1,
+        "minDistance": parseInt(formData.minDistances),
+        "maxDistance": parseInt(formData.maxDistances),
         "offset": 0,
         "limit": 100,
         "location": {
@@ -242,7 +277,7 @@ const Inputs = (props) => {
       setloading(false)
       console.log(response);
       setLocationData(response.data.services)
-      props.getlocations(response.data.services)
+      //props.getlocations(response.data.services)
 
     } catch (error) {
       setloading(false)
@@ -307,6 +342,18 @@ const Inputs = (props) => {
               <select name="categories" value={formData.categories} onChange={handleChange}>
                 <option>Choose Service</option>
                 {services.map((service, i) => <option value={service.value} key={i}>{service.label}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="minDistances" value={formData.minDistances} onChange={handleChange}>
+                <option>Min Distance</option>
+                {minDistances.map((mindist, i) => <option value={mindist.value} key={i}>{mindist.label}</option>)}
+              </select>
+            </Col>
+            <Col>
+              <select name="maxDistances" value={formData.maxDistances} onChange={handleChange}>
+                <option>max Distance</option>
+                {maxDistances.map((maxdist, i) => <option value={maxdist.value} key={i}>{maxdist.label}</option>)}
               </select>
             </Col>
             <Col>
