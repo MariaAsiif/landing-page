@@ -17,7 +17,7 @@ const MarqueeView = () => {
                 "sortproperty": "created_at",
                 "sortorder": -1,
                 "offset": 0,
-                "limit": 50,
+                "limit": 2,
                 "query": {
                     "critarion": {"active" : true},
                     
@@ -28,7 +28,7 @@ const MarqueeView = () => {
             
             }
            
-            let response = await axios.post("http://localhost:5873/tickers/getTickersWithFullDetails", payload);
+            let response = await axios.post("http://localhost:5873/tickers/getTickersWithFullDetailsPublic", payload);
             // setallpermission(response.data.permissions)
             console.log("ticker" , response)
         } catch (error) {

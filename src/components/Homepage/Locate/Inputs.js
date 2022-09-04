@@ -14,6 +14,7 @@ const Inputs = (props) => {
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
   const [countries, setcountries] = useState([])
+  const [states, setstates] = useState([])
   const [cities, setcities] = useState([])
   const [services, setservices] = useState([
     { value: "Doctors", label: "Doctors" },
@@ -27,38 +28,39 @@ const Inputs = (props) => {
   ])
 
   const [minDistances, setMinDistances] = useState([
-    {value: 1, label: 1},
-    {value: 2, label: 2},
-    {value: 3, label: 3},
-    {value: 4, label: 4},
-    {value: 5, label: 5},
-    {value: 6, label: 6},
-    {value: 7, label: 7},
-    {value: 8, label: 8},
-    {value: 9, label: 9},
-    {value: 10, label: 10},
+    { value: 1, label: 1 },
+    { value: 2, label: 2 },
+    { value: 3, label: 3 },
+    { value: 4, label: 4 },
+    { value: 5, label: 5 },
+    { value: 6, label: 6 },
+    { value: 7, label: 7 },
+    { value: 8, label: 8 },
+    { value: 9, label: 9 },
+    { value: 10, label: 10 },
   ])
   const [maxDistances, setMaxDistances] = useState([
-    {value: 1, label: 1},
-    {value: 2, label: 2},
-    {value: 3, label: 3},
-    {value: 4, label: 4},
-    {value: 5, label: 5},
-    {value: 6, label: 6},
-    {value: 7, label: 7},
-    {value: 8, label: 8},
-    {value: 9, label: 9},
-    {value: 10, label: 10},
-    {value: 15, label: 15},
-    {value: 20, label: 20},
-    {value: 25, label: 25},
-    {value: 30, label: 30},
-    {value: 50, label: 50},
-    {value: 100, label: 100},
+    { value: 1, label: 1 },
+    { value: 2, label: 2 },
+    { value: 3, label: 3 },
+    { value: 4, label: 4 },
+    { value: 5, label: 5 },
+    { value: 6, label: 6 },
+    { value: 7, label: 7 },
+    { value: 8, label: 8 },
+    { value: 9, label: 9 },
+    { value: 10, label: 10 },
+    { value: 15, label: 15 },
+    { value: 20, label: 20 },
+    { value: 25, label: 25 },
+    { value: 30, label: 30 },
+    { value: 50, label: 50 },
+    { value: 100, label: 100 },
   ])
   const [formData, setformData] = useState({
     categories: "",
     serviceCountry: "",
+    seviceState : '',
     serviceCity: "",
     minDistances,
     maxDistances
@@ -75,13 +77,13 @@ const Inputs = (props) => {
     }))
   }
 
- console.log("data of loation" , location)
+  console.log("data of loation", location)
 
   const defultValue = async (data) => {
-    console.log("Data of location" , data )
+    console.log("Data of location", data)
     setlocation(data)
 
-    if(formData.categories || formData.serviceCity || formData.serviceCountry.length > 0){
+    if (formData.categories || formData.serviceCity || formData.serviceCountry.length > 0) {
 
       try {
         const payload = {
@@ -109,18 +111,18 @@ const Inputs = (props) => {
         console.log(response);
         setLocationData(response.data.services)
         props.getlocations(response.data.services)
-  
+
       } catch (error) {
         setloading(false)
         console.log(error);
       }
     }
-    else{
+    else {
 
-    getServicesData(data.coordinates[0], data.coordinates[1])
+      getServicesData(data.coordinates[0], data.coordinates[1])
     }
 
-  
+
 
 
 
@@ -273,8 +275,8 @@ const Inputs = (props) => {
         "offset": 0,
         "limit": 100,
         "location": {
-          "lng": location.coordinates[0]  ,
-          "lat": location.coordinates[1] 
+          "lng": location.coordinates[0],
+          "lat": location.coordinates[1]
         }
       }
       const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
@@ -291,51 +293,56 @@ const Inputs = (props) => {
   }
 
 
-  const handleChangeCountry= (e) => {
+  const handleChangeCountry = (e) => {
     let { name, value } = e.target
-    
-        const updatedStates = State.getStatesOfCountry(value)
-        const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
-        const updatedCities = City.getCitiesOfState(value, stateCode)
-        console.log("update" ,updatedStates)
-        setformData((prevmodel) => ({
-                ...prevmodel,
-                serviceCountry: value,
-               
-            }))
-        setcities(updatedCities)
+ 
+      const updatedStates = State.getStatesOfCountry(value)
+      setstates(updatedStates)
+      setformData((prevmodel) => ({
+        ...prevmodel,
+        serviceCountry: value,
 
+      }))
     
+   
+
   }
+
+
+  const handleState = (e) => {
+    debugger
+    let { name, value } = e.target
+      const updatedCities = City.getCitiesOfState(formData.serviceCountry , value )
+      setformData((prevmodel) => ({
+        ...prevmodel,
+        seviceState: value,
+
+      }))
+      console.log("sate" , updatedCities)
+      setcities(updatedCities)
+
+  }
+  console.log("states" ,states )
 
   useEffect(() => {
     try {
-        (async () => {
-            const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
-            const currentCountryCode = response.data.location.country.code
-            // let id = response.data.location.country.tld
-            // let removeDot = id.replace('.', "")
-            // setCountryCode(removeDot)
-            const get_countris = Country.getAllCountries()
-            const CurrentStates = State.getStatesOfCountry(currentCountryCode)
-            const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
-            getServicesData(38.3628000, -4.6806000)
-            // setrecruitModel((prevmodel) => ({
-            //     ...prevmodel,
-            //     country: currentCountryCode,
-            //     state: CurrentStates.length > 0 ? CurrentStates[0].isoCode : "",
-            //     city: CurrentCities.length > 0 ? CurrentCities[0].name : ""
-            // }))
-            setcountries(get_countris)
-            // (CurrentStates)
-            setcities(CurrentCities)
+      (async () => {
+        const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
+        const currentCountryCode = response.data.location.country.code
+        const get_countris = Country.getAllCountries()
+        // console.log("contry" , get_countris)
+        // const CurrentStates = State.getStatesOfCountry(currentCountryCode)
+        // const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
+        getServicesData(38.3628000, -4.6806000)
+        setcountries(get_countris)
+        // setcities(CurrentCities)
 
-        })();
+      })();
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
 
-}, [])
+  }, [])
 
 
   // useEffect(() => {
@@ -384,6 +391,14 @@ const Inputs = (props) => {
                 {countries.map((country, i) => <option key={i} value={country.isoCode}>{country.name}</option>)}
               </select>
             </Col>
+            <Col>
+              <select name="seviceState" value={formData.seviceState} onChange={handleState}  >
+                <option>Choose State</option>
+                {states.map((country, i) => <option key={i} value={country.isoCode}>{country.name}</option>)}
+              </select>
+            </Col>
+
+
             <Col>
               <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
                 <option>{cities.length > 0 ? "Choose City" : "Loading...."}</option>
