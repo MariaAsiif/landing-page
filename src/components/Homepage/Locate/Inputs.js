@@ -18,7 +18,7 @@ const Inputs = (props) => {
   const [states, setstates] = useState([])
   const [cities, setcities] = useState([])
   const [services, setservices] = useState([
-    { value: "Doctors", label: "Doctors" },
+    { value: "doctor", label: "Doctors" },
     { value: "Lawyer And Medical Marijuana - Cannabis Specialist", label: "Lawyer And Medical Marijuana - Cannabis Specialist" },
     { value: "Associations & Clubs", label: "Associations & Clubs" },
     { value: "Seeds Bank", label: "Seeds Bank" },
@@ -26,7 +26,10 @@ const Inputs = (props) => {
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "Law Firms", label: "Law Firms" },
     { value: "Industrial hemp", label: "Industrial hemp" },
-    { value : "Growshop" , label : "Growshop"}
+    { value : "Growshop" , label : "Growshop"},
+    { value : "Manufacturer" , label : "Manufacturer"},
+    { value : "lawyer" , label : "lawyer"},
+    { value : "Distributor" , label : "Distributor"}
   ])
 
   const [minDistances, setMinDistances] = useState([
