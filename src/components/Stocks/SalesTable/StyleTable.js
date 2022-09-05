@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
-export const ViewTableContainer=styled.div `
+export const ViewTableContainer = styled.div`
 
 margin-top:3rem;
 padding-left:30px;
 
 h2{
     font-weight:600;
+    margin-bottom:20px;
 }
+
+
 
  table{
     caption-side: bottom !important; 
     border-collapse: collapse !important;
     font-size:15px !important;
-    margin-top:40px;
-
+    thead tr {
      th {
         border-color: inherit;
         border-style: none !important;
@@ -22,16 +24,87 @@ h2{
         font-size:16px;
         font-weight:400;
         color:gray;
+     }
+      
+        .price{
+                padding-left:28rem;
+            }
+            .chang{
+                 padding-left:28rem;
+            }
+            .charge{
+                 padding-left:28rem;
+            }
+        @media (max-width: 912px) {
+            .price{
+                padding-left:0px;
+            }
+            .chang{
+                 padding-left:0px;
+            }
+            .charge{
+                 padding-left:0px;
+            }
         
+    
+            }
+
+        }
+
+        // @media (max-width: 720px) {
+        //     .price{
+        //         padding-left:10px;
+        //     }
+        //     .chang{
+        //          padding-left:0px;
+        //     }
+        //     .charge{
+        //          padding-left:0px;
+        //     }
+        
+    
+        //     }
+
+        // }
+        
+    
+
+   
+ }
+tbody tr {
+    .price{
+        padding-left:28rem;
     }
+    .chang{
+         padding-left:28rem;
+    }
+    .charge{
+         padding-left:28rem;
+    }
+@media (max-width: 912px) {
+    .price{
+        padding-left:0px;
+    }
+    .chang{
+         padding-left:0px;
+    }
+    .charge{
+         padding-left:0px;
+    }
+
+
+    }
+
+}
  }
 
  tbody, td, tfoot, th, thead, tr {
     border-color: inherit;
     border-style: none !important;
     border-width: 0;
+    margin-bottom:15px;
     font-size:18px;
-    
+ 
 }
 
  tr {

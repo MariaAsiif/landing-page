@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Col, Container, Row, Table } from 'react-bootstrap'
 import { ViewTableContainer } from './StyleTable'
 import logo from "../../../assets/tickerlogo.png";
 import axios from 'axios';
@@ -31,42 +31,43 @@ const SalesTable = () => {
 
                 <h2>Popular Cannabis </h2>
 
+
                 <Table style={{ border: 'none' }} >
                     <thead >
                         <tr >
                             <th>Name</th>
-                            <th>Last Price</th>
-                            <th>24h Change</th>
-                            <th>Market Cap</th>
+                            <th className="price">Last Price</th>
+                            <th className="chang">24h Change</th>
+                            <th className="charge">Market Cap</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td className="table_row">
-                                <img src={logo} style={{ width: '30px', }} alt="logo" />
+                                <img src={logo} style={{ width: '20px', marginTop:'-15px'}} alt="logo" />
                                 <h2>BNB</h2>
                             </td>
-                            <td>$277.9</td>
-                            <td style={{ color: 'green' }}>+0.65%</td>
-                            <td>$44,345M</td>
+                            <td className="price">$277.9</td>
+                            <td className="chang">+0.65%</td>
+                            <td className="charge">$44,345M</td>
                         </tr>
                         <tr>
                             <td className="table_row">
-                                <img src={logo} style={{ width: '30px', }} alt="logo" />
+                                <img src={logo} style={{ width: '30px', marginTop:'-15px' }} alt="logo" />
                                 <h2>BNB</h2>
                             </td>
-                            <td>$277.9</td>
-                            <td style={{ color: 'green' }}>+0.65%</td>
-                            <td>$44,345M</td>
+                            <td className="price">$277.9</td>
+                            <td className="chang">+0.65%</td>
+                            <td className="charge">$44,345M</td>
                         </tr>
                         <tr>
                             <td className="table_row">
-                                <img src={logo} style={{ width: '30px', }} alt="logo" />
+                                <img src={logo} style={{ width: '30px', marginTop:'-15px' }} alt="logo" />
                                 <h2>BNB</h2>
                             </td>
-                            <td>$277.9</td>
-                            <td style={{ color: 'green' }}>+0.65%</td>
-                            <td>$44,345M</td>
+                            <td className="price"> $277.9</td>
+                            <td className="chang">+0.65%</td>
+                            <td className="charge">$44,345M</td>
                         </tr>
                     </tbody>
                 </Table>
