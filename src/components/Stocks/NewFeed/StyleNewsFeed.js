@@ -77,16 +77,37 @@ height:100%;
 
     }
 
+
+    
+
     
 }
+`
 
 
+export const Pagination = styled.div`
 
+.locator-pagination {
+    display: flex;
+    align-content: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 16px;
+    justify-content: center;
 
-
-
-
-
+    .previous a {
+      color: red;
+      text-decoration: none;
+    }
+    .next a {
+      color: red;
+      text-decoration: none;
+    }
+    .selected a {
+      color: red;
+      text-decoration: none;
+    }
+  }
 
 
 `
