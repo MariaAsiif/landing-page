@@ -6,6 +6,7 @@ import { Country, State, City } from 'country-state-city';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import axios from 'axios'
+import { ImCross } from "react-icons/im";
 const ServicePopup = (props) => {
     const { register, watch, handleSubmit, control, formState: { errors } } = useForm({ mode: 'onChange', });
     const [all_Countries, setall_Countries] = useState([])
@@ -72,10 +73,11 @@ const ServicePopup = (props) => {
     }, [])
     return (
         <Modal show={props.show} onHide={props.onClose} size="xl"  >
-            <Modal.Header closeButton>
+            <Modal.Header  >
                 <Modal.Title>Add Service</Modal.Title>
+                <button onClick={props.onClose} className='btn float-left'><ImCross /></button>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{ height: 500 }}>
                 <Container>
                     <Row>
                         <Col md={4}>
