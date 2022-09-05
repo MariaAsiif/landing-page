@@ -83,7 +83,6 @@ function Header() {
   const [allLocations, setallLocations] = useState([])
 
   const getlocations = (locations) => {
-    console.log("locationsss" , locations)
     setallLocations(locations)
   }
 

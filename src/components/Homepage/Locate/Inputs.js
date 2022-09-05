@@ -78,7 +78,7 @@ const Inputs = (props) => {
  console.log("data of loation" , location)
 
   const defultValue = async (data) => {
-    console.log("Data" , data )
+    console.log("Data of location" , data )
     setlocation(data)
 
     if(formData.categories || formData.serviceCity || formData.serviceCountry.length > 0){

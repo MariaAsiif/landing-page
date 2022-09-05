@@ -187,7 +187,6 @@ const MapLocation = (props) => {
       type: "Point",
       coordinates: [lng, lat]
     }
-    console.log("location", location)
     props.default(location)
 
     // props.setInstituteLocation(location) //sending location to create new service form
