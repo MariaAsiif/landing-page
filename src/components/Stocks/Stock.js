@@ -40,6 +40,7 @@ import AgenciesHeader from "../AgenciesPage/AgenciesHeader/AgenciesHeader";
 import HomePageNav from "./HomePageNav";
 import SalesTable from "./SalesTable/SalesTable";
 import Feedback from "react-bootstrap/esm/Feedback";
+import NewsFeed from "./NewFeed/NewsFeed";
 
 const Stock = () => {
   const styles = {
@@ -95,6 +96,8 @@ const Stock = () => {
       <HomePageNav />
 
       <SalesTable />
+
+      <NewsFeed/>
 
       <TrustedSuppliers
         imgs={trustedOrganizations}
