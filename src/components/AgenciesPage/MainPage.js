@@ -24,6 +24,7 @@ import SSL from '../../components/Homepage/SSL/SSL';
 import TrustedSuppliers from '../../components/Homepage/TrustedSuppliers/TrustedSuppliers';
 import Terms from '../../components/Terms/Terms';
 import HomePageNav from '../Homepage2/HomePageNav';
+import Feedback from "react-bootstrap/esm/Feedback";
 
 const aboveCopyrightImgs = [aboveCopyright1, aboveCopyright2, aboveCopyright3, aboveCopyright6, aboveCopyright4, aboveCopyright5, aboveCopyright7, aboveCopyright8,]
 
@@ -48,6 +49,8 @@ function MainPage() {
       <SSL />
       <TrustedSuppliers imgs={aboveCopyrightImgs}  />
       <Terms />
+      {/* <Feedback /> */}
+
       </div>
   );
 }

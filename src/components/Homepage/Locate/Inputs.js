@@ -26,6 +26,7 @@ const Inputs = (props) => {
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "Law Firms", label: "Law Firms" },
     { value: "Industrial hemp", label: "Industrial hemp" },
+    { value : "Growshop" , label : "Growshop"}
   ])
 
   const [minDistances, setMinDistances] = useState([

@@ -209,10 +209,8 @@ const Homepage = () => {
         <Quote value={volumeValue} />
       </VolumeContext.Provider>
      
-      <VolumeContext.Provider value={handleVolume}>
       <Feedback />
       
-      </VolumeContext.Provider>
 
 
     </>
