@@ -8,6 +8,7 @@ import { API_URL } from "../../../services/config";
 // import { Link } from "react-router-dom";
 import { Country, State, City } from 'country-state-city';
 import axios from 'axios'
+import { HOSTNAME } from '../../../services/CallApi';
 const Inputs = (props) => {
   console.log('inputs page calledd')
   console.log(props)
@@ -77,10 +78,8 @@ const Inputs = (props) => {
     }))
   }
 
-  console.log("data of loation", location)
 
   const defultValue = async (data) => {
-    console.log("Data of location", data)
     setlocation(data)
 
     if (formData.categories || formData.serviceCity || formData.serviceCountry.length > 0) {
@@ -279,7 +278,7 @@ const Inputs = (props) => {
           "lat": location.coordinates[1]
         }
       }
-      const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
+      const response = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
       setloading(false)
       console.log(response);
       setLocationData(response.data.services)

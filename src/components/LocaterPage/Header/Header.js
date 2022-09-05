@@ -115,7 +115,7 @@ function Header() {
       <StyleHeader>
 
         <div className="container">
-          {doctorsData.length == 0 && cardsLoading ? (
+          {allLocations.length == 0 && cardsLoading ? (
             <>
               <Placeholder as="p" animation="glow" size="lg">
                 <Placeholder xs={12} />
@@ -132,7 +132,7 @@ function Header() {
             </>
           ) : (
             <div className="loacateUsCard-container">
-              {!cardsLoading && doctorsData.length == 0 ? (
+              {!cardsLoading && allLocations.length == 0 ? (
                 <h1>No Data Found</h1>
               ) : (
                 <>

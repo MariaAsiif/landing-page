@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 
 import Marquee from "react-fast-marquee";
 import "./offCanvas.css";
-import marqee from "../../../assets/tickerlogo.png";
-import axios from "axios";
+// import marqee from "../../../assets/tickerlogo.png";
 import { useState } from "react";
+import { callPublicApi, HOSTNAME } from "../../../services/CallApi";
 
 const MarqueeView = () => {
 
@@ -28,11 +28,10 @@ const MarqueeView = () => {
           }
 
         }
-
-        let response = await axios.post("https://hporxadminbackend.herokuapp.com/tickers/getTickersWithFullDetailsPublic", payload);
+        const response = await callPublicApi("/tickers/getTickersWithFullDetailsPublic", "post", payload)
+        // let response = await axios.post("https://hporxadminbackend.herokuapp.com/tickers/getTickersWithFullDetailsPublic", payload);
         // setallpermission(response.data.permissions)
-        setTickers(response.data.data.tickers)
-        console.log("ticker", response)
+        setTickers(response.data.tickers)
       } catch (error) {
         console.log(error);
       }
@@ -58,11 +57,11 @@ const MarqueeView = () => {
       >
         {tickers.map((ticker, i) => (
           <>
-            <span style={{ display: "inline-block", margin: "0 1rem" }}>
+            <span style={{ display: "inline-block", margin: "0 1rem" }} key={i}>
               <img
                 className="marq-logo"
                 style={{ verticalAlign: "bottom" }}
-                src={`http://localhost:5873${ticker.logoFile}`}
+                src={`${HOSTNAME}${ticker.logoFile}`}
                 alt={"aly"}
               />
             </span>

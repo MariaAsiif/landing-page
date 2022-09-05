@@ -7,20 +7,21 @@ import MainPage from "./components/AgenciesPage/MainPage";
 import LocatehomePage from "./components/LocaterPage/LocatehomePage";
 import LayerDetail from "./components/LayerDetail/LayerDetail";
 import Stock from "./components/Stock/Stock";
+import Stocks from "./components/Stocks/Stock";
 function App() {
   const locationFound = localStorage.getItem('saveCurentLocation')
 
 
 
 
-    useEffect(() => {
-      if(!locationFound){
-        navigator.geolocation.getCurrentPosition(function (position) {
-          const lat=position.coords.latitude;
-           const lng=position.coords.longitude;
-          localStorage.setItem('saveCurentLocation' , JSON.stringify({lat,lng}))
-         });
-      }
+  useEffect(() => {
+    if (!locationFound) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        localStorage.setItem('saveCurentLocation', JSON.stringify({ lat, lng }))
+      });
+    }
   }, []);
 
 
@@ -42,7 +43,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Homepage  />
+            <Homepage />
           </Route>
           <Route path="/home">
             <Homepage2 />
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route path="/madeIn">
             <Stock />
+          </Route>
+          <Route path="/sales">
+            <Stocks />
           </Route>
           <Route path="/locator" component={LocatehomePage} />
           <Route path="/detail/:id" component={LayerDetail} />
