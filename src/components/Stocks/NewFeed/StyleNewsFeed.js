@@ -19,6 +19,17 @@ height:100%;
 
     .card_container{
         display:flex;
+        @media (max-width: 600px) {
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+
+            img{
+                max-width:100vh;
+                margin-left:10px;
+            }
+          }
     }
 
     .card_item{
@@ -64,7 +75,7 @@ height:100%;
     }
     .date{
         font-size:18px;
-        
+
     }
 
     

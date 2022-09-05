@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Placeholder } from 'react-bootstrap'
 import { NewsContainer } from './StyleNewsFeed'
 const NewsFeed = () => {
 
     const [news, setNews] = useState([])
+    const [cardsLoading, setcardsLoading] = useState(true);
 
 
     function add3Dots(string, limit) {
@@ -37,7 +38,52 @@ const NewsFeed = () => {
         <Container >
             <h2 style={{ fontSize: '25px', margin: '50px 40px' }}>Cannabis Stocks Latest News</h2>
             <NewsContainer>
-                <div className='card_wrapper p-2'>
+            {news.length == 0 && cardsLoading ? (
+                    <>
+                        <Placeholder as="p" animation="glow" size="lg">
+                            <Placeholder xs={12} />
+                        </Placeholder>
+                        <Placeholder as="p" animation="wave" size="lg">
+                            <Placeholder xs={12} />
+                        </Placeholder>
+                        <Placeholder as="p" animation="glow" size="lg">
+                            <Placeholder xs={12} />
+                        </Placeholder>
+                        <Placeholder as="p" animation="wave" size="lg">
+                            <Placeholder xs={12} />
+                        </Placeholder>
+                    </>
+                ) : (
+                    <div className="card_wrapper p-2">
+                        {!cardsLoading && news.length == 0 ? (
+                            <h1>No Data Found</h1>
+                        ) : (
+                            <>
+                                { news.map((item, i) => (
+                                    <div className='card_container mt-4' >
+                                        <div className='card_item'>
+                                            <a href="/news/article/altria-stock-the-all-weather-dividend-king-strikes-again">
+                                                <img class="mt1 mr4 h_px3 w_pxauto mobile_h_pxmedium" src={item.image} loading="lazy" alt="Altria Stock (NYSE:MO): The All-Weather Dividend King Strikes Again" width="100%" height="100%" /></a>
+                                        </div>
+                                        <div className="content_info">
+                                            <a href="/news/article/altria-stock-the-all-weather-dividend-king-strikes-again" style={{ textDecoration: 'none' }}>
+                                                <span className="news_info">{add3Dots(item.headline, 80)}</span>
+                                                <div className="data_text">{add3Dots(item.excerpt, 150)}</div>
+                                            </a>
+                                            <hr />
+                                            <div>
+                                                <span className="date">3d</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </>
+                        )
+                        }
+                    </div>
+                )}
+
+                {/* <div className='card_wrapper p-2'>
                     {news && news.map((item, i) => (
                     <div className='card_container mt-4' >
                         <div className='card_item'>
@@ -46,7 +92,7 @@ const NewsFeed = () => {
                         </div>
                         <div className="content_info">
                             <a href="/news/article/altria-stock-the-all-weather-dividend-king-strikes-again" style={{ textDecoration: 'none' }}>
-                                <span className="news_info">{add3Dots(item.headline , 80)}</span>
+                                <span className="news_info">{add3Dots(item.headline)}</span>
                                 <div className="data_text">{add3Dots(item.excerpt, 150)}</div>
                             </a>
                             <hr />
@@ -55,9 +101,9 @@ const NewsFeed = () => {
                             </div>
                         </div>
                     </div>
-                    ))}
+                    ))} */}
 
-                </div>
+                {/* </div> */}
             </NewsContainer>
 
         </Container>
