@@ -10,8 +10,8 @@ function LocatehomePage() {
       <AgenciesHeader />
       <HomePageNav />
       <Header />
-      <Quote/>
-      <FeedBack/>
+      <Quote />
+      <FeedBack />
     </>
   );
 }

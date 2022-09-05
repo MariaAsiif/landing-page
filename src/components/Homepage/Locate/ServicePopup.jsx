@@ -71,7 +71,7 @@ const ServicePopup = (props) => {
 
     }, [])
     return (
-        <Modal show={props.show} onHide={props.onClose} size="lg"  >
+        <Modal show={props.show} onHide={props.onClose} size="xl"  >
             <Modal.Header closeButton>
                 <Modal.Title>Add Service</Modal.Title>
             </Modal.Header>
