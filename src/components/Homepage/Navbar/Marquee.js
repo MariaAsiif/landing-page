@@ -28,8 +28,9 @@ const MarqueeView = () => {
             
             }
            
-            let response = await axios.post("https://hporxadminbackend.herokuapp.com/permissions/getPermissionsWithFullDetails", payload);
+            let response = await axios.post("http://localhost:5873/tickers/getTickersWithFullDetails", payload);
             // setallpermission(response.data.permissions)
+            console.log("ticker" , response)
         } catch (error) {
             console.log(error);
         }
