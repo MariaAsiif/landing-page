@@ -33,9 +33,10 @@ height:100%;
             display:flex;
             flex-direction: column;
             justify-content:center;
+            align-items:center;
 
             img{
-                max-width:100vh;
+                width:250px;
                 margin-left:10px;
             }
           }
@@ -83,9 +84,12 @@ height:100%;
         font-weight:500;
     }
     .date{
-        font-size:18px;
+        font-size:14px;
+        font-weight:500;
 
     }
+
+
 
 
     

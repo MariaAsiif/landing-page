@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ViewTableContainer = styled.div`
 
 margin-top:3rem;
-padding-left:30px;
 
 h2{
     font-weight:600;
@@ -105,7 +104,7 @@ tbody tr {
     h2{
         font-size:18px;
         font-weight:400;
-        margin-top:8px;
+        margin-top:3px;
         margin-left:10px;
     }
 }

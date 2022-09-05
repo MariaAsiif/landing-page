@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, Placeholder } from 'react-bootstrap'
 import { NewsContainer, Pagination } from './StyleNewsFeed'
 import ReactPaginate from "react-paginate";
-
+import moment from 'moment'
 const NewsFeed = () => {
 
     const [news, setNews] = useState([])
@@ -108,7 +108,7 @@ const NewsFeed = () => {
                                             </a>
                                             <hr />
                                             <div>
-                                                <span className="date">date</span>
+                                                <span className="date">{ moment(item.published).format('ll') }</span>
                                             </div>
                                         </div>
                                     </div>
