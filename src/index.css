@@ -1,4 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
 *,
 *::after,
 *::before {
@@ -16,7 +20,7 @@ body {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   padding-right: 0px !important;
- 
+
 }
 
 img {
@@ -34,10 +38,12 @@ img {
   text-align: -webkit-center;
   color: white;
 }
-.mt-3-2{
+
+.mt-3-2 {
   margin-top: 3.2rem;
 }
-.mt-2-9{
+
+.mt-2-9 {
   margin-top: 3rem;
 }
 
@@ -49,6 +55,7 @@ img {
 .container-xxl {
   max-width: 1290px !important;
 }
+
 /* .box{
   height: 11rem;
   background: #F0F0F0;
@@ -64,7 +71,8 @@ img {
     font-size: 45%;
   }
 }
-.marq-logo{
+
+.marq-logo {
   height: 2rem;
 }
 
@@ -129,4 +137,8 @@ img {
 .ftEAzF {
   margin-top: 3rem;
   padding-left: 9px !important;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important
 }

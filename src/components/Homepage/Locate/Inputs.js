@@ -9,6 +9,7 @@ import { API_URL } from "../../../services/config";
 import { Country, State, City } from 'country-state-city';
 import axios from 'axios'
 import { HOSTNAME } from '../../../services/CallApi';
+import ServicePopup from './ServicePopup';
 const Inputs = (props) => {
   console.log('inputs page calledd')
   console.log(props)
@@ -26,10 +27,10 @@ const Inputs = (props) => {
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "Law Firms", label: "Law Firms" },
     { value: "Industrial hemp", label: "Industrial hemp" },
-    { value : "Growshop" , label : "Growshop"},
-    { value : "Manufacturer" , label : "Manufacturer"},
-    { value : "lawyer" , label : "lawyer"},
-    { value : "Distributor" , label : "Distributor"}
+    { value: "Growshop", label: "Growshop" },
+    { value: "Manufacturer", label: "Manufacturer" },
+    { value: "lawyer", label: "lawyer" },
+    { value: "Distributor", label: "Distributor" }
   ])
 
   const [minDistances, setMinDistances] = useState([
@@ -65,7 +66,7 @@ const Inputs = (props) => {
   const [formData, setformData] = useState({
     categories: "",
     serviceCountry: "",
-    seviceState : '',
+    seviceState: '',
     serviceCity: "",
     minDistances,
     maxDistances
@@ -73,6 +74,8 @@ const Inputs = (props) => {
   const [location, setlocation] = useState({})
 
   const [locationData, setLocationData] = useState([])
+
+  const [servicePopup, setservicePopup] = useState(false)
 
 
   const handleChange = (e) => {
@@ -298,16 +301,16 @@ const Inputs = (props) => {
 
   const handleChangeCountry = (e) => {
     let { name, value } = e.target
- 
-      const updatedStates = State.getStatesOfCountry(value)
-      setstates(updatedStates)
-      setformData((prevmodel) => ({
-        ...prevmodel,
-        serviceCountry: value,
 
-      }))
-    
-   
+    const updatedStates = State.getStatesOfCountry(value)
+    setstates(updatedStates)
+    setformData((prevmodel) => ({
+      ...prevmodel,
+      serviceCountry: value,
+
+    }))
+
+
 
   }
 
@@ -315,17 +318,17 @@ const Inputs = (props) => {
   const handleState = (e) => {
     debugger
     let { name, value } = e.target
-      const updatedCities = City.getCitiesOfState(formData.serviceCountry , value )
-      setformData((prevmodel) => ({
-        ...prevmodel,
-        seviceState: value,
+    const updatedCities = City.getCitiesOfState(formData.serviceCountry, value)
+    setformData((prevmodel) => ({
+      ...prevmodel,
+      seviceState: value,
 
-      }))
-      console.log("sate" , updatedCities)
-      setcities(updatedCities)
+    }))
+    console.log("sate", updatedCities)
+    setcities(updatedCities)
 
   }
-  console.log("states" ,states )
+  console.log("states", states)
 
   useEffect(() => {
     try {
@@ -385,6 +388,7 @@ const Inputs = (props) => {
 
   return (
     <>
+      {servicePopup ? <ServicePopup show={servicePopup} onClose={() => setservicePopup(false)} /> : null}
       <StyleHeader>
         <Container>
           <Row>
@@ -404,7 +408,7 @@ const Inputs = (props) => {
 
             <Col>
               <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
-                <option>{ "Choose City"}</option>
+                <option>{"Choose City"}</option>
                 {cities.map((city, i) => <option key={i}>{city.name}</option>)}
               </select>
             </Col>
@@ -430,6 +434,11 @@ const Inputs = (props) => {
               <Button className="btn mt-1" onClick={handleSubmit} disabled={changeState ? false : true} >
                 {loading ? <Spinner as="span" animation="grow" role="status" aria-hidden="true" /> : <img src={Search} alt="Search icon" className="search-img" />}
                 Search
+              </Button>
+            </Col>
+            <Col>
+              <Button className="btn mt-1" onClick={() => setservicePopup(true)}  >
+                Add Service
               </Button>
             </Col>
           </Row>
