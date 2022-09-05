@@ -78,6 +78,7 @@ const Inputs = (props) => {
  console.log("data of loation" , location)
 
   const defultValue = async (data) => {
+    console.log("Data" , data )
     setlocation(data)
 
     if(formData.categories || formData.serviceCity || formData.serviceCountry.length > 0){
@@ -295,11 +296,11 @@ const Inputs = (props) => {
         const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
         const updatedCities = City.getCitiesOfState(value, stateCode)
         console.log("update" ,updatedStates)
-        // setformData((prevmodel) => ({
-        //         ...prevmodel,
-        //         country: currentCountryCode,
+        setformData((prevmodel) => ({
+                ...prevmodel,
+                serviceCountry: value,
                
-        //     }))
+            }))
         setcities(updatedCities)
 
     
