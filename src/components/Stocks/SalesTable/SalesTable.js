@@ -53,7 +53,7 @@ const SalesTable = () => {
                         </tr>
                         <tr>
                             <td className="table_row">
-                                <img src={logo} style={{ width: '30px', marginTop:'-15px' }} alt="logo" />
+                                <img src={logo} style={{ width: '20px', marginTop:'-15px' }} alt="logo" />
                                 <h2>BNB</h2>
                             </td>
                             <td className="price">$277.9</td>
@@ -62,7 +62,7 @@ const SalesTable = () => {
                         </tr>
                         <tr>
                             <td className="table_row">
-                                <img src={logo} style={{ width: '30px', marginTop:'-15px' }} alt="logo" />
+                                <img src={logo} style={{ width: '20px', marginTop:'-15px' }} alt="logo" />
                                 <h2>BNB</h2>
                             </td>
                             <td className="price"> $277.9</td>

@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
 export const NewsContainer = styled.div`
-margin:30px 30px;
+margin:30px 0px;
 background-color: hsla(0deg,0%,var(--bg-light),var(--bg-alpha));
 border:1pt solid;
 border-color: #eee;
 height:100%;
+
+@media (max-width: 912px) {
+    margin:30px 0px;
+}
+
 
 
 
@@ -15,6 +20,11 @@ height:100%;
     flex-direction: column;
     justify-content: stretch;
     width:100%;
+
+    .news_image{
+        width:125px;
+        object-fit:cover;
+    }
 
 
     .card_container{

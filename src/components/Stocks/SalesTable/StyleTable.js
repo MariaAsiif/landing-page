@@ -51,21 +51,7 @@ h2{
 
         }
 
-        // @media (max-width: 720px) {
-        //     .price{
-        //         padding-left:10px;
-        //     }
-        //     .chang{
-        //          padding-left:0px;
-        //     }
-        //     .charge{
-        //          padding-left:0px;
-        //     }
         
-    
-        //     }
-
-        // }
         
     
 
@@ -102,7 +88,7 @@ tbody tr {
     border-color: inherit;
     border-style: none !important;
     border-width: 0;
-    margin-bottom:15px;
+    margin-bottom:17px;
     font-size:18px;
  
 }
