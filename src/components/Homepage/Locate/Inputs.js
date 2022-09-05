@@ -416,14 +416,14 @@ const Inputs = (props) => {
             </Col>
             <Col>
               <select name="minDistances" value={formData.minDistances} onChange={handleChange}>
-                <option>Min Distance</option>
-                {minDistances.map((mindist, i) => <option value={mindist.value} key={i}>{mindist.label}</option>)}
+                <option>Min. Distance</option>
+                {minDistances.map((mindist, i) => <option value={mindist.value} key={i}>{mindist.label}Km</option>)}
               </select>
             </Col>
             <Col>
               <select name="maxDistances" value={formData.maxDistances} onChange={handleChange}>
-                <option>max Distance</option>
-                {maxDistances.map((maxdist, i) => <option value={maxdist.value} key={i}>{maxdist.label}</option>)}
+                <option>Max. Distance</option>
+                {maxDistances.map((maxdist, i) => <option value={maxdist.value} key={i}>{maxdist.label}Km</option>)}
               </select>
             </Col>
             <Col>
