@@ -107,7 +107,7 @@ const Inputs = (props) => {
         setloading(false)
         console.log(response);
         setLocationData(response.data.services)
-        //props.getlocations(response.data.services)
+        props.getlocations(response.data.services)
   
       } catch (error) {
         setloading(false)
@@ -242,7 +242,7 @@ const Inputs = (props) => {
 
       console.log(response);
       setLocationData(response.data.services)
-      //props.getlocations(response.data.services)
+      props.getlocations(response.data.services)
     } catch (error) {
 
       console.log(error);
@@ -278,7 +278,7 @@ const Inputs = (props) => {
       setloading(false)
       console.log(response);
       setLocationData(response.data.services)
-      //props.getlocations(response.data.services)
+      props.getlocations(response.data.services)
 
     } catch (error) {
       setloading(false)
