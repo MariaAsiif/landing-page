@@ -54,7 +54,7 @@ import AgenciesHeader from "../AgenciesPage/AgenciesHeader/AgenciesHeader";
 import FeatureMarketContainer from "../Homepage/FeatureMarketplace/FeatureMarketContainer";
 import TrendingNow1 from "./TrendingNow/TrendingNow1";
 import HomePageNav from "./HomePageNav";
-import Feedback from "react-bootstrap/esm/Feedback";
+import Feedback from "../Feedback/FeedBack";
 
 const Homepage2 = () => {
   const styles = {
@@ -248,7 +248,7 @@ const Homepage2 = () => {
       <TrustedSuppliers imgs={aboveCopyrightImgs} head="" />
       <Terms />
       <Quote />
-      {/* <Feedback /> */}
+      <Feedback />
 
     </>
   );

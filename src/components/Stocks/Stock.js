@@ -39,7 +39,7 @@ import FollowUs from "../Homepage/FollowUs/FollowUs";
 import AgenciesHeader from "../AgenciesPage/AgenciesHeader/AgenciesHeader";
 import HomePageNav from "./HomePageNav";
 import SalesTable from "./SalesTable/SalesTable";
-import Feedback from "react-bootstrap/esm/Feedback";
+import Feedback from "../Feedback/FeedBack";
 import NewsFeed from "./NewFeed/NewsFeed";
 
 const Stock = () => {
@@ -115,6 +115,7 @@ const Stock = () => {
       <TrustedSuppliers imgs={aboveCopyrightImgs} head="" />
       <Terms />
       <Quote />
+      <Feedback/>
 
     </>
   );

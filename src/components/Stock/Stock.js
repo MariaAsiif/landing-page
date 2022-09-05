@@ -55,7 +55,7 @@ import FeatureMarketContainer from "../Homepage/FeatureMarketplace/FeatureMarket
 import TrendingNow1 from "./TrendingNow/TrendingNow1";
 import HomePageNav from "./HomePageNav";
 import TrendingNow from "./TrendingNow/TrendingNow";
-import Feedback from "react-bootstrap/esm/Feedback";
+import Feedback from "../Feedback/FeedBack";
 
 const Stock = () => {
   const styles = {
@@ -151,7 +151,7 @@ const Stock = () => {
       <TrustedSuppliers imgs={aboveCopyrightImgs} head="" />
       <Terms />
       <Quote />
-      {/* <Feedback /> */}
+      <Feedback />
 
     </>
   );

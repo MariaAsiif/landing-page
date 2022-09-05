@@ -69,7 +69,7 @@ import SectionPlaceHolder from '../Globals/SectionPlaceHolder'
 import DesignShowcase from "./Inspiration/DesignShowcase";
 import { RiMessage2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import Feedback from "./Feedback/FeedBack";
+import Feedback from "../Feedback/FeedBack";
 
 export const VolumeContext = createContext();
 const styles = {
