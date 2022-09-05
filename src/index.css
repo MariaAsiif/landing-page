@@ -117,3 +117,11 @@ img {
   justify-content: space-between;
   box-shadow: inset 0px 0px 5px black;
 }
+
+.gmUwac {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 94% !important;
+  z-index: 1000;
+}

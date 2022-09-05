@@ -16,13 +16,6 @@ z-index: 1000;
 opacity: 0;
 } */
 
-.gmUwac{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 80%;
-    z-index: 1000;
-}
 
 .controles-button-quote{
     color: white;

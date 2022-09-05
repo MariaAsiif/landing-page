@@ -45,8 +45,8 @@ const Quote = ({ value }) => {
     setNewClass(value);
   };
   return (
-    <Container>
-      <QuoteContainer>
+    <>
+      <>
         <div className="controles-button">
           <div
             className="controles-button-voice"
@@ -69,8 +69,8 @@ const Quote = ({ value }) => {
           </div>
           
         </div>
-      </QuoteContainer>
-    </Container>
+      </>
+    </>
   );
 };
 
