@@ -250,6 +250,8 @@ const Inputs = (props) => {
     }
   }
 
+  let findCountry = countries.find((country, i) => country.isoCode === formData.serviceCountry)
+
 
   const handleSubmit = async () => {
     // getServicesData(38.3628000, -4.6806000)
@@ -259,7 +261,7 @@ const Inputs = (props) => {
         "query": {
           "critarion": {},
           "categories": [formData.categories],
-          "serviceCountry": [formData.serviceCountry],
+          "serviceCountry": [findCountry.name],
           "serviceCity": [formData.serviceCity],
           "individualServiceProvider": "_id email title",
           "businessServiceProvider": "_id email businessName"
