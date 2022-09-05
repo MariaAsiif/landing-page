@@ -98,11 +98,11 @@ const NewsFeed = () => {
                                 {currentItems.map((item, i) => (
                                     <div className='card_container mt-4'key={i} >
                                         <div className='card_item'>
-                                            <a href={item.url}>
+                                            <a href={item.url}  target="_blank" rel="noopener noreferrer">
                                                 <img className='news_image' src={item.image} loading="lazy" alt="Altria Stock (NYSE:MO): The All-Weather Dividend King Strikes Again" /></a>
                                         </div>
                                         <div className="content_info">
-                                            <a href={item.url} style={{ textDecoration: 'none' }}>
+                                            <a href={item.url}  target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                                                 <span className="news_info">{add3Dots(item.headline, 80)}</span>
                                                 <div className="data_text">{add3Dots(item.excerpt, 150)}</div>
                                             </a>
