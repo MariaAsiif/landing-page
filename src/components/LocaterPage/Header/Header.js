@@ -38,6 +38,11 @@ function Header() {
   const [serviceList, setserviceList] = useState([]);
   const [doctorsData, setdoctorsData] = useState([]);
   const [cardsLoading, setcardsLoading] = useState(true);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [allLocations, setallLocations] = useState([])
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -77,10 +82,6 @@ function Header() {
       });
   }, []);
 
-  const [currentItems, setCurrentItems] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const [allLocations, setallLocations] = useState([])
 
   const getlocations = (locations) => {
     setallLocations(locations)
@@ -137,7 +138,7 @@ function Header() {
               ) : (
                 <>
                   <Row>
-                    {allLocations.map((v, i) => (
+                    {currentItems.map((v, i) => (
                       <Col key={i} lg={3} md={6} sm={6}>
                         <Card className="cards">
                           <div className="locator-person-image-container" >
