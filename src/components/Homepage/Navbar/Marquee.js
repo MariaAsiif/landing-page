@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Marquee from "react-fast-marquee";
 import "./offCanvas.css";
 import marqee from "../../../assets/tickerlogo.png";
+import axios from "axios";
 
 const MarqueeView = () => {
+
+
+  useEffect(() => {
+    (async () => {
+        try {
+
+          let payload = {
+
+                "sortproperty": "created_at",
+                "sortorder": -1,
+                "offset": 0,
+                "limit": 50,
+                "query": {
+                    "critarion": {"active" : true},
+                    
+                    "addedby": "_id email first_name",
+                    
+                    "lastModifiedBy": "_id email first_name"
+                }
+            
+            }
+           
+            let response = await axios.post("https://hporxadminbackend.herokuapp.com/permissions/getPermissionsWithFullDetails", payload);
+            // setallpermission(response.data.permissions)
+        } catch (error) {
+            console.log(error);
+        }
+    })();
+}, [])
+
+
   return (
     <div
       style={{

@@ -6,7 +6,8 @@ import GenerecService from "../../../services/GenericService";
 import MapLocation from '../Locate/Map/Map'
 import { API_URL } from "../../../services/config";
 // import { Link } from "react-router-dom";
-
+import { Country, State, City } from 'country-state-city';
+import axios from 'axios'
 const Inputs = (props) => {
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
@@ -251,35 +252,83 @@ const Inputs = (props) => {
 
   }
 
+
+  const handleChangeCountry= (e) => {
+    let { name, value } = e.target
+    
+        const updatedStates = State.getStatesOfCountry(value)
+        const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
+        const updatedCities = City.getCitiesOfState(value, stateCode)
+        console.log("update" ,updatedStates)
+        // setformData((prevmodel) => ({
+        //         ...prevmodel,
+        //         country: currentCountryCode,
+               
+        //     }))
+        setcities(updatedCities)
+
+    
+  }
+
   useEffect(() => {
+    try {
+        (async () => {
+            const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
+            const currentCountryCode = response.data.location.country.code
+            // let id = response.data.location.country.tld
+            // let removeDot = id.replace('.', "")
+            // setCountryCode(removeDot)
+            const get_countris = Country.getAllCountries()
+            const CurrentStates = State.getStatesOfCountry(currentCountryCode)
+            const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
+            getServicesData(38.3628000, -4.6806000)
+            // setrecruitModel((prevmodel) => ({
+            //     ...prevmodel,
+            //     country: currentCountryCode,
+            //     state: CurrentStates.length > 0 ? CurrentStates[0].isoCode : "",
+            //     city: CurrentCities.length > 0 ? CurrentCities[0].name : ""
+            // }))
+            setcountries(get_countris)
+            // (CurrentStates)
+            setcities(CurrentCities)
 
-
-    (async () => {
-      try {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            function (position) {
-              console.log(position.coords);
-              setlocation({
-                lng: position.coords.longitude,
-                lat: position.coords.latitude,
-              })
-            },
-            function (error) {
-              console.error("Error Code = " + error.code + " - " + error.message);
-            }
-          );
-        }
-        const response = await genericService.get(`${API_URL}getAddresses`)
-        getServicesData(38.3628000, -4.6806000)
-        console.log(response);
-        setcountries(response.finalData.country)
-        setcities(response.finalData.city)
-      } catch (error) {
+        })();
+    } catch (error) {
         console.log(error);
-      }
-    })();
-  }, [])
+    }
+
+}, [])
+
+
+  // useEffect(() => {
+
+
+  //   (async () => {
+  //     try {
+  //       if (navigator.geolocation) {
+  //         navigator.geolocation.getCurrentPosition(
+  //           function (position) {
+  //             console.log(position.coords);
+  //             setlocation({
+  //               lng: position.coords.longitude,
+  //               lat: position.coords.latitude,
+  //             })
+  //           },
+  //           function (error) {
+  //             console.error("Error Code = " + error.code + " - " + error.message);
+  //           }
+  //         );
+  //       }
+  //       const response = await genericService.get(`${API_URL}getAddresses`)
+  //       getServicesData(38.3628000, -4.6806000)
+  //       console.log(response);
+  //       setcountries(response.finalData.country)
+  //       setcities(response.finalData.city)
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, [])
 
 
   let changeState = formData.serviceCity && formData.categories && formData.serviceCountry.length > 0
@@ -292,15 +341,15 @@ const Inputs = (props) => {
         <Container>
           <Row>
             <Col>
-              <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChange}  >
+              <select name="serviceCountry" value={formData.serviceCountry} onChange={handleChangeCountry}  >
                 <option>Choose Country</option>
-                {countries.map((country, i) => <option key={i}>{country}</option>)}
+                {countries.map((country, i) => <option key={i} value={country.isoCode}>{country.name}</option>)}
               </select>
             </Col>
             <Col>
               <select name="serviceCity" value={formData.serviceCity} onChange={handleChange}>
-                <option>Choose City</option>
-                {cities.map((city, i) => <option key={i}>{city}</option>)}
+                <option>{cities.length > 0 ? "Choose City" : "Loading...."}</option>
+                {cities.map((city, i) => <option key={i}>{city.name}</option>)}
               </select>
             </Col>
             <Col>

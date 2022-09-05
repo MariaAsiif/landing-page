@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Footer from "../Homepage/Footer/Footer";
 import { LocateMainContainer } from './StylesLocate'
@@ -7,9 +7,40 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 import { RiMessage2Line } from 'react-icons/ri'
 import Map from "../Homepage/Locate/Map/Map";
 import Popup from "./Popup";
+import { useParams } from "react-router-dom";
+import GenericService from "../../services/GenericService";
 function Detail() {
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
+  const genericService = new GenericService();
+  const serviceId = useParams().id
+
+  useEffect(() => {
+    const fetchService = async () => {
+      try {
+        let payload = {
+          "critarion": { "_id": serviceId },
+
+          "addedby": "_id email first_name",
+
+          "lastModifiedBy": "_id email first_name",
+          "individualServiceProvider": "_id email title content",
+
+          "businessServiceProvider": "_id email businessName content"
+
+
+        }
+        const response = await genericService.post(`http://localhost:5873/locateservices/findServiceById`, payload)
+        console.log("response", response)
+      }
+      catch (err) {
+
+      }
+    }
+
+    fetchService()
+
+  }, [serviceId])
 
   return (
     <>
@@ -87,7 +118,7 @@ function Detail() {
             </Col>
           </Row>
         </Container>
-      <Popup />
+        {/* <Popup /> */}
 
       </LocateMainContainer>
       <Footer />

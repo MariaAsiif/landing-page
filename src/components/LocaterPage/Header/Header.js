@@ -168,7 +168,7 @@ function Header() {
                               </div>
                             </div>
                             <div>
-                              <Link to="/detail" >
+                              <Link to={`/detail/${v._id}`} >
                                 <input
                                   type="submit"
                                   className="locator-card-bt"

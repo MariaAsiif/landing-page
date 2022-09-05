@@ -54,7 +54,7 @@ function App() {
             <Stock />
           </Route>
           <Route path="/locator" component={LocatehomePage} />
-          <Route path="/detail" component={LayerDetail} />
+          <Route path="/detail/:id" component={LayerDetail} />
         </Switch>
       </Router>
     </>

@@ -67,6 +67,8 @@ import { ViewTodayContainer } from "../Homepage2/StyledHomepage2";
 import ViewedToday from "../Homepage2/ViewedToday/ViewedToday";
 import SectionPlaceHolder from '../Globals/SectionPlaceHolder'
 import DesignShowcase from "./Inspiration/DesignShowcase";
+import { RiMessage2Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export const VolumeContext = createContext();
 const styles = {
@@ -150,7 +152,7 @@ const Homepage = () => {
         <Header id="HOME" value={volumeValue} />
       </VolumeContext.Provider>
 
-      < DesignShowcase/>
+      < DesignShowcase />
 
       <Suspense fallback={<SectionPlaceHolder />}>
         <Inhalate id="INHALATE" />
@@ -205,6 +207,21 @@ const Homepage = () => {
       <VolumeContext.Provider value={handleVolume}>
         <Quote value={volumeValue} />
       </VolumeContext.Provider>
+      <div style={{ zIndex: '9999', cursor: 'pointer' }}>
+        <a target="_blank"  href="https://coming-soon-new.vercel.app/user-feedback">
+          <div style={{ position: 'fixed', right: '10px', bottom: '10px',cursor:'pointer', }}>
+            <div style={{ borderRadius: '60px', paddingTop: '12px', width: '50px', height: '50px', paddingLeft: '12px', backgroundColor: 'gray' }}>
+              <RiMessage2Line style={{ fontSize: '25px', color: 'white' }} />
+            </div>
+            <span style={{ fontSize: '15px', color: 'black', fontWeight: '500' }}>
+              Feedback
+            </span>
+          </div>
+        </a>
+      </div>
+
+
+
     </>
   );
 };
