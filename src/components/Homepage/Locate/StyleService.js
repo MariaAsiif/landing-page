@@ -17,13 +17,31 @@ label{
 input{
     font-size:18px;
     margin-bottom:10px;
+
+   
 }
+
+.border_new{
+    border-color:red;   
+   }
+   .border_remain{
+    border-color:lightgray;   
+
+   }
 
 select{
     font-size:18px;
     margin-bottom:10px;
 
 }
+
+.error_show{
+    color:red;
+    font-size:15px;
+    padding:0px;
+}
+
+
 
 .btn_submit{
     width:30%;
