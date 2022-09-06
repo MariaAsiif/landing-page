@@ -131,8 +131,27 @@ margin-top:4rem;
     text-transform:uppercase;
     color:gray;
   }
+}
 
- 
+.review_button{
+display:flex;
+justify-content:end;
+  button{
+    width:10%;
+    height:40px;
+    border-radius:20px;
+    background:red;
+    border:1pt solid white;
+    font-size:14px;
+    color:white;
+    cursor:pointer;
+
+
+    &:hover{
+      background:green;
+      color:white;
+    }
+  }
 
 }
 

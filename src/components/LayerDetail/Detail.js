@@ -5,13 +5,14 @@ import { LocateMainContainer } from './StylesLocate'
 import emptyLocation from "../../assets/emptyLocation.png";
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { RiMessage2Line } from 'react-icons/ri'
-import Map from "../Homepage/Locate/Map/Map";
+// import Map from "../Homepage/Locate/Map/Map";
 import Popup from "./Popup";
 import { useParams } from "react-router-dom";
 import GenericService from "../../services/GenericService";
 function Detail() {
   const [doctorsData, setdoctorsData] = useState([]);
   const [allAddresses, setallAddresses] = useState([]);
+  const [review, setReview] = useState(false)
   const genericService = new GenericService();
   const serviceId = useParams().id
 
@@ -20,12 +21,10 @@ function Detail() {
       try {
         let payload = {
           "critarion": { "_id": serviceId },
-
           "addedby": "_id email first_name",
-
           "lastModifiedBy": "_id email first_name",
-          "individualServiceProvider": "_id email title content",
 
+          "individualServiceProvider": "_id email title content",
           "businessServiceProvider": "_id email businessName content"
 
 
@@ -100,15 +99,11 @@ function Detail() {
 
                 <div className="contact">
                   <p>hellow adkfhasjkdfh ksadfhasd kfhasdjk akfhasdjk</p>
-                  {/* <h2>Contact Information</h2>
-                  <ul>
-                    <li >
-                      <p>hellow</p>
-                      <span>yes </span>
-                    </li>
-                  </ul> */}
                 </div>
 
+                <div className="review_button">
+                  <button onClick={() => setReview(true)}>Review</button>
+                </div>
               </div>
             </Col>
           </Row>
@@ -118,7 +113,8 @@ function Detail() {
             </Col>
           </Row>
         </Container>
-        {/* <Popup /> */}
+
+        {review && <Popup permission={review} toggle={(value) => setReview(value)} />}
 
       </LocateMainContainer>
       <Footer />

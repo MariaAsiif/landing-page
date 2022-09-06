@@ -142,3 +142,22 @@ img {
 .react-tel-input .form-control {
   width: 100% !important
 }
+
+
+
+.react-tel-input .form-control {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 48px;
+    margin-left: 0;
+    background: #FFFFFF;
+    border: 1px solid #CACACA;
+    border-radius: 5px;
+    line-height: 25px;
+    height: 39px !important;
+    width: 300px;
+    outline: none;
+}

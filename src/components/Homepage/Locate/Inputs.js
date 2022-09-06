@@ -324,17 +324,15 @@ const Inputs = (props) => {
       seviceState: value,
 
     }))
-    console.log("sate", updatedCities)
     setcities(updatedCities)
 
   }
-  console.log("states", states)
 
   useEffect(() => {
     try {
       (async () => {
         const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
-        const currentCountryCode = response.data.location.country.code
+        // const currentCountryCode = response.data.location.country.code
         const get_countris = Country.getAllCountries()
         // console.log("contry" , get_countris)
         // const CurrentStates = State.getStatesOfCountry(currentCountryCode)
