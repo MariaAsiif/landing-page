@@ -27,6 +27,8 @@ const Inputs = (props) => {
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "Law Firms", label: "Law Firms" },
     { value: "Industrial hemp", label: "Industrial hemp" },
+    { value: "Cannabis related media", label: "Cannabis related media" },
+    { value: "Gardening", label: "Gardening" },
     { value: "Growshop", label: "Growshop" },
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "lawyer", label: "lawyer" },
