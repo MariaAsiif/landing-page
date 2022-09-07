@@ -129,12 +129,6 @@ const Inputs = (props) => {
 
       getServicesData(data.coordinates[0], data.coordinates[1])
     }
-
-
-
-
-
-
   }
 
 
