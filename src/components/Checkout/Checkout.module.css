@@ -74,6 +74,8 @@
     border: 1px solid #c8c8ca;
     padding: 10px 10px;
     border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .paymentpic {
@@ -89,4 +91,8 @@
     font-size: 18px;
     font-weight: 700;
     color: white;
+}
+
+.paymentbutton:hover {
+    background: #e6322c;
 }

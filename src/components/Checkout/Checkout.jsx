@@ -28,11 +28,22 @@ import hygie6 from "../../assets/hygie6.svg";
 import hygie7 from "../../assets/hygie7.svg";
 import hygie8 from "../../assets/hygie8.svg";
 import hygie9 from "../../assets/hygie9.svg";
+import SSL from '../Homepage/SSL/SSL';
+import TrustedSuppliers from '../Homepage/TrustedSuppliers/TrustedSuppliers';
+
+import aboveCopyright1 from "../../assets/aboveCopyright1.svg";
+import aboveCopyright2 from "../../assets/aboveCopyright2.svg";
+import aboveCopyright3 from "../../assets/aboveCopyright3.svg";
+import aboveCopyright4 from "../../assets/aboveCopyright4.svg";
+import aboveCopyright5 from "../../assets/aboveCopyright5.svg";
+import aboveCopyright6 from "../../assets/aboveCopyright6.svg";
+import aboveCopyright7 from "../../assets/aboveCopyright7.svg";
+import aboveCopyright8 from "../../assets/aboveCopyright8.svg";
 
 const Checkout = () => {
     const [products, setProducts] = useState([
-        { name: "Wedding video", price: 85.65 },
-        { name: "Wedding video", price: 85.65 },
+        { name: "Blue handbag", price: 85.65, pic: "https://hporx-backend.herokuapp.com/uploads//2022-05-31T13-47-35.714Z-women-1.png" },
+        { name: "Light peach handbag", price: 85.65, pic: "https://hporx-backend.herokuapp.com/uploads//2022-05-31T13-47-46.562Z-women-2.png" },
 
     ]);
     const followUsImgs = [
@@ -56,6 +67,22 @@ const Checkout = () => {
         { img: hygie8, title: "Spain" },
         { img: hygie9, title: "Dubai" },
     ];
+    const styleshr = {
+        margin: "1rem 2rem",
+        border: "none",
+        borderTop: "1px solid rgba(0, 0, 0, 0.1)",
+        padding: " 0 2rem",
+    };
+    const aboveCopyrightImgs = [
+        aboveCopyright1,
+        aboveCopyright2,
+        aboveCopyright3,
+        aboveCopyright6,
+        aboveCopyright4,
+        aboveCopyright5,
+        aboveCopyright7,
+        aboveCopyright8,
+    ];
 
     return (
         <>
@@ -74,7 +101,7 @@ const Checkout = () => {
                                 return (
                                     <div className={`row mb-2 border-bottom py-4 px-4 ${styles.productWrapper}`}>
                                         <div className='col-md-1'>
-                                            <img className={styles.productimg} src="http://placekitten.com/50/50" alt="productimg" />
+                                            <img className={styles.productimg} src={product.pic} alt="productimg" />
                                         </div>
                                         <div className='col-md-8 d-flex align-items-center'>
                                             <div className={styles.productname} >
@@ -159,6 +186,9 @@ const Checkout = () => {
                 head1="Hygieia Apothecary"
             />
             <Footer />
+            <SSL />
+            <hr style={styleshr} />
+            <TrustedSuppliers imgs={aboveCopyrightImgs} head="" />
         </>
     )
 }
