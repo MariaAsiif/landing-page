@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import LocaterHeader from '../../../assets/LocaterHeader.svg';
 
-export const StyleHeader=styled.div`
+export const StyleHeader = styled.div`
 
 .select-option{
     transform: translateY(80px);
@@ -20,6 +20,10 @@ export const StyleHeader=styled.div`
     /* padding-top:7.1rem ; */
     font-size:1.6rem ;
     text-align: center ;
+}
+.btn:hover{
+    background: #16A34A;
+    border: .1rem solid #16A34A;
 }
 .search-img{
     height: 2.2rem;
