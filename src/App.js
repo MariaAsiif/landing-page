@@ -8,6 +8,7 @@ import LocatehomePage from "./components/LocaterPage/LocatehomePage";
 import LayerDetail from "./components/LayerDetail/LayerDetail";
 import Stock from "./components/Stock/Stock";
 import Stocks from "./components/Stocks/Stock";
+import Checkout from "./components/Checkout/Checkout";
 function App() {
   const locationFound = localStorage.getItem('saveCurentLocation')
 
@@ -56,6 +57,9 @@ function App() {
           </Route>
           <Route path="/stock">
             <Stocks />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
           </Route>
           <Route path="/locator" component={LocatehomePage} />
           <Route path="/detail/:id" component={LayerDetail} />

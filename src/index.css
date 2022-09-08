@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 *,
@@ -111,8 +108,8 @@ img {
 }
 
 .multi-range-slider .label {
- font-size: 14px;
- font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
 
 }
 
@@ -148,20 +145,20 @@ img {
 
 
 .react-tel-input .form-control {
-    position: relative;
-    font-size: 14px;
-    letter-spacing: .01rem;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-left: 48px;
-    margin-left: 0;
-    background: #FFFFFF;
-    border: 1px solid #CACACA;
-    border-radius: 5px;
-    line-height: 25px;
-    height: 39px !important;
-    width: 300px;
-    outline: none;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 0;
+  background: #FFFFFF;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 39px !important;
+  width: 300px;
+  outline: none;
 }
 
 
