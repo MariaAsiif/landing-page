@@ -5,13 +5,15 @@ import { LocateMainContainer } from './StylesLocate'
 import emptyLocation from "../../assets/emptyLocation.png";
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { RiMessage2Line } from 'react-icons/ri'
-// import Map from "../Homepage/Locate/Map/Map";
+import Map from "../Homepage/Locate/Map/Map";
 import Popup from "./Popup";
 import { useParams } from "react-router-dom";
 import GenericService from "../../services/GenericService";
+import { callPublicApi } from '../../services/CallApi'
+import SingleMap from "../Homepage/Locate/Map/SingleMap";
+// import MapLocation from "../Homepage/Locate/Map/Map";
 function Detail() {
-  const [doctorsData, setdoctorsData] = useState([]);
-  const [allAddresses, setallAddresses] = useState([]);
+  const [doctorsData, setdoctorsData] = useState({});
   const [review, setReview] = useState(false)
   const genericService = new GenericService();
   const serviceId = useParams().id
@@ -29,8 +31,8 @@ function Detail() {
 
 
         }
-        const response = await genericService.post(`http://localhost:5873/locateservices/findServiceById`, payload)
-        console.log("response", response)
+        const response = await callPublicApi(`/locateservices/findServiceById`, "post", payload)
+        setdoctorsData(response.data)
       }
       catch (err) {
 
@@ -66,10 +68,10 @@ function Detail() {
             <Col lg={8} >
               <div className="right_wrapper">
                 <div className="name_wraper">
-                  <h2>React js Pakistan <p> <FaMapMarkerAlt /> New York, city </p> </h2>
+                  <h2>{doctorsData.serviceName} <p> <FaMapMarkerAlt /> {doctorsData.serviceCountry} , {doctorsData.serviceCity}</p> </h2>
                   <p>Bookmark</p>
                 </div>
-                <span className="project">Project manager</span>
+                <span className="project">{doctorsData.Growshop}</span>
 
                 <div className="ranking"   >
                   <h2>Rankings</h2>
@@ -107,17 +109,21 @@ function Detail() {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              {/* <Map locatorData={"locate"} allAddresses={allAddresses} doctorsData={doctorsData} /> */}
-            </Col>
-          </Row>
+          <div style={{ width: '100%', height: '400px' }}>
+
+            <SingleMap locationData={doctorsData.serviceLocation} />
+          </div>
+
         </Container>
+
+
 
         {review && <Popup permission={review} toggle={(value) => setReview(value)} />}
 
       </LocateMainContainer>
+
       <Footer />
+
 
     </>
   );

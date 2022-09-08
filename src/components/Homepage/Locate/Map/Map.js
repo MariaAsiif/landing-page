@@ -298,6 +298,7 @@ const MapLocation = (props) => {
           lng: defualtLocation.defaultlon,
         }}
         zoom={props.zoom}
+        
       >
         <Marker
           title="Location"

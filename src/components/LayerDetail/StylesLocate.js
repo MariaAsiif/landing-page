@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const LocateMainContainer = styled.div`
 margin-top:4rem;
+width:100%;
+height:100%;
 
 .image_wrapper{
   img{
