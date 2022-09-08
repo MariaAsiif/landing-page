@@ -8,6 +8,26 @@ import { FiChevronLeft } from "react-icons/fi";
 
 import styles from "./Checkout.module.css"
 import paypal from "../../assets/paypal.png"
+import FollowUs from '../Homepage/FollowUs/FollowUs';
+
+
+import followUs1 from "../../assets/twitter.svg";
+import followUs2 from "../../assets/facebook.svg";
+import followUs3 from "../../assets/youtube.svg";
+import followUs4 from "../../assets/snapchat.svg";
+import followUs5 from "../../assets/www.svg";
+import followUs6 from "../../assets/messenger.svg";
+import followUs7 from "../../assets/instagram.svg";
+import followUs8 from "../../assets/linkdin.svg";
+import hygie1 from "../../assets/hygie1.svg";
+import hygie2 from "../../assets/hygie2.svg";
+import hygie3 from "../../assets/hygie3.svg";
+import hygie4 from "../../assets/hygie4.svg";
+import hygie5 from "../../assets/hygie5.svg";
+import hygie6 from "../../assets/hygie6.svg";
+import hygie7 from "../../assets/hygie7.svg";
+import hygie8 from "../../assets/hygie8.svg";
+import hygie9 from "../../assets/hygie9.svg";
 
 const Checkout = () => {
     const [products, setProducts] = useState([
@@ -15,6 +35,27 @@ const Checkout = () => {
         { name: "Wedding video", price: 85.65 },
 
     ]);
+    const followUsImgs = [
+        { img: followUs1, title: "Twitter" },
+        { img: followUs2, title: "Facbook" },
+        { img: followUs3, title: "Youtube" },
+        { img: followUs4, title: "TencentQQ" },
+        { img: followUs5, title: "Vkontakte" },
+        { img: followUs6, title: "Messenger" },
+        { img: followUs7, title: "Instagram" },
+        { img: followUs8, title: "LinkedIn" },
+    ];
+    const hygieImgs = [
+        { img: hygie1, title: "Europe" },
+        { img: hygie2, title: "USA" },
+        { img: hygie3, title: "Canada" },
+        { img: hygie4, title: "Qatar" },
+        { img: hygie5, title: "Dubai" },
+        { img: hygie6, title: "Spain" },
+        { img: hygie7, title: "Qatar" },
+        { img: hygie8, title: "Spain" },
+        { img: hygie9, title: "Dubai" },
+    ];
 
     return (
         <>
@@ -87,7 +128,7 @@ const Checkout = () => {
 
                         </div>
                     </div>
-                    <div className='col-md-4 border'>
+                    <div className='col-md-4'>
                         <div className='row gy-5'>
                             <div className='col-12 '>
                                 <div className={styles.infoWrapper}>
@@ -111,6 +152,12 @@ const Checkout = () => {
                     </div>
                 </div>
             </div>
+            <FollowUs
+                imgs={followUsImgs}
+                head="Follow Us"
+                imgs1={hygieImgs}
+                head1="Hygieia Apothecary"
+            />
             <Footer />
         </>
     )
