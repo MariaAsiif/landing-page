@@ -138,7 +138,7 @@ const Checkout = () => {
                             <div className={`row mb-2 border-bottom py-4 px-4 ${styles.productWrapper}`}>
                                 <div className='col-md-8 d-flex align-items-center'>
                                     <div >
-                                        <button className={styles.continuShopping}><FiChevronLeft size={21} />Continue Shopping</button>
+                                        <a href="https://landing-page-ivory-eta.vercel.app/madeinyeh" className={styles.continuShopping}><FiChevronLeft size={21} />Continue Shopping</a>
                                     </div>
                                 </div>
                                 <div className='col-md-2 d-flex align-items-center  '>

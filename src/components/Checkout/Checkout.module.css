@@ -46,6 +46,11 @@
     border-radius: 3px;
     font-weight: 600;
     color: #666770;
+    text-decoration: none;
+}
+
+.continuShopping:hover {
+    color: #e4390f;
 }
 
 .producttotaltext,
