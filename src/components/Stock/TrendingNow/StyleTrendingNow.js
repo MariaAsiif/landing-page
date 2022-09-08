@@ -176,9 +176,14 @@ gap:15.23px
   }
 
   .catagoey_list{
+    border-bottom:1pt solid gray;
     h3{
       font-size:20px;
       text
+    }
+    .category{
+      border-bottom:1pt solid gray;
+      margin-bottom:20px;
     }
     .list_data{
       display:flex;
@@ -190,12 +195,35 @@ gap:15.23px
         
       }
       span{
-        font-size:18px;
+        font-size:14px;
       }
     }
+
+    .location{
+      select{
+        height:40px;
+        font-size:14px;
+      }
+
+      h2{
+        text-transform:uppercase;
+        font-size:18px;
+        font-weight:bold;
+      }
+
+      h3{
+        margin-top:30px;
+        font-size:15px;
+        font-weight:bold;
+      }
+    }
+
+
+
     
   }
 `;
 export const TrendingNowSlick = styled.div`
   margin-top: 4rem;
 `;
+
