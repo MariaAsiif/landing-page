@@ -67,6 +67,8 @@ const Quote = ({ value }) => {
               />
             )}
           </div>
+
+          
           {/* <QuotationContainer>
             <div className={newClass ? "quote-open" : "quote-close"}>
               <Quotation sendValue={getValue} />
