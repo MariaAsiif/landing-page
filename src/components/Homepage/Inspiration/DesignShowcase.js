@@ -61,7 +61,7 @@ function DesignShowcase() {
                         lastModifiedBy: "_id email first_name"
                     }
                 }
-                    const response = await axios.post("https://hporxadminbackend.herokuapp.com//quotes/getQuotesWithFullDetails", payload
+                    const response = await axios.post("https://hporxadminbackend.herokuapp.com/quotes/getQuotesWithFullDetails", payload
                   
                     )
                     console.log("res", response)
