@@ -11,8 +11,6 @@ import axios from 'axios'
 import { HOSTNAME } from '../../../services/CallApi';
 import ServicePopup from './ServicePopup';
 const Inputs = (props) => {
-  console.log('inputs page calledd')
-  console.log(props)
   const genericService = new GenerecService();
   const [loading, setloading] = useState(false)
   const [countries, setcountries] = useState([])
@@ -73,7 +71,10 @@ const Inputs = (props) => {
     minDistances,
     maxDistances
   })
-  const [location, setlocation] = useState({})
+  const [location, setlocation] = useState({
+    lng: null,
+    lat: null,
+  })
 
   const [locationData, setLocationData] = useState([])
 
@@ -116,9 +117,8 @@ const Inputs = (props) => {
         }
         const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
         setloading(false)
-        console.log(response);
         setLocationData(response.data.services)
-        props.getlocations(response.data.services)
+        // props.getlocations(response.data.services)
 
       } catch (error) {
         setloading(false)
@@ -135,6 +135,7 @@ const Inputs = (props) => {
 
 
   const getServicesData = async (lat, lng) => {
+    console.log("getServicesData called");
     try {
       const payload = {
         query: {
@@ -244,28 +245,28 @@ const Inputs = (props) => {
         }
       }
       const response = await genericService.post(`https://hporxadminbackend.herokuapp.com/locateservices/locateAllServices`, payload)
-
-      console.log(response);
+      console.log("response", response);
       setLocationData(response.data.services)
-      props.getlocations(response.data.services)
+      // props.getlocations(response.data.services)
     } catch (error) {
 
       console.log(error);
     }
   }
 
-  let findCountry = countries.find((country, i) => country.isoCode === formData.serviceCountry)
+
 
 
   const handleSubmit = async () => {
     // getServicesData(38.3628000, -4.6806000)
     //debugger
+
     try {
       const payload = {
         "query": {
           "critarion": {},
           "categories": [formData.categories],
-          "serviceCountry": [findCountry.name],
+          "serviceCountry": [countries.find((country, i) => country.isoCode === formData.serviceCountry).name],
           "serviceCity": [formData.serviceCity],
           "individualServiceProvider": "_id email title",
           "businessServiceProvider": "_id email businessName"
@@ -283,9 +284,8 @@ const Inputs = (props) => {
       }
       const response = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
       setloading(false)
-      console.log(response);
       setLocationData(response.data.services)
-      props.getlocations(response.data.services)
+      // props.getlocations(response.data.services)
 
     } catch (error) {
       setloading(false)
@@ -312,7 +312,6 @@ const Inputs = (props) => {
 
 
   const handleState = (e) => {
-    debugger
     let { name, value } = e.target
     const updatedCities = City.getCitiesOfState(formData.serviceCountry, value)
     setformData((prevmodel) => ({
@@ -333,6 +332,7 @@ const Inputs = (props) => {
         // console.log("contry" , get_countris)
         // const CurrentStates = State.getStatesOfCountry(currentCountryCode)
         // const CurrentCities = City.getCitiesOfState(currentCountryCode, CurrentStates[0].isoCode)
+        console.log("input useEffect");
         getServicesData(38.3628000, -4.6806000)
         setcountries(get_countris)
         // setcities(CurrentCities)
@@ -345,35 +345,35 @@ const Inputs = (props) => {
   }, [])
 
 
-  // useEffect(() => {
+  useEffect(() => {
 
 
-  //   (async () => {
-  //     try {
-  //       if (navigator.geolocation) {
-  //         navigator.geolocation.getCurrentPosition(
-  //           function (position) {
-  //             console.log(position.coords);
-  //             setlocation({
-  //               lng: position.coords.longitude,
-  //               lat: position.coords.latitude,
-  //             })
-  //           },
-  //           function (error) {
-  //             console.error("Error Code = " + error.code + " - " + error.message);
-  //           }
-  //         );
-  //       }
-  //       const response = await genericService.get(`${API_URL}getAddresses`)
-  //       getServicesData(38.3628000, -4.6806000)
-  //       console.log(response);
-  //       setcountries(response.finalData.country)
-  //       setcities(response.finalData.city)
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, [])
+    (async () => {
+      try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              console.log(position.coords);
+              setlocation({
+                lng: position.coords.longitude,
+                lat: position.coords.latitude,
+              })
+            },
+            function (error) {
+              console.error("Error Code = " + error.code + " - " + error.message);
+            }
+          );
+        }
+        // const response = await genericService.get(`${API_URL}getAddresses`)
+        // getServicesData(38.3628000, -4.6806000)
+        // console.log(response);
+        // setcountries(response.finalData.country)
+        // setcities(response.finalData.city)
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [])
 
 
   let changeState = formData.serviceCity && formData.categories && formData.serviceCountry.length > 0
@@ -438,7 +438,7 @@ const Inputs = (props) => {
           </Row>
         </Container>
 
-        <MapLocation default={defultValue} locationData={locationData} />
+        <MapLocation default={defultValue} locationData={locationData} latlng={location} />
 
       </StyleHeader>
 

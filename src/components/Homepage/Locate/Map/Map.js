@@ -12,7 +12,6 @@ const MapLocation = (props) => {
 
   const { locationData } = props
 
-  console.log("locationData", locationData)
 
   let doctors = []
   let lawyers = []
@@ -29,7 +28,6 @@ const MapLocation = (props) => {
   let n = 1
   locationData &&
     locationData.map((service) => {
-      console.log("service", service)
       if (service.category == "Doctors") {
         let obj = {
           id: n,
@@ -225,7 +223,6 @@ const MapLocation = (props) => {
 
 
   const getCurrentPosition = () => {
-    console.log("getCurrentPosition in map called")
     if (navigator.geolocation) {
       return new Promise((resolve, reject) =>
         navigator.geolocation.getCurrentPosition(resolve, reject)
@@ -236,11 +233,8 @@ const MapLocation = (props) => {
   } //end getCurrentPosition
 
   useEffect(() => {
-    console.log('use effect in location picker map called')
     getCurrentPosition()
       .then((position) => {
-        console.log("Position in map then")
-        console.log(position)
         setDefualtLocation({
           defaultlat: position.coords.latitude,
           defaultlon: position.coords.longitude
@@ -262,13 +256,11 @@ const MapLocation = (props) => {
       })
 
     return () => {
-      console.log('component will unmount')
     }
   }, [])
 
 
   const handleMarkerClick = (props, marker, e) => {
-    console.log("handleMarkerClick")
     let institute = {
       name: props.name,
       address: props.address
@@ -285,8 +277,6 @@ const MapLocation = (props) => {
 
 
 
-
-  console.log("props", props)
   return (
     <div className='map' style={{ position: 'relative' }}>
 
@@ -298,7 +288,7 @@ const MapLocation = (props) => {
           lng: defualtLocation.defaultlon,
         }}
         zoom={props.zoom}
-        
+
       >
         <Marker
           title="Location"
