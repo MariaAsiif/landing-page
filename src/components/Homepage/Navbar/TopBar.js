@@ -65,7 +65,7 @@ const TopBar = ({ setShow }) => {
               <Nav.Link href="#" className="topbar-nav-icon">
                 <img className="img-fluid" src={warningIcon} alt="accessibility " />
               </Nav.Link>
-              <Nav.Link href="#" className="topbar-nav-icon"  >
+              <Nav.Link href="/checkout" className="topbar-nav-icon"  >
                 <img className="img-fluid" src={cart} alt="featherMenu" />
               </Nav.Link>
               <Nav.Link href="#" className="topbar-nav-icon">
