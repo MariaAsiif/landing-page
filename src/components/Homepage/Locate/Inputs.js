@@ -19,7 +19,7 @@ const Inputs = (props) => {
   const [states, setstates] = useState([])
   const [cities, setcities] = useState([])
   const [services, setservices] = useState([
-    { value: "doctor", label: "Doctors" },
+    { value: "Doctors", label: "Doctors" },
     { value: "Lawyer And Medical Marijuana - Cannabis Specialist", label: "Lawyer And Medical Marijuana - Cannabis Specialist" },
     { value: "Associations & Clubs", label: "Associations & Clubs" },
     { value: "Seeds Bank", label: "Seeds Bank" },
