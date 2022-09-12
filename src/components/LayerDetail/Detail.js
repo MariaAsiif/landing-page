@@ -5,7 +5,7 @@ import { LocateMainContainer } from './StylesLocate'
 import emptyLocation from "../../assets/emptyLocation.png";
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { RiMessage2Line } from 'react-icons/ri'
-import Map from "../Homepage/Locate/Map/Map";
+import Map from "../Homepage/Locate/Map/GoogleMap";
 import Popup from "./Popup";
 import { useParams } from "react-router-dom";
 import GenericService from "../../services/GenericService";
