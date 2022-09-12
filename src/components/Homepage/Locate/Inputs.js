@@ -6,6 +6,13 @@ import GenerecService from "../../../services/GenericService";
 import { API_URL } from "../../../services/config";
 import { HOSTNAME } from '../../../services/CallApi';
 import ServicePopup from './ServicePopup';
+import { Row, Col, Card, Placeholder, Container } from "react-bootstrap";
+import emptyLocation from "../../../assets/emptyLocation.png";
+import Flag1 from "../../../assets/Flag1.svg";
+import Star1 from "../../../assets/Star1.svg";
+import Like from "../../../assets/Like.svg";
+import styles from "./Inputs.module.css"
+import { Link } from "react-router-dom";
 
 const Inputs = () => {
   const genericService = new GenerecService();
@@ -275,7 +282,7 @@ const Inputs = () => {
 
 
       </div>
-      <div className='container-fluid'>
+      <div className='container-fluid mb-4'>
         <GoogleMap
           location={{ latitude: locationModel.latitude, longitude: locationModel.longitude }}
           onMoveMarker={handleMoveMarker}
@@ -283,6 +290,45 @@ const Inputs = () => {
 
         />
       </div>
+      <div className='container'>
+        <div className='row'>
+          {serviceData.map((service) => {
+            return (
+              <div ke={service._id} className='col-lg-3'>
+                <Card className={styles.cards}>
+                  <div className={styles.locator_person_image_container} >
+                    <img src={emptyLocation} className={styles.img_section} alt="img" />
+                  </div>
+                  <div className={styles.card_data}>
+                    <h6>{service.serviceName}</h6>
+                    {/* <p className={styles.para}>this is address</p> */}
+                    <div className={`d-flex pt-1 ${styles.text1}`}>
+                      <div>
+                        <img src={Flag1} className={styles.icon} alt="icon" />
+                        <span className={styles.country_name_text}>{service.serviceCountry}</span>
+                      </div>
+                      <div>
+                        <img src={Star1} className={styles.icon} alt="icon" />
+                        <span className={styles.icon_text}>0.0</span>
+                      </div>
+                      <div>
+                        <img src={Like} className={styles.icon} alt="icon" />
+                        <span className={styles.icon_text}>Likes 0</span>
+                      </div>
+                    </div>
+                    <div>
+                      <Link to={`/detail/${service._id}`} >
+                        <input type="submit" className={styles.locator_card_bt} name="See Details" value="See Details" />
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
     </>
 
   )
