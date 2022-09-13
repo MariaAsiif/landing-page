@@ -57,7 +57,7 @@ const GoogleMap = (props) => {
   }, [props.data, props.location])
   return (
     <div className='map' style={{ position: 'relative' }}>
-      <Map onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={5}   >
+      <Map onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
         <Marker
           title="Location"
           name={"locationpicker"}

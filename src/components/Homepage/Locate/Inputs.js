@@ -150,112 +150,49 @@ const Inputs = () => {
     try {
       let { name, value } = e.target
       let updatedCities = []
-      let cityName = ""
+
       if (name === "country") {
         const updatedStates = State.getStatesOfCountry(value)
         const stateCode = updatedStates.length > 0 ? updatedStates[0].isoCode : ""
         updatedCities = City.getCitiesOfState(value, stateCode)
-        cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+        const countryInfo = allCountries.find((country) => country.isoCode === value)
         setallStates(updatedStates)
         setallCities(updatedCities)
         setlocationModel((prevmodel) => ({
           ...prevmodel,
           [name]: value,
-          state: stateCode,
-          city: cityName
+          latitude: countryInfo.latitude,
+          longitude: countryInfo.longitude,
         }))
-        const payload = {
-          "query": {
-            "critarion": {},
-            "categories": [locationModel.services],
-            "serviceCountry": [allCountries.find((country, i) => country.isoCode === value).name],
-            "serviceCity": [cityName],
-            "individualServiceProvider": "_id email title",
-            "businessServiceProvider": "_id email businessName"
-          },
-          "sortproperty": "serviceName",
-          "sortorder": 1,
-          "minDistance": parseInt(locationModel.minDistances),
-          "maxDistance": parseInt(locationModel.maxDistances),
-          "offset": 0,
-          "limit": 100,
-          "location": {
-            "lng": [locationModel.longitude],
-            "lat": [locationModel.latitude]
-          }
-        }
-        const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
-        // console.log("serviceResponse", serviceResponse);
 
-        setserviceData(serviceResponse.data.services)
       }
       else if (name === "state") {
         updatedCities = City.getCitiesOfState(locationModel.country, value)
-        cityName = updatedCities.length > 0 ? updatedCities[0].name : ""
+        const stateInfo = allStates.find((state) => state.isoCode === value)
         setallCities(updatedCities)
         setlocationModel((prevmodel) => ({
           ...prevmodel,
           [name]: value,
-          city: cityName
+          latitude: stateInfo.latitude,
+          longitude: stateInfo.longitude,
         }))
-        const payload = {
-          "query": {
-            "critarion": {},
-            "categories": [locationModel.services],
-            "serviceCountry": [allCountries.find((country, i) => country.isoCode === locationModel.country).name],
-            "serviceCity": [cityName],
-            "individualServiceProvider": "_id email title",
-            "businessServiceProvider": "_id email businessName"
-          },
-          "sortproperty": "serviceName",
-          "sortorder": 1,
-          "minDistance": parseInt(locationModel.minDistances),
-          "maxDistance": parseInt(locationModel.maxDistances),
-          "offset": 0,
-          "limit": 100,
-          "location": {
-            "lng": [locationModel.longitude],
-            "lat": [locationModel.latitude]
-          }
-        }
 
-
-        const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
-        // console.log("serviceResponse", serviceResponse);
-
-        setserviceData(serviceResponse.data.services)
       }
-      else {
+      else if (name === "city") {
+        const cityInfo = allCities.find((city) => city.name === value)
+
+        setlocationModel((prevmodel) => ({
+          ...prevmodel,
+          [name]: value,
+          latitude: cityInfo.latitude,
+          longitude: cityInfo.longitude,
+        }))
+
+      } else {
         setlocationModel((prevmodel) => ({
           ...prevmodel,
           [name]: value
         }))
-        const payload = {
-          "query": {
-            "critarion": {},
-            "categories": name === "services" ? [value] : [locationModel.services],
-            "serviceCountry": [allCountries.find((country, i) => country.isoCode === locationModel.country).name],
-            "serviceCity": name === "city" ? [value] : [locationModel.city],
-            "individualServiceProvider": "_id email title",
-            "businessServiceProvider": "_id email businessName"
-          },
-          "sortproperty": "serviceName",
-          "sortorder": 1,
-          "minDistance": name === "minDistances" ? parseInt(value) : parseInt(locationModel.minDistances),
-          "maxDistance": name === "minDistances" ? parseInt(value) : parseInt(locationModel.maxDistances),
-          "offset": 0,
-          "limit": 100,
-          "location": {
-            "lng": [locationModel.longitude],
-            "lat": [locationModel.latitude]
-          }
-        }
-
-
-        const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
-        // console.log("serviceResponse", serviceResponse);
-
-        setserviceData(serviceResponse.data.services)
       }
 
     } catch (error) {
@@ -303,8 +240,8 @@ const Inputs = () => {
         setlocationModel((prevmodel) => ({
           ...prevmodel,
           country: currentCountryCode,
-          state: CurrentStates.length > 0 ? CurrentStates[0].isoCode : "",
-          city: CurrentCities.length > 0 ? CurrentCities[0].name : "",
+          state: "",
+          city: "",
           latitude: latitude,
           longitude: longitude,
         }))
