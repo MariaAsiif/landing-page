@@ -44,7 +44,7 @@ const Inputs = () => {
     { value: "Growshop", label: "Growshop" },
     { value: "Manufacturer", label: "Manufacturer" },
     { value: "lawyer", label: "lawyer" },
-    { value: "Agriculturalist", label: "Agriculturalist" }
+    { value: "Agriculturalist", label: "Agriculturalist" },
     { value: "Horticulturist", label: "Horticulturist" },
     { value: "Herbalist", label: "Herbalist" },
     { value: "Vender", label: "Vender" },
