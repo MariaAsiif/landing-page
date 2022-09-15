@@ -89,11 +89,13 @@ function ViewedToday({ heading , section }) {
         {/* <ViewTodaySlick></ViewTodaySlick> */}
         <Slider {...settings} className="viewToday-slick">
           {!stateIsLoading &&
-            viewTodayImgs.map((item, index) => (
+            viewTodayImgs && viewTodayImgs.length > 0 ? viewTodayImgs.map((item, index) => (
               <div key={index} className="view-today">
                 <AdCard img={item.productImage} />
               </div>
-            ))}
+            ))
+            : null 
+          }
         </Slider>
       </div>
     </ViewTodayStyle>

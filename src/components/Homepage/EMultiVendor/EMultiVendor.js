@@ -72,7 +72,7 @@ const EMultiVendor = () => {
     }
   );
 
-console.log("Data EM" , productData)
+
   return (
     <EVendorMain>
       <Container>
@@ -83,7 +83,7 @@ console.log("Data EM" , productData)
         <p>WHERE MERCHANTS MEET BUYERS</p>
         {stateIsLoading && <h1>Loading...</h1>}
         <Slider {...settings} className="EVendor-slick">
-          {!stateIsLoading && productData.map((item, index) => {
+          {!stateIsLoading && productData && productData.map((item, index) => {
             return (
               <CustomCard
                 img={item.productImage}
