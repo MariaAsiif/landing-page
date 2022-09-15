@@ -104,6 +104,16 @@ function Header() {
   };
 
 
+  const handleIndex = (index) => {
+    if(index === active){
+      setActive('')
+    }
+    else{
+      setActive(index)
+    }
+  }
+
+
 
 
 
@@ -117,7 +127,7 @@ function Header() {
           <div className="list_data">
             <ul >
               {manus.map((manu, index) => (
-                <li onClick={() => setActive(index)}>
+                <li onClick={() => handleIndex(index)}>
                   {manu}
                   {active === index ?
                     <IoMdArrowDropup className="icons" />
