@@ -1,19 +1,54 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
+import { Accordion, Container } from 'react-bootstrap'
 import belowprofit from '../../../assets/belowGrowProfit.png'
 import { BelowGrowProfitMainContainer, BelowGrowProfitImg, BelowGrowProfitImgContainer } from './StyledBelowProfit'
 import playButton from "../../../assets/play-outline-button.svg";
 import BelowEditIQ from '../../DesignIQ/BelowEditIQ/BelowEditIQ';
-const BelowGrowProfit = ({id}) => {
+import { useState } from 'react';
+import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
+
+const BelowGrowProfit = ({ id }) => {
+
+  const [active, setActive] = useState('');
+
+
+  const activeCollapes = (index) => {
+    if (index === active) {
+      setActive('')
+    }
+    else {
+      setActive(index)
+
+    }
+  }
+
   return (
     <BelowGrowProfitMainContainer id={id}>
-      <Container>
-        <h2>Controlled Environment Agriculture Manufacturers</h2>
-      </Container>
-            <BelowGrowProfitImgContainer>
 
-      <BelowEditIQ/>
-      </BelowGrowProfitImgContainer>
+      <Accordion defaultActiveKey="0">
+        <Accordion.Item onClick={() => activeCollapes(0)}>
+          <Accordion.Header>
+            Controlled Environment Agriculture Manufacturers
+            {
+              active === 0 ?
+                <AiOutlineMinus style={{ fontSize: '25px', marginTop: '10px', float: 'right' }} />
+                :
+                <AiOutlinePlus style={{ fontSize: '25px', marginTop: '10px', float: 'right' }} />
+            }
+          </Accordion.Header>
+          <Accordion.Body>
+              <BelowEditIQ />
+
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+      {/* <Container>
+        <h2></h2>
+      </Container> */}
+      {/* <BelowGrowProfitImgContainer>
+
+        <BelowEditIQ />
+      </BelowGrowProfitImgContainer> */}
       {/* <BelowGrowProfitImgContainer>
         <div className="inner-overlay">
           <div className="inner-overlay-content">
