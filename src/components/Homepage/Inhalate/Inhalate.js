@@ -34,13 +34,13 @@ const Inhalate = ({ id }) => {
         <InhalateTextContainer>
 
           <Accordion defaultActiveKey="0">
-            <Accordion.Item  onClick={() => activeCollapes(0)}>
+            <Accordion.Item onClick={() => activeCollapes(0)}>
               <Accordion.Header>Inhalate
                 {
                   active === 0 ?
-                    <AiOutlinePlus style={{ fontSize: '25px', marginTop: '10px', float: 'right' }} />
-                    :
                     <AiOutlineMinus style={{ fontSize: '25px', marginTop: '10px', float: 'right' }} />
+                    :
+                    <AiOutlinePlus style={{ fontSize: '25px', marginTop: '10px', float: 'right' }} />
                 }
               </Accordion.Header>
               <Accordion.Body>
