@@ -322,7 +322,7 @@ const Inputs = () => {
             <button
               disabled={(locationModel.country && locationModel.state && locationModel.city && locationModel.services && locationModel.minDistances && locationModel.maxDistances) ? false : true}
               onClick={getdata} style={{ width: "45%", fontSize: 16, fontWeight: "600" }} className='btn btn-danger h-100'>Search</button>
-            <button onClick={() => setservicePopup(true)} style={{ fontSize: 16, marginLeft:'10px', fontWeight: "600" }} className='btn btn-danger h-100'>Add Service</button>
+            <button onClick={() => setservicePopup(true)} style={{ fontSize: 16, marginLeft:'20px', fontWeight: "600" }} className='btn btn-danger h-100'>Add Service</button>
           </div>
 
         </div>
