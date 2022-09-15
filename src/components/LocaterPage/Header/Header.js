@@ -21,6 +21,8 @@ import Footer from "../../Homepage/Footer/Footer";
 import Inputs from "../../Homepage/Locate/Inputs";
 import { LocateMainContainer } from './StylesLocate'
 import { Link } from "react-router-dom";
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io'
+import { MdArrowDropUp } from 'react-icons/md'
 // import { PrimaryHeading } from '../../Globals/Globals'
 // import ReactCountryFlag from 'react-country-flag';
 // const validate = Yup.object({
@@ -42,6 +44,9 @@ function Header() {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [allLocations, setallLocations] = useState([])
+
+  const [manus] = useState(['HOW', 'YOUR LOCATION', 'YOUR SEARCH', 'YOUR SAFETY', 'YOUR EXPERIENCE'])
+  const [active, setActive] = useState(0)
 
 
   useEffect(() => {
@@ -99,16 +104,42 @@ function Header() {
   };
 
 
+
+
+
   return (
     <>
 
       <LocateMainContainer id={"LOCATE"}>
         <Container>
           <h2>LOCATE</h2>
-          <h3>DOCTORS, ASSOCIATIONS, CANNABIS CLUBS, CAFES, DISPENSARIES AND LAWYERS</h3>
-          <p>
-            Welcome, the above-listed professionals and services can be found using our mapping locator function. The service is provided to all clients and visitors at no charge. However, we request your feedback and use of the service to assess the quality of the assistance you encountered from any of those using the locator. That information will be shared with your peers seeking a similar experience if satisfactory or avoid any establishment that doesn't afford them excellent treatment or a high-quality product, goods, or service. The search function is powered by Google Maps technologies, it will direct you to any of the stated services available nearest your hotel, if traveling, or your current in-country location.
-          </p>
+          <h3>DOCTORS,DISPENSARIES,GRWO SHOPS,MMJ ASSOCIATIONS,CLUBS CAFES, AND LAWYERS</h3>
+          <div className="list_data">
+            <ul >
+              {manus.map((manu, index) => (
+                <li onClick={() => setActive(index)}>
+                  {manu}
+                  {active === index ?
+                    <IoMdArrowDropup />
+                    :
+                    <IoMdArrowDropdown />
+                  }
+                </li>
+
+              ))}
+            </ul>
+
+          </div>
+          {active === 0 ?
+            <p >
+              Welcome, the above-listed professionals and services can be found using our mapping locator function. The service is provided to all clients and visitors at no charge. However, we request your feedback and use of the service to assess the quality of the assistance you encountered from any of those using the locator. That information will be shared with your peers seeking a similar experience if satisfactory or avoid any establishment that doesn't afford them excellent treatment or a high-quality product, goods, or service. The search function is powered by Google Maps technologies, it will direct you to any of the stated services available nearest your hotel, if traveling, or your current in-country location.
+            </p>
+            :
+            <p >
+              lorem data is herer
+            </p>
+          }
+
         </Container>
         <Inputs />
       </LocateMainContainer>

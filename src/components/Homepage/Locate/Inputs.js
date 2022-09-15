@@ -19,6 +19,7 @@ const Inputs = () => {
   const [allCountries, setallCountries] = useState([])
   const [allStates, setallStates] = useState([])
   const [allCities, setallCities] = useState([])
+  const [cityName, setCityName] = useState('')
   const [locationModel, setlocationModel] = useState({
     country: "AF",
     state: "BDS",
@@ -164,8 +165,6 @@ const Inputs = () => {
           latitude: countryInfo.latitude,
           longitude: countryInfo.longitude,
         }))
-<<<<<<< Updated upstream
-=======
         const payload = {
           "query": {
             "critarion": {},
@@ -188,7 +187,6 @@ const Inputs = () => {
         }
         const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
         console.log("serviceResponse", serviceResponse);
->>>>>>> Stashed changes
 
       }
       else if (name === "state") {

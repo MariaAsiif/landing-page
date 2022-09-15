@@ -4,6 +4,26 @@ import { ViewMoreBtn } from "../../Globals/Globals";
 export const LocateMainContainer = styled.div`
 text-align: center;
 margin-top:4rem;
+
+
+.list_data{
+  margin-top:20px;
+  cursor:pointer;
+  ul{
+    display:flex;
+    list-style:none;
+
+    li{
+      width:50%;
+      font-size:20px;
+      border:1pt solid ;
+      margin-left:10px;
+      background-color:red;
+      color:white;
+    }
+  }
+}
+
 h2{
   font-size: 4rem;
 }
@@ -31,7 +51,7 @@ line-height: 2.4rem;
 letter-spacing: 0em;
 color: #828282;
 opacity: 0.8;
-padding: 0 5rem;
+padding-left:28px;
 
 }
 .map{
