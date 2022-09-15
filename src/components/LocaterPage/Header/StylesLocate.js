@@ -9,17 +9,26 @@ margin-top:4rem;
 .list_data{
   margin-top:20px;
   cursor:pointer;
+  margin-bottom:20px;
+  margin-left:-10px;
   ul{
     display:flex;
     list-style:none;
+    padding:0px;
+    margin:0px;
 
     li{
       width:50%;
       font-size:20px;
       border:1pt solid ;
       margin-left:10px;
-      background-color:red;
+      background-color:#DC3545;
+      border-radius:5px;
       color:white;
+
+      .icons{
+        font-size:20px;
+      }
     }
   }
 }
