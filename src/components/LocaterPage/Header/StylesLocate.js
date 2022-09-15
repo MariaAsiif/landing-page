@@ -57,6 +57,7 @@ font-size: 1.8rem;
 font-style: normal;
 font-weight: 400;
 line-height: 2.4rem;
+text-align:justify;
 letter-spacing: 0em;
 color: #828282;
 opacity: 0.8;
