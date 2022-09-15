@@ -60,7 +60,6 @@ line-height: 2.4rem;
 letter-spacing: 0em;
 color: #828282;
 opacity: 0.8;
-padding-left:28px;
 
 }
 .map{
