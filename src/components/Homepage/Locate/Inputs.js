@@ -164,6 +164,31 @@ const Inputs = () => {
           latitude: countryInfo.latitude,
           longitude: countryInfo.longitude,
         }))
+<<<<<<< Updated upstream
+=======
+        const payload = {
+          "query": {
+            "critarion": {},
+            "categories": [locationModel.services],
+            "serviceCountry": [allCountries.find((country, i) => country.isoCode === value).name],
+            "serviceCity": [cityName],
+            "individualServiceProvider": "_id email title",
+            "businessServiceProvider": "_id email businessName"
+          },
+          "sortproperty": "serviceName",
+          "sortorder": 1,
+          "minDistance": parseInt(locationModel.minDistances),
+          "maxDistance": parseInt(locationModel.maxDistances),
+          "offset": 0,
+          "limit": 100,
+          "location": {
+            "lng": [locationModel.longitude],
+            "lat": [locationModel.latitude]
+          }
+        }
+        const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
+        console.log("serviceResponse", serviceResponse);
+>>>>>>> Stashed changes
 
       }
       else if (name === "state") {
@@ -206,7 +231,6 @@ const Inputs = () => {
       try {
         const response = await axios('https://api.ipregistry.co/?key=m7irmmf8ey12rx7o')
         const mainresponse = await genericService.get(`${API_URL}getAddresses`)
-        console.log("mainresponse", mainresponse);
         const currentCountryCode = response.data.location.country.code
         const latitude = response.data.location.latitude
         const longitude = response.data.location.longitude

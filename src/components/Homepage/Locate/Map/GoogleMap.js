@@ -9,6 +9,8 @@ const GoogleMap = (props) => {
   const [markerLocation, setmarkerLocation] = useState({ lat: 0, lng: 0 })
 
 
+  console.log("data props" , props )
+
 
   const moveMarker = (coord, map, t) => {
     const { latLng } = coord;
