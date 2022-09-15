@@ -17,6 +17,10 @@ margin-top:4rem;
     padding:0px;
     margin:0px;
 
+    @media only screen and (max-width: 600px) {
+       display:block;
+    }
+
     li{
       width:50%;
       font-size:20px;
@@ -132,6 +136,6 @@ h6{
     padding: 2rem;
 }
 `
-export const LocateUsButton=styled(ViewMoreBtn)`
+export const LocateUsButton = styled(ViewMoreBtn)`
   margin-top: 15px;
 `
