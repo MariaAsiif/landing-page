@@ -34,7 +34,7 @@ const Inhalate = ({ id }) => {
         <InhalateTextContainer>
 
           <Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0" onClick={() => activeCollapes(0)}>
+            <Accordion.Item  onClick={() => activeCollapes(0)}>
               <Accordion.Header>Inhalate
                 {
                   active === 0 ?
