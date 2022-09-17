@@ -3,9 +3,21 @@ import PlayBtn from "../../Globals/PlayBtn";
 import { ChillumBtn, ChillumImg, ChillumImgContainer } from "./StyledChillums";
 import VideoModal from "../VideoModal/VideoModal";
 import Popup from "../Popup/Popup";
+import ImageZoom from "../ImageZoom/ImageZoom";
 
 const ChillumCard = ({ img }) => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [viewImage, setViewImage] = React.useState('')
+  const [show, setShow] = React.useState(false)
+
+
+  const ViewsImage = (img) => {
+
+    setShow(true)
+    setViewImage(img)
+
+  }
+
 
   const data = localStorage.getItem("ageGateActive");
 
@@ -13,8 +25,14 @@ const ChillumCard = ({ img }) => {
   const openModalContainer = () => {
     setModalShow(true);
   };
+
+
+
+console.log("vewimg" , viewImage)
+
   return (
     <ChillumImgContainer>
+      {show && <ImageZoom permission={show} data={viewImage} toggle={(value) => setShow(value)} />}
       <VideoModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -47,7 +65,7 @@ const ChillumCard = ({ img }) => {
           hendrerit orci malesuada eu.
         </p>
         <p className="price">$450</p>
-        <ChillumBtn>Quick Shop</ChillumBtn>
+        <ChillumBtn onClick={() => ViewsImage(img)}>Quick Shop</ChillumBtn>
       </div>
     </ChillumImgContainer>
   );
