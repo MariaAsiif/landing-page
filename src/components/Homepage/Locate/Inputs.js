@@ -321,8 +321,8 @@ const Inputs = () => {
           <div className='col-lg-2 d-flex align-items-center justify-content-around'>
             <button
               disabled={(locationModel.country && locationModel.state && locationModel.city && locationModel.services && locationModel.minDistances && locationModel.maxDistances) ? false : true}
-              onClick={getdata} style={{ width: "45%", fontSize: '13px', fontWeight: "600",  height:'100%' }} className='btn btn-danger '>Search</button>
-            <button onClick={() => setservicePopup(true)} style={{ fontSize: '13px', marginLeft:'20px', fontWeight: "600" , height:'100%' }} className='btn btn-danger '>Add Service</button>
+              onClick={getdata} style={{ width: "45%", fontSize: '13px', fontWeight: "600", height: '100%' }} className='btn btn-danger '>Search</button>
+            <button onClick={() => setservicePopup(true)} style={{ fontSize: '13px', marginLeft: '20px', fontWeight: "600", height: '100%' }} className='btn btn-danger '>Add Service</button>
           </div>
 
         </div>
