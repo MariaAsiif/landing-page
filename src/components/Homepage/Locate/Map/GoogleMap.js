@@ -4,6 +4,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng, getDetails } from "use-pl
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
+import GooglePlaceSidebar from './GooglePlaceSidebar/GooglePlaceSidebar';
 
 
 
@@ -14,6 +15,8 @@ const GoogleMap = (props) => {
   const [instituteInfo, setInstituteInfo] = useState({})
   const [mapLocation, setmapLocation] = useState({ lat: 0, lng: 0 })
   const [markerLocation, setmarkerLocation] = useState({ lat: 0, lng: 0 })
+  const [showSidebar, setshowSidebar] = useState(false)
+  const [sidebarData, setsidebarData] = useState({})
 
 
   //  -------------------
@@ -28,13 +31,10 @@ const GoogleMap = (props) => {
 
     const { lat, lng } = await getLatLng(results[0])
     console.log(results[0]);
-    // const parameter = {
-
-    //   placeId: "ChIJOwg_06VPwokRYv534QaPC8g",
-    //   // Specify the return data that you want (optional) 
-    // };
-    // const asf = await getDetails(parameter)
-    // console.log(asf);
+    const parameter = { placeId: results[0].place_id, };
+    const placeDetails = await getDetails(parameter)
+    setshowSidebar(true)
+    setsidebarData(placeDetails)
     setmarkerLocation({
       lat, lng
     })
@@ -43,18 +43,6 @@ const GoogleMap = (props) => {
     })
   };
 
-  // const renderSuggestions = () => {
-  //   const suggestions = data.map(({ place_id, description }) => (
-  //     <ComboboxOption key={place_id} value={description} />
-  //   ));
-
-  //   return (
-  //     <>
-  //       {suggestions}
-
-  //     </>
-  //   );
-  // };
 
   const moveMarker = (coord, map, t) => {
     const { latLng } = coord;
@@ -83,6 +71,10 @@ const GoogleMap = (props) => {
     setInstituteInfo(institute)
     setActiveMarker(marker)
     setShowInfoWindow(true)
+
+    console.log("props", props);
+    console.log("marker", marker);
+    console.log("service", service);
   }
 
   const handleClose = () => {
@@ -91,24 +83,25 @@ const GoogleMap = (props) => {
   }
   useEffect(() => {
     setserviceMarkers(props.data)
-    setmapLocation({
-      lat: props.location.latitude,
-      lng: props.location.longitude,
-    })
+
     setmarkerLocation({
-      lat: props.location.latitude,
-      lng: props.location.longitude,
+      lat: props.markerLocation.latitude,
+      lng: props.markerLocation.longitude,
     })
 
-  }, [props.data, props.location])
+    setmapLocation({
+      lat: props.mapLocation.latitude,
+      lng: props.mapLocation.longitude,
+    })
+
+  }, [props.data, props.markerLocation, props.mapLocation])
   return (
     <>
 
       <div className='map' style={{ position: 'relative' }}>
-        <div style={{ position: "absolute", zIndex: 10, top: 52 }}>
-
+        <div style={{ position: "absolute", zIndex: 10, top: 13 }}>
           <Combobox onSelect={handleSelect} aria-labelledby="demo">
-            <ComboboxInput style={{ width: 300, maxWidth: "90%", padding: 10, fontSize: 18, borderRadius: 9 }} value={value} onChange={handleInput} placeholder="Search any place" disabled={!ready} />
+            <ComboboxInput className='custom_ComboboxInput' value={value} onChange={handleInput} placeholder="Search any place" disabled={!ready} />
             <ComboboxPopover>
               <ComboboxList  >
                 {status === "OK" && data.map(({ place_id, description }) => <ComboboxOption key={place_id} value={description} />)}
@@ -116,7 +109,8 @@ const GoogleMap = (props) => {
             </ComboboxPopover>
           </Combobox>
         </div>
-        <Map onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
+        <GooglePlaceSidebar showSidebar={showSidebar} sidebarData={sidebarData} />
+        <Map disableDefaultUI={true} onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
           <Marker
             title="Location"
             name={"locationpicker"}

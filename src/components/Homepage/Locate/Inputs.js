@@ -30,6 +30,8 @@ const Inputs = () => {
     minDistances: "1",
     maxDistances: "100",
   })
+  const [markerLocation, setmarkerLocation] = useState({ latitude: 0, longitude: 0 })
+  const [mapLocation, setmapLocation] = useState({ latitude: 0, longitude: 0 })
   const [services, setservices] = useState([
     { value: "Doctors", label: "Doctors" },
     { value: "Lawyer And Medical Marijuana - Cannabis Specialist", label: "Lawyer And Medical Marijuana - Cannabis Specialist" },
@@ -107,6 +109,8 @@ const Inputs = () => {
         }
       }
 
+
+
       const serviceResponse = await genericService.post(`${HOSTNAME}/locateservices/locateAllServices`, payload)
       setserviceData(serviceResponse.data.services)
     } catch (error) {
@@ -144,6 +148,8 @@ const Inputs = () => {
         longitude: data.lng,
       }))
       setserviceData(serviceResponse.data.services)
+      setmarkerLocation({ latitude: data.lat, longitude: data.lng })
+      setmapLocation({ latitude: data.lat, longitude: data.lng })
     } catch (error) {
       console.log(error);
     }
@@ -169,6 +175,7 @@ const Inputs = () => {
           latitude: countryInfo.latitude,
           longitude: countryInfo.longitude,
         }))
+        setmapLocation({ latitude: countryInfo.latitude, longitude: countryInfo.longitude })
         const payload = {
           "query": {
             "critarion": {},
@@ -271,6 +278,8 @@ const Inputs = () => {
           latitude: latitude,
           longitude: longitude,
         }))
+        setmarkerLocation({ latitude, longitude })
+        setmapLocation({ latitude, longitude })
         setserviceData(serviceResponse.data.services)
       } catch (error) {
         console.log(error);
@@ -331,7 +340,8 @@ const Inputs = () => {
       </div>
       <div className='container-fluid mb-4'>
         <GoogleMap
-          location={{ latitude: locationModel.latitude, longitude: locationModel.longitude }}
+          markerLocation={markerLocation}
+          mapLocation={mapLocation}
           onMoveMarker={handleMoveMarker}
           data={serviceData}
 
