@@ -70,6 +70,7 @@ import DesignShowcase from "./Inspiration/DesignShowcase";
 import { RiMessage2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Feedback from "../Feedback/FeedBack";
+import Popup from "./ageDate/Popup";
 
 export const VolumeContext = createContext();
 const styles = {
@@ -149,6 +150,7 @@ const Homepage = () => {
   ];
   return (
     <>
+    <Popup/>
       <VolumeContext.Provider value={handleVolume}>
         <Header id="HOME" value={volumeValue} />
       </VolumeContext.Provider>

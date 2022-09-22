@@ -5,7 +5,9 @@ const GooglePlaceSidebar = (props) => {
 
 
     return (
-        <div className={`${styles.sidebarWrapper} ${props.showSidebar ? styles.open_sidebar : ""} `}  > GooglePlaceSidebar</div >
+        <div className={`${styles.sidebarWrapper} ${props.showSidebar ? styles.open_sidebar : ""} `}  > 
+        
+        </div >
     )
 }
 

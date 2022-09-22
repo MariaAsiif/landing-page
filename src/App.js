@@ -9,6 +9,7 @@ import LayerDetail from "./components/LayerDetail/LayerDetail";
 import Stock from "./components/Stock/Stock";
 import Stocks from "./components/Stocks/Stock";
 import Checkout from "./components/Checkout/Checkout";
+import { useJsApiLoader, useLoadScript } from "@react-google-maps/api";
 function App() {
   const locationFound = localStorage.getItem('saveCurentLocation')
 
@@ -37,6 +38,15 @@ function App() {
   //       console.log("Request failed:", error);
   //     });
   // }, []);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyD0tGMAgpuMIlO51AcuBmxpOWtRGa76Fro",
+    libraries: ["places"],
+  });
+
+
+
+  if (!isLoaded) return <div>Loading...</div>;
 
 
   return (

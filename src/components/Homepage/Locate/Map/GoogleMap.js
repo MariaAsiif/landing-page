@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react"
+import {
+  GoogleMap,
+  Marker,
+  DirectionsRenderer,
+  Circle,
+  MarkerClusterer,
+} from "@react-google-maps/api";
+// import { GoogleMap, InfoWindow, Marker, GoogleApiWrapper, DirectionsRenderer } from "google-maps-react"
 import usePlacesAutocomplete, { getGeocode, getLatLng, getDetails } from "use-places-autocomplete";
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
 import GooglePlaceSidebar from './GooglePlaceSidebar/GooglePlaceSidebar';
+import { FaDirections } from 'react-icons/fa';
+import { BiSearch } from 'react-icons/bi';
+import { useMemo } from 'react';
 
 
 
-const GoogleMap = (props) => {
+const GogleMap = (props) => {
   const [serviceMarkers, setserviceMarkers] = useState([])
   const [showInfoWindow, setShowInfoWindow] = useState(false)
   const [activeMarker, setActiveMarker] = useState({})
@@ -17,6 +27,13 @@ const GoogleMap = (props) => {
   const [markerLocation, setmarkerLocation] = useState({ lat: 0, lng: 0 })
   const [showSidebar, setshowSidebar] = useState(false)
   const [sidebarData, setsidebarData] = useState({})
+  const [direction, setDirections] = useState()
+  const center = useMemo(
+    () => ({ lat: 43.45, lng: -80.49 }),
+    []
+  );
+
+  const google = window.google;
 
 
   //  -------------------
@@ -41,6 +58,35 @@ const GoogleMap = (props) => {
     setmapLocation({
       lat, lng
     })
+
+    console.log("loca", mapLocation)
+
+    let obj = {
+      lat: lat,
+      lng: lng
+    }
+
+    console.log("data", obj)
+    const service = new google.maps.DirectionsService();
+    service.route(
+      {
+        origin: center,
+        destination: center,
+        travelMode: google.maps.TravelMode.DRIVING,
+      },
+      (result, status) => {
+        console.log("locations res", result)
+        console.log("locations status", status)
+
+        if (status === "OK" && result) {
+          // setDirections(result);
+          console.log("locations result", result)
+        }
+      }
+
+    );
+    console.log("service", service)
+
   };
 
 
@@ -72,9 +118,7 @@ const GoogleMap = (props) => {
     setActiveMarker(marker)
     setShowInfoWindow(true)
 
-    console.log("props", props);
-    console.log("marker", marker);
-    console.log("service", service);
+
   }
 
   const handleClose = () => {
@@ -83,6 +127,9 @@ const GoogleMap = (props) => {
   }
   useEffect(() => {
     setserviceMarkers(props.data)
+
+
+
 
     setmarkerLocation({
       lat: props.markerLocation.latitude,
@@ -100,8 +147,14 @@ const GoogleMap = (props) => {
 
       <div className='map' style={{ position: 'relative' }}>
         <div style={{ position: "absolute", zIndex: 10, top: 13 }}>
-          <Combobox onSelect={handleSelect} aria-labelledby="demo">
-            <ComboboxInput className='custom_ComboboxInput' value={value} onChange={handleInput} placeholder="Search any place" disabled={!ready} />
+          <Combobox onSelect={handleSelect} aria-labelledby="demo" style={{ marginLeft: '10px', height: '45px', border: '1pt solid gray', boxShadow: '0px 0px 2px lightgray', padding: '5px', display: 'flex', alignItems: 'center', maxWidth: '500px', borderRadius: '10px', backgroundColor: 'white' }}>
+            {/* <ComboboxInput className='custom_ComboboxInput' value={value} onChange={handleInput} placeholder="Search any place" disabled={!ready} /> */}
+            <ComboboxInput style={{ width: 300, border: 'none', backgroundColor: 'transparent', maxWidth: "90%", padding: 10, fontSize: 18, borderRadius: 9 }} value={value} onChange={handleInput} placeholder="Search Google Maps" disabled={!ready} />
+            <BiSearch style={{ fontSize: '20px', color: 'lightgray' }} />
+            <div style={{ borderLeft: '1pt solid lightgray', padding: '5px', height: '30px', marginLeft: '10px' }}>
+              <FaDirections style={{ fontSize: '20px', marginLeft: '10px', color: 'blue', cursor: 'pointer' }} />
+
+            </div>
             <ComboboxPopover>
               <ComboboxList  >
                 {status === "OK" && data.map(({ place_id, description }) => <ComboboxOption key={place_id} value={description} />)}
@@ -110,7 +163,19 @@ const GoogleMap = (props) => {
           </Combobox>
         </div>
         <GooglePlaceSidebar showSidebar={showSidebar} sidebarData={sidebarData} />
-        <Map disableDefaultUI={true} onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
+        <GoogleMap disableDefaultUI={true} onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
+          {direction && (
+            <DirectionsRenderer
+              directions={direction}
+              options={{
+                polylineOptions: {
+                  zIndex: 50,
+                  strokeColor: "#1976D2",
+                  strokeWeight: 5,
+                },
+              }}
+            />
+          )}
           <Marker
             title="Location"
             name={"locationpicker"}
@@ -140,7 +205,7 @@ const GoogleMap = (props) => {
 
 
 
-          <InfoWindow
+          {/* <InfoWindow
             marker={activeMarker}
             visible={showInfoWindow}
             onClose={handleClose}
@@ -176,10 +241,10 @@ const GoogleMap = (props) => {
                 }
               })()}
             </div>
-          </InfoWindow>
+          </InfoWindow> */}
 
 
-        </Map>
+        </GoogleMap>
 
 
 
@@ -193,6 +258,8 @@ const GoogleMap = (props) => {
 }
 
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyD0tGMAgpuMIlO51AcuBmxpOWtRGa76Fro",
-})(GoogleMap)
+// export default GoogleApiWrapper({
+//   apiKey: "AIzaSyD0tGMAgpuMIlO51AcuBmxpOWtRGa76Fro",
+// })(GogleMap)
+
+export default GogleMap

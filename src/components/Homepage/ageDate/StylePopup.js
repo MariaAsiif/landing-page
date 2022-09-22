@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StylePopup=styled.div`
+export const StylePopup = styled.div`
 background-color: #0a472e;
 color: #fff;
 position: relative;
@@ -105,4 +105,111 @@ height: 100%;
     font-size: 1.4rem;
     text-align: center;
 }
+.fom-wrapper{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+
+.circle{
+    border:1pt solid;
+    width:22px;
+    height:22px;
+    border-radius:20px;
+    position:relative;
+}
+
+.line{
+    border:1pt solid white;
+    width:20%;
+    background-color:white
+}
+
+.inner_circle{
+    background-color:white;
+    width:12px;
+    height:12px;
+    margin-top:4px;
+    margin-left:3px;
+    border-radius:20px;
+}
+
+.inners_circle{
+    background-color:white;
+    width:12px;
+    height:12px;
+    margin-top:1px;
+    border-radius:20px;
+}
+}
+`
+
+export const CountryStateWrpper = styled.div`
+
+.dateofbirth{
+    text-align:center;
+    font-size:20px;
+}
+.form-group {
+    select{
+        background: transparent;
+        .option{
+            font-size:25px;
+        }
+    }
+}
+
+
+
+`
+
+export const EmailWrpper = styled.div`
+
+text-align:center;
+margin-top:20px;
+
+h1{
+    font-size:18px;
+}
+
+input{
+    width:80%;
+    height:40px;
+    background:transparent;
+    border:1pt solid white;
+    border-radius:5px;
+    padding-left:10px;
+    color:white;
+    font-size:16px;
+}
+
+`
+
+
+export const EmailVerifyWrpper = styled.div`
+
+text-align:center;
+margin-top:20px;
+
+h1{
+    font-size:3rem;
+   margin-bottom:20px;
+
+    span{
+    font-size:14px;
+
+    }
+    
+}
+
+input{
+    width:80%;
+    height:40px;
+    background:transparent;
+    border:1pt solid white;
+    border-radius:5px;
+    padding-left:10px;
+    color:white;
+    font-size:16px;
+}
+
 `
