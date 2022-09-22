@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
-} from "@react-google-maps/api";
-// import { GoogleMap, InfoWindow, Marker, GoogleApiWrapper, DirectionsRenderer } from "google-maps-react"
+import { Map, InfoWindow, Marker, GoogleApiWrapper, DirectionsRenderer } from "google-maps-react"
 import usePlacesAutocomplete, { getGeocode, getLatLng, getDetails } from "use-places-autocomplete";
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox";
 
@@ -27,13 +20,7 @@ const GogleMap = (props) => {
   const [markerLocation, setmarkerLocation] = useState({ lat: 0, lng: 0 })
   const [showSidebar, setshowSidebar] = useState(false)
   const [sidebarData, setsidebarData] = useState({})
-  const [direction, setDirections] = useState()
-  const center = useMemo(
-    () => ({ lat: 43.45, lng: -80.49 }),
-    []
-  );
-
-  const google = window.google;
+  const [directions, setdirections] = useState(null)
 
 
   //  -------------------
@@ -118,7 +105,30 @@ const GogleMap = (props) => {
     setActiveMarker(marker)
     setShowInfoWindow(true)
 
+    console.log("props", props.google.maps);
+    console.log("maps", props.google.maps);
+    console.log("marker", marker);
+    console.log("service", service);
+    // const dddd = new props.google.maps.DirectionsService();
 
+    // console.log(dddd);
+    // dddd.route({
+    //   origin: {
+    //     lat: service.serviceLocation.coordinates[1],
+    //     lng: service.serviceLocation.coordinates[0],
+    //   },
+    //   destination: {
+    //     lat: 40.4409177,
+    //     lng: -3.7180893,
+    //   },
+    //   travelMode: props.google.maps.TravelMode.DRIVING
+
+    // }, (results, status) => {
+    //   if (status === "OK" && results) {
+    //     console.log(results);
+    //     setdirections(results)
+    //   }
+    // })
   }
 
   const handleClose = () => {
@@ -184,13 +194,15 @@ const GogleMap = (props) => {
             onDragend={(t, map, coord) => moveMarker(coord, map, t)}
             key={"locationpicker"}
             icon={"http://maps.google.com/mapfiles/ms/icons/green.png"}
-            onClick={onMarkerClick}
+            onClick={(props, marker) => onMarkerClick(props, marker)}
           />
           {/* <Marker
           icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
           name={"asdfsf"}
           placeIndex={1}
           position={{ lat: 40.4435411, lng: -7.9361573 }} /> */}
+
+          {directions && <DirectionsRenderer directions={directions} />}
           {serviceMarkers.map((service, i) => {
             return (
               <Marker
