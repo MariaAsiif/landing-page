@@ -89,12 +89,12 @@ function Popup(props) {
 
 
           <Row >
-            <Col lg={6} xs={12} className="borders text-center">
+            <Col lg={6} xs={12} md={12} className="borders text-center ">
               <div className="logo">
                 <img src={Logo1} alt="Logo" />
               </div>
               <div className="local-prize-container">
-                <h5 className="win-text">Win</h5>
+                <h5 className="win-text text-left">Win</h5>
                 <h2 className="price-style">
                   1000 <span className="dollar-sign">$</span>
                 </h2>
@@ -108,7 +108,7 @@ function Popup(props) {
                 <Button className="btn choose-file">Choose file</Button>
               </div>
             </Col>
-            <Col lg={6} xs={12}>
+            <Col lg={6} xs={12} md={12} >
 
               <div className='fom-wrapper ' style={{paddingTop:'1rem'}}>
 
@@ -136,7 +136,7 @@ function Popup(props) {
                 {activeIndex === 0 && <CountryState handleNext={handleIndex} />}
                 {activeIndex === 1 && <Email handleNext={handleIndex} />}
                 {activeIndex === 2 && <EmailVerify handleNext={handleIndex} />}
-                {activeIndex === 3 && <PhoneVerify handleNext={handleIndex} />}
+                {activeIndex === 3 && <PhoneVerify handleClose={handleClose} handleNext={handleIndex} />}
               </div>
             </Col>
           </Row>

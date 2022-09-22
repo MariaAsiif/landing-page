@@ -140,6 +140,10 @@ height: 100%;
     margin-top:1px;
     border-radius:20px;
 }
+
+
+
+
 }
 `
 
@@ -148,6 +152,14 @@ export const CountryStateWrpper = styled.div`
 .dateofbirth{
     text-align:center;
     font-size:20px;
+}
+text-align:center;
+
+
+h1{
+    font-size:2.2rem;
+   margin-bottom:20px;
+
 }
 .form-group {
     select{
@@ -168,7 +180,30 @@ text-align:center;
 margin-top:20px;
 
 h1{
-    font-size:18px;
+    font-size:2.1rem;
+    margin-bottom:20px;
+
+}
+
+.width_full{
+    width:425px;
+    height:40px;
+    background:transparent;
+    border:1pt solid white;
+    border-radius:5px;
+    padding-left:10px;
+    color:white;
+    font-size:16px;
+    margin-bottom:40px;
+
+    @media screen and (max-width:600px) {
+            width:280px;
+    }
+
+    @media screen and (min-width:768px) and (max-width:992px) {
+        width:350px;
+}
+
 }
 
 input{

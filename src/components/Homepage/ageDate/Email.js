@@ -3,6 +3,7 @@ import DatePicker from '@hassanmojab/react-modern-calendar-datepicker';
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 import { EmailWrpper } from './StylePopup'
 import { Button } from 'react-bootstrap';
+import { BsFillCalendar2DateFill } from 'react-icons/bs'
 const Email = ({ handleNext }) => {
 
   var today = new Date();
@@ -14,12 +15,13 @@ const Email = ({ handleNext }) => {
 
   // ****************** Datepicker Content ***********
   const renderCustomInput = ({ ref }) => (
-    < div className='relative cursor-pointe w-full'>
+    < div className='position-relative cursor-pointe w-full '>
       <input readOnly ref={ref} // necessary  placeholder="yyy-mm-dd"
         value={expiryDate ? `${expiryDate.year}/${expiryDate.month}/${expiryDate.day}` : ''}
-        style={{ width: '430px', color: 'white', borderRadius: '5px', paddingLeft: '5px', border: '1pt solid white', background: 'transparent', marginBlock: '20px', height: '40px' }}
+        className="width_full"
+        
       />
-      {/* <div className={`visible absolute top-3 cursor-pointer right-5`}>   <FcCheckmark />   </div> */}
+      <div className={`position-absolute top-0 cursor-pointer end-0 `} style={{marginRight:'20px' , marginTop:'2px' , fontSize:'20px'}}>   <BsFillCalendar2DateFill />   </div>
 
     </div >
   )
@@ -28,7 +30,7 @@ const Email = ({ handleNext }) => {
     <EmailWrpper>
       <div>
         <h1 >Please Enter your Date of birth and email address</h1>
-        <div className="">
+        <div className="email_wraper">
           <DatePicker
             value={expiryDate}
             calendarPopperPosition="left"

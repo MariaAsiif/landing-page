@@ -4,7 +4,7 @@ import axios from 'axios'
 import { FaChevronDown } from "react-icons/fa";
 import { Button } from 'react-bootstrap';
 import { CountryStateWrpper } from './StylePopup'
-const CountryState = ({handleNext}) => {
+const CountryState = ({ handleNext }) => {
     const [all_Countries] = useState(() => Country.getAllCountries())
     const [formModel, setformModel] = useState({
 
@@ -38,9 +38,9 @@ const CountryState = ({handleNext}) => {
 
     return (
         <CountryStateWrpper>
-            <div className="dateofbirth mb-5 text-center text-xl">
-            Please select your country and state
-            </div>
+            <h1>
+                Please select your country and state
+            </h1>
 
             <form onSubmit={(e) => submitform(e)}>
                 <div class="form-group">
