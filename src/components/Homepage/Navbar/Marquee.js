@@ -32,7 +32,7 @@ const MarqueeView = () => {
         // let response = await axios.post("https://hporxadminbackend.herokuapp.com/tickers/getTickersWithFullDetailsPublic", payload);
         // setallpermission(response.data.permissions)
         // setTickers(response.data.tickers)
-        console.log("ticker", response)
+        // console.log("ticker", response)
 
         let arr = []
         let arr2 = []
@@ -71,7 +71,6 @@ const MarqueeView = () => {
 
         setTickers(arr3.concat(arr))
 
-        console.log("arr", tickers)
 
 
       } catch (error) {
