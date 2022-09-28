@@ -31,13 +31,57 @@ const MarqueeView = () => {
         const response = await callPublicApi("/tickers/getTickersWithFullDetailsPublic", "post", payload)
         // let response = await axios.post("https://hporxadminbackend.herokuapp.com/tickers/getTickersWithFullDetailsPublic", payload);
         // setallpermission(response.data.permissions)
-        setTickers(response.data.tickers)
-        console.log("ticker" , response)
+        // setTickers(response.data.tickers)
+        console.log("ticker", response)
+
+        let arr = []
+        let arr2 = []
+        let arr3 = []
+
+        for (let index = 0; index < response.data.tickers.length; index++) {
+          const element = response.data.tickers[index];
+          if (element.tickerText.includes('.')) {
+            let newI = element.tickerText.split('.')
+
+            let filtered = newI.filter(function (el) {
+              return el != "";
+            });
+
+            filtered && filtered.filter((f) => {
+
+              let obj = {
+                tickerText: `${f}.`,
+                logoFile: element.logoFile
+              }
+              arr3.push(obj)
+            })
+
+            arr2.push(...filtered)
+
+          }
+          else {
+            let obj = {
+              tickerText: element.tickerText,
+              logoFile: element.logoFile
+            }
+            // arr.push(obj)
+            setTickers(arr3.concat(obj))
+
+          }
+        }
+
+
+
+
       } catch (error) {
         console.log(error);
       }
     })();
   }, [])
+
+
+
+
 
 
   return (

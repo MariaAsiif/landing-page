@@ -150,7 +150,7 @@ const Homepage = () => {
   ];
   return (
     <>
-    <Popup/>
+    {/* <Popup/> */}
       <VolumeContext.Provider value={handleVolume}>
         <Header id="HOME" value={volumeValue} />
       </VolumeContext.Provider>
