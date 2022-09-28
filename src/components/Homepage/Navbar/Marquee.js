@@ -18,7 +18,7 @@ const MarqueeView = () => {
           "sortproperty": "created_at",
           "sortorder": -1,
           "offset": 0,
-          "limit": 2,
+          "limit": 100,
           "query": {
             "critarion": { "active": true },
 
@@ -64,13 +64,14 @@ const MarqueeView = () => {
               tickerText: element.tickerText,
               logoFile: element.logoFile
             }
-            // arr.push(obj)
-            setTickers(arr3.concat(obj))
+            arr.push(obj)
 
           }
         }
 
+        setTickers(arr3.concat(arr))
 
+        console.log("arr", tickers)
 
 
       } catch (error) {
@@ -81,7 +82,7 @@ const MarqueeView = () => {
 
 
 
-
+  console.log("tickers", tickers)
 
 
   return (
@@ -102,7 +103,7 @@ const MarqueeView = () => {
       >
         {tickers.map((ticker, i) => (
           <>
-            <span style={{ display: "inline-block", margin: "0 1rem" }} key={i}>
+            <span style={{ display: "inline-block", margin: "0 2px" }} key={i}>
               <img
                 className="marq-logo"
                 style={{ verticalAlign: "bottom" }}
