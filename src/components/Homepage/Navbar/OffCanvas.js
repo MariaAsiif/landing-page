@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Offcanvas } from "react-bootstrap";
 import LeftArrow from "../../../assets/right-slider-arrow.svg";
 import searchIcon from "../../../assets/searchIcon.svg";
@@ -8,18 +8,20 @@ import { ViewMoreBtn } from '../../Globals/Globals'
 import { VolumeContext } from "../Homepage";
 import { BsFillVolumeUpFill, BsFillVolumeDownFill, BsFillVolumeMuteFill } from "react-icons/bs";
 import Quote from "../sidebarQuotes/Quote";
+import DevelopmentNotesPopup from "./DevelopmentNotesPopup";
 
 const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
     const data = new Date();
     //    const [data,changeData]=useState();
     const handleVolume = useContext(VolumeContext);
-  const [volumeValue, setVolumeValue] = React.useState(false);
+    const [volumeValue, setVolumeValue] = useState(false);
+    const [devNotePopup, setdevNotePopup] = useState(false)
 
 
 
     const handleVolumes = (value) => {
         setVolumeValue(value);
-      };
+    };
     return (
         <Offcanvas show={show} onHide={handleClose} placement="end">
             <Offcanvas.Header>
@@ -40,6 +42,9 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                 </div>
             </Offcanvas.Header>
             <Offcanvas.Body>
+                {
+                    devNotePopup ? <DevelopmentNotesPopup show={devNotePopup} onClose={() => setdevNotePopup(false)} /> : null
+                }
                 <div className="offCanvas-body-section">
                     <div class="body-content-div">
                         <ul class="list-unstyled" id="user-pf-list">
@@ -255,7 +260,14 @@ const OffCanvas = ({ show, handleClose, setShow, value, country, state }) => {
                                     <VolumeContext.Provider value={handleVolumes}>
                                         <Quote value={volumeValue} />
                                     </VolumeContext.Provider>
-                                    
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="d-flex justify-content-end mt-2">
+                                    <div role="button" onClick={() => setdevNotePopup(true)} className="canvas-title-section  " style={{ width: "auto" }}>
+                                        <p>Development Notes</p>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
