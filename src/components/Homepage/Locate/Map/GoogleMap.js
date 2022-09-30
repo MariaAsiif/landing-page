@@ -5,9 +5,11 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 
 import "@reach/combobox/styles.css";
 import GooglePlaceSidebar from './GooglePlaceSidebar/GooglePlaceSidebar';
-
-
-
+import { AiFillCar } from 'react-icons/ai'
+import { BiWalk, BiBus } from 'react-icons/bi'
+import { BsBicycle } from 'react-icons/bs'
+import { FaSubway, FaTram } from 'react-icons/fa'
+import { GiRailRoad } from 'react-icons/gi'
 const GoogleMap = (props) => {
   const [serviceMarkers, setserviceMarkers] = useState([])
   const [showInfoWindow, setShowInfoWindow] = useState(false)
@@ -64,7 +66,7 @@ const GoogleMap = (props) => {
     console.log("onMarkerClick called")
     console.log(props)
 
-    let {data} = props
+    let { data } = props
     let drivingDistance = data[0].distance
     let drivingDuration = data[0].duration
     let walkingDistance = data[1].distance
@@ -210,15 +212,92 @@ const GoogleMap = (props) => {
                 if (activeMarker != null) {
                   if (activeMarker.name != "locationpicker") {
                     return (
-                      <div>
+                      <div className='p-3'>
                         <label key={instituteInfo.name}>
 
-                          <span className="text-sky">
+                          <span className="text-sky " style={{fontSize:'18px' , fontStyle:'bold'}}>
                             {instituteInfo.name}{" "}
                           </span>
                         </label>
                         <br />
-                        <label key={instituteInfo.address}>
+                        <div>
+                          <ul style={{display:'flex', justifyContent:'space-between' , marginTop:'20px'}}>
+                            <li style={{ listStyle: 'none' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <AiFillCar style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.drivingDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.drivingDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <BiWalk style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column', marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.walkingDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.walkingDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <BsBicycle style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.bicyclingDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.bicyclingDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <BiBus style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.busDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.busDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <FaSubway style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.subwayDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.subwayDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <FaSubway style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.trainDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.trainDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <FaTram style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.tramDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.tramDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                            <li style={{ listStyle: 'none' , marginLeft:'15px' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <GiRailRoad style={{ fontSize: '18px' }} />
+                                <div style={{ display: 'flex', flexDirection: 'column' , marginTop:'10px' }}>
+                                  <h2 style={{ fontSize: '12px' }}>Distance: <span style={{ fontSize: '10px' }}> {instituteInfo.railDistance}</span> </h2>
+                                  <h2 style={{ fontSize: '12px' }}>Duration: <span style={{ fontSize: '10px' }}> {instituteInfo.railDuration}</span> </h2>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        {/* <label key={instituteInfo.address}>
 
                         Mode:  Driving
                       Distance:  {instituteInfo.drivingDistance}
@@ -251,7 +330,7 @@ const GoogleMap = (props) => {
                       Mode:  Rail
                       Distance:  {instituteInfo.railDistance}
                       Duration:  {instituteInfo.railDuration}
-                        </label>
+                        </label> */}
                       </div>
                     );
                   } else {
