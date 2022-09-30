@@ -61,9 +61,44 @@ const GoogleMap = (props) => {
     }
   }
   const onMarkerClick = (props, marker, service) => {
+    console.log("onMarkerClick called")
+    console.log(props)
+
+    let {data} = props
+    let drivingDistance = data[0].distance
+    let drivingDuration = data[0].duration
+    let walkingDistance = data[1].distance
+    let walkingDuration = data[1].duration
+    let bicyclingDistance = data[2].distance
+    let bicyclingDuration = data[2].duration
+    let busDistance = data[3].distance
+    let busDuration = data[3].duration
+    let subwayDistance = data[4].distance
+    let subwayDuration = data[4].duration
+    let trainDistance = data[5].distance
+    let trainDuration = data[5].duration
+    let tramDistance = data[6].distance
+    let tramDuration = data[6].duration
+    let railDistance = data[7].distance
+    let railDuration = data[7].duration
     let institute = {
       name: props.name,
-      address: props.address
+      drivingDistance,
+      drivingDuration,
+      walkingDistance,
+      walkingDuration,
+      bicyclingDistance,
+      bicyclingDuration,
+      busDistance,
+      busDuration,
+      subwayDistance,
+      subwayDuration,
+      trainDistance,
+      trainDuration,
+      tramDistance,
+      tramDuration,
+      railDistance,
+      railDuration
     }
     setmapLocation({
       lat: service.serviceLocation.coordinates[1],
@@ -156,6 +191,7 @@ const GoogleMap = (props) => {
                 key={i}
                 icon={"http://maps.google.com/mapfiles/ms/icons/yellow.png"}
                 name={service.serviceName}
+                data={service.distances}
                 placeIndex={i}
                 onClick={(props, marker) => onMarkerClick(props, marker, service)}
                 position={{ lat: service.serviceLocation.coordinates[1], lng: service.serviceLocation.coordinates[0] }} />
@@ -184,7 +220,37 @@ const GoogleMap = (props) => {
                         <br />
                         <label key={instituteInfo.address}>
 
-                          {instituteInfo.address}
+                        Mode:  Driving
+                      Distance:  {instituteInfo.drivingDistance}
+                      Duration:  {instituteInfo.drivingDuration}
+
+                      Mode:  Walking
+                      Distance:  {instituteInfo.walkingDistance}
+                      Duration:  {instituteInfo.walkingDuration}
+
+                      Mode:  Bicycling
+                      Distance:  {instituteInfo.bicyclingDistance}
+                      Duration:  {instituteInfo.bicyclingDuration}
+
+                      Mode:  Bus
+                      Distance:  {instituteInfo.busDistance}
+                      Duration:  {instituteInfo.busDuration}
+
+                      Mode:  Subway
+                      Distance:  {instituteInfo.subwayDistance}
+                      Duration:  {instituteInfo.subwayDuration}
+
+                      Mode:  Train
+                      Distance:  {instituteInfo.trainDistance}
+                      Duration:  {instituteInfo.trainDuration}
+
+                      Mode:  Tram
+                      Distance:  {instituteInfo.tramDistance}
+                      Duration:  {instituteInfo.tramDuration}
+
+                      Mode:  Rail
+                      Distance:  {instituteInfo.railDistance}
+                      Duration:  {instituteInfo.railDuration}
                         </label>
                       </div>
                     );
