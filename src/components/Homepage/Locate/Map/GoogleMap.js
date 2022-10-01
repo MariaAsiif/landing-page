@@ -169,7 +169,7 @@ const GoogleMap = (props) => {
           </Combobox>
         </div>
         <GooglePlaceSidebar showSidebar={showSidebar} sidebarData={sidebarData} />
-        <Map disableDefaultUI={true} onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
+        <Map  onClick={onMapClicked} google={props.google} center={{ lat: mapLocation.lat, lng: mapLocation.lng }} zoom={7}   >
           <Marker
             title="Location"
             name={"locationpicker"}
